@@ -275,7 +275,7 @@
 #define BMI160_LATCHED                            UINT8_C(0x0F)
 
 /** BMI160 Register map */
-#define BMI160_CHIP_ID_ADDR                       UINT8_C(0xD8)
+#define BMI160_CHIP_ID_ADDR                       UINT8_C(0x00)
 #define BMI160_ERROR_REG_ADDR                     UINT8_C(0x02)
 #define BMI160_PMU_STATUS_ADDR                    UINT8_C(0x03)
 #define BMI160_AUX_DATA_ADDR                      UINT8_C(0x04)

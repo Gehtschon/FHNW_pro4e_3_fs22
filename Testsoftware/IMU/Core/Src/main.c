@@ -34,19 +34,25 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define BMI160_DEV_ADDR (BMI160_I2C_ADDR)
-
+//#define BMI160_DEV_ADDR (BMI160_I2C_ADDR)
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
+/*! i2c interface communication, 1 - Enable; 0- Disable */
+#define BMI160_INTERFACE_I2C  1
 
+/*! spi interface communication, 1 - Enable; 0- Disable */
+#define BMI160_INTERFACE_SPI  0
+
+/*! bmi160 Device address */
+#define BMI160_DEV_ADDR       BMI160_I2C_ADDR
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
  I2C_HandleTypeDef hi2c1;
 
- UART_HandleTypeDef huart2;
+UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
@@ -97,7 +103,8 @@ int main(void)
   MX_I2C1_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+//	init_bmi160_sensor_driver_interface();
+//	init_bmi160();
 //  bmi160dev.id = BMI160_I2C_ADDR;
 //  bmi160dev.read = user_i2c_read;
 //  bmi160dev.write = user_i2c_write;
@@ -108,17 +115,45 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	while (1) {
-		//uint8_t dev_ID;
+		uint8_t data[1];
+		uint8_t dev_ID;
+		uint8_t status;
+		if (HAL_I2C_IsDeviceReady(&hi2c1, (BMI160_DEV_ADDR << 1), 3, 100)
+				!= HAL_OK) {
+			printf("\nDevice not ready\r");
+		};
+		// !! Problem liegt hier -> I2C geht ständig in Timeout -> Lösung online finden. Vielleich
+		// Problem mit dem Timing (zu schnelle Abfrage)
 
-//		HAL_I2C_Mem_Read(&hi2c1, BMI160_DEV_ADDR, BMI160_CHIP_ID_ADDR, 1,
-//				&dev_ID, sizeof(dev_ID), 50);
+		status = HAL_I2C_Mem_Read(&hi2c1, (BMI160_DEV_ADDR << 1), 0x00,
+		I2C_MEMADD_SIZE_8BIT, (uint8_t*) (&data), 1, 100);
+		//	HAL_I2C_Mem_Write(&hi2c1, 0b11010000, 0x00, 1,
+		//	0xD8, 1, 50);
+		//	HAL_I2C_Mem_Read(&hi2c1, 0b11010001, 0x00, 1,
+		//			&dev_ID, sizeof(dev_ID), 50);
+		/*	if (HAL_I2C_IsDeviceReady(&hi2c1, (0b11010001 << 1), 10, 50)==HAL_OK) {
+		 printf("\nI2C running\r");
+		 }
+		 else if (HAL_I2C_IsDeviceReady(&hi2c1, (0b11010001 << 1), 10, 50)==HAL_ERROR) {
+		 printf("\nI2C error\r");
+		 }
+		 else if (HAL_I2C_IsDeviceReady(&hi2c1, (0b11010001 << 1), 10, 50)==HAL_BUSY) {
+		 printf("\nI2C busy\r");
+		 };
+		 */
+		if (status != HAL_OK) {
+			printf("\nI2C read error");
+			if (hi2c1.ErrorCode == HAL_I2C_ERROR_TIMEOUT) {
+				printf(" - HAL_I2C_ERROR_TIMEOUT\r"); // HAL_I2C_ERROR_TIMEOUT
+			}
 
-		//printf("\nDevice-ID=%08u", dev_ID);
+		} else {
+			dev_ID = data[0];
+			printf("\nDevice-ID=%08u\r", dev_ID);
+		};
 
-		printf("\nHello");
-
+//		printf("\nHello\r");
 		HAL_Delay(1000);
-
 
     /* USER CODE END WHILE */
 
@@ -274,7 +309,13 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+PUTCHAR_PROTOTYPE {
+	/* Place your implementation of fputc here */
+	/* e.g. write a character to the USART1 and Loop until the end of transmission */
+	HAL_UART_Transmit(&huart2, (uint8_t*) &ch, 1, 0xFFFF);
 
+	return ch;
+}
 /* USER CODE END 4 */
 
 /**
