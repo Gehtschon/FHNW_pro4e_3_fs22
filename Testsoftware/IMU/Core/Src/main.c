@@ -149,13 +149,77 @@ int main(void) {
 			printf("\nDevice-ID=%X\r", dev_ID);
 		};
 		HAL_Delay(1);
+
+		// Process to initialize magnetometer to low power preset at 12.5Hz and enable magnetometer interface data mode
+		// see also DS of BMX160 p.25
 		// put MAG_IF into normal mode
-		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1),
-				0x7E, memAddSize8, 0x19, size, timeout);
+		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x7E, memAddSize8, 0x19,
+				size, timeout);
 		HAL_Delay(1);
-// hier fortfahren (siehe auch DS Seite 25)
-		HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1),
-				0x16, memAddSize16, &acc_z, size, timeout);
+
+		// mag_manual_en= 0b1, mag_if setup mode mag_offset<3:0>= 0b0000, maximum offset, recommend for
+		// BSX library
+		// enable magnetometer register access on MAG_IF[1] (read operations) or MAG_IF[2] (write access)
+		// setup mode ON, data mode OFF
+		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4C, memAddSize8, 0x80,
+				size, timeout);
+
+		// indirect write 0x01 to MAG register 0x4B
+		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4F, memAddSize8, 0x01,
+				size, timeout);
+		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4E, memAddSize8, 0x4B,
+				size, timeout);
+
+		/* Indirect write REPXY=
+		 * 			0x01 for low power preset
+		 * 			0x04 for regular preset
+		 * 			0x07 for enhanced regular preset
+		 * 			0x17 for high accuracy preset
+		 to MAG register 0x51
+		 */
+		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4F, memAddSize8, 0x01,
+				size, timeout);
+		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4E, memAddSize8, 0x51,
+				size, timeout);
+
+		/* Indirect write REPZ=
+		 * 			0x02 for low power preset
+		 * 			0x0E for regular preset
+		 * 			0x1A for enhanced regular preset
+		 * 			0x52 for high accuracy preset
+		 to MAG register 0x52
+		 */
+		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4F, memAddSize8, 0x0E,
+				size, timeout);
+		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4E, memAddSize8, 0x52,
+				size, timeout);
+
+		// Prepare MAG_IF[1-3] for mag_if data mode
+		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4F, memAddSize8, 0x02,
+				size, timeout);
+		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4E, memAddSize8, 0x4C,
+				size, timeout);
+		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4D, memAddSize8, 0x42,
+				size, timeout);
+
+		// mag_odr<3:0>= 0b0101, set ODR to 12.5Hz (50/(2^7-val(mag_odr<3:0>))Hz
+		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x44, memAddSize8, 0x05,
+				size, timeout);
+
+		// mag_manual_en= 0b0, mag_if data mode mag_offset<3:0>= 0b0000, maximum offset, recommend for BSX library
+		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4C, memAddSize8, 0x00,
+				size, timeout);
+
+		// put MAG_IF into low power mode
+		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x7E, memAddSize8, 0x1A,
+				size, timeout);
+		// end of magnetometer initialization
+
+		// rf 07.05.2022 14:16
+
+
+		HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x16, memAddSize16,
+				&acc_z, size, timeout);
 		printf("\nacc. z = %g\r", acc_z);
 		printf("\nacc. z = %u16\r", acc_z);
 		HAL_Delay(500);
