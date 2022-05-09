@@ -2110,3 +2110,560 @@
 
 2022-05-09 13:46:03,676 [INFO] Activator:178 - !SESSION log4j initialized
 2022-05-09 13:46:09,639 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-05-09 14:23:54,814 [INFO] Activator:177 - 
+
+
+2022-05-09 14:23:54,819 [INFO] Activator:178 - !SESSION log4j initialized
+2022-05-09 14:24:04,804 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-05-09 14:29:20,963 [INFO] McuFinderGlobals:39 - Set McuFinder mode to 2 (CubeIDE integrated)
+2022-05-09 14:29:21,102 [INFO] ApplicationProperties:181 - Using Application install path: C:\ST\STM32CubeIDE_1.9.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913
+2022-05-09 14:29:21,124 [INFO] DbMcusXml:72 - Set database path to: C:\ST\STM32CubeIDE_1.9.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913\\db\/mcu/
+2022-05-09 14:29:21,125 [INFO] ApiDb:260 - Set plugin database path to: C:\ST\STM32CubeIDE_1.9.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913\\db\/plugins/boardmanager/
+2022-05-09 14:29:21,128 [WARN] ApiDb:245 - Overriding images path with different value:  => C:\ST\STM32CubeIDE_1.9.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913\\db\/plugins/mcufinder/images/
+2022-05-09 14:29:21,145 [INFO] ApiDb:226 - Set database path to: C:\Users\fabia\.stmcufinder\plugins\mcufinder//mcu/
+2022-05-09 14:29:21,147 [INFO] DbMcusAds:119 - Set database path to: C:\Users\fabia\.stmcufinder\plugins\mcufinder//mcu/
+2022-05-09 14:29:21,155 [INFO] CrossReferenceDbSqlite:196 - Set database path to: C:\Users\fabia\.stmcufinder\plugins\mcufinder//mcu/cs/
+2022-05-09 14:29:21,313 [INFO] RulesReader:57 - Compatibility file has been processed (281 Rules)
+2022-05-09 14:29:21,457 [INFO] DbMcusXml:72 - Set database path to: C:\ST\STM32CubeIDE_1.9.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913\\db\/mcu/
+2022-05-09 14:29:21,458 [INFO] ApiDb:260 - Set plugin database path to: C:\ST\STM32CubeIDE_1.9.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913\\db\/plugins/boardmanager/
+2022-05-09 14:29:21,458 [INFO] ApiDb:247 - Set plugin images path to: C:\ST\STM32CubeIDE_1.9.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913\\db\/plugins/mcufinder/images/
+2022-05-09 14:29:21,459 [WARN] DbFile:35 - Overriding database path with different value: C:\Users\fabia\.stmcufinder\plugins\mcufinder/ => C:\Users\fabia\.stmcufinder\plugins\mcufinder
+2022-05-09 14:29:21,460 [INFO] ApiDb:226 - Set database path to: C:\Users\fabia\.stmcufinder\plugins\mcufinder//mcu/
+2022-05-09 14:29:21,460 [WARN] DbFile:35 - Overriding database path with different value: C:\Users\fabia\.stmcufinder\plugins\mcufinder/ => C:\Users\fabia\.stmcufinder\plugins\mcufinder
+2022-05-09 14:29:21,460 [INFO] DbMcusAds:119 - Set database path to: C:\Users\fabia\.stmcufinder\plugins\mcufinder//mcu/
+2022-05-09 14:29:21,462 [WARN] DbFile:35 - Overriding database path with different value: C:\Users\fabia\.stmcufinder\plugins\mcufinder/ => C:\Users\fabia\.stmcufinder\plugins\mcufinder
+2022-05-09 14:29:21,462 [WARN] DbFile:35 - Overriding database path with different value: C:\Users\fabia\.stmcufinder\plugins\mcufinder/ => C:\Users\fabia\.stmcufinder\plugins\mcufinder
+2022-05-09 14:29:21,463 [INFO] CrossReferenceDbSqlite:196 - Set database path to: C:\Users\fabia\.stmcufinder\plugins\mcufinder//mcu/cs/
+2022-05-09 14:29:21,588 [INFO] MainPanel:230 - HeapMemory: 413138944
+2022-05-09 14:29:21,666 [INFO] DbMcusXml:72 - Set database path to: C:\ST\STM32CubeIDE_1.9.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913\\db\/mcu/
+2022-05-09 14:29:21,666 [INFO] ApiDb:260 - Set plugin database path to: C:\ST\STM32CubeIDE_1.9.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913\\db\/plugins/boardmanager/
+2022-05-09 14:29:21,666 [INFO] ApiDb:247 - Set plugin images path to: C:\ST\STM32CubeIDE_1.9.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913\\db\/plugins/mcufinder/images/
+2022-05-09 14:29:21,666 [WARN] DbFile:35 - Overriding database path with different value: C:\Users\fabia\.stmcufinder\plugins\mcufinder/ => C:\Users\fabia\.stmcufinder\plugins\mcufinder
+2022-05-09 14:29:21,667 [INFO] ApiDb:226 - Set database path to: C:\Users\fabia\.stmcufinder\plugins\mcufinder//mcu/
+2022-05-09 14:29:21,667 [WARN] DbFile:35 - Overriding database path with different value: C:\Users\fabia\.stmcufinder\plugins\mcufinder/ => C:\Users\fabia\.stmcufinder\plugins\mcufinder
+2022-05-09 14:29:21,667 [INFO] DbMcusAds:119 - Set database path to: C:\Users\fabia\.stmcufinder\plugins\mcufinder//mcu/
+2022-05-09 14:29:21,667 [WARN] DbFile:35 - Overriding database path with different value: C:\Users\fabia\.stmcufinder\plugins\mcufinder/ => C:\Users\fabia\.stmcufinder\plugins\mcufinder
+2022-05-09 14:29:21,667 [WARN] DbFile:35 - Overriding database path with different value: C:\Users\fabia\.stmcufinder\plugins\mcufinder/ => C:\Users\fabia\.stmcufinder\plugins\mcufinder
+2022-05-09 14:29:21,668 [INFO] CrossReferenceDbSqlite:196 - Set database path to: C:\Users\fabia\.stmcufinder\plugins\mcufinder//mcu/cs/
+2022-05-09 14:29:21,685 [INFO] ApplicationProperties:181 - Using Application install path: C:\ST\STM32CubeIDE_1.9.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913
+2022-05-09 14:29:21,687 [INFO] PluginManage:188 - Search for loadable plugins [exclusion list=, ]
+2022-05-09 14:29:21,688 [INFO] PluginManage:302 - Check plugin analytics
+2022-05-09 14:29:21,784 [ERROR] AnalyticsContext:980 - The ST intranet updater server is unknown: mcucrossselector.codex.cro.st.com
+2022-05-09 14:29:21,847 [INFO] AnalyticsPlugin:257 - Accepted Software Licenses: 
+2022-05-09 14:29:21,848 [INFO] AnalyticsPlugin:259 - Accepted CMSIS Pack Licenses: 
+2022-05-09 14:29:21,848 [INFO] AnalyticsPlugin:261 - Accepted Firmware Licenses: 
+2022-05-09 14:29:21,862 [INFO] PluginManage:352 - Loaded plugin analytics (category:tool,tabindex:-1)
+2022-05-09 14:29:21,863 [INFO] PluginManage:302 - Check plugin clock
+2022-05-09 14:29:21,877 [INFO] PluginManage:352 - Loaded plugin clock (category:base,tabindex:2)
+2022-05-09 14:29:21,877 [INFO] PluginManage:302 - Check plugin ddr
+2022-05-09 14:29:21,879 [INFO] PluginManage:352 - Loaded plugin ddr (category:tool,tabindex:6)
+2022-05-09 14:29:21,880 [INFO] PluginManage:302 - Check plugin filemanager
+2022-05-09 14:29:22,010 [INFO] PluginManage:352 - Loaded plugin filemanager (category:base,tabindex:10)
+2022-05-09 14:29:22,011 [INFO] PluginManage:302 - Check plugin ipmanager
+2022-05-09 14:29:22,021 [INFO] PluginManage:352 - Loaded plugin ipmanager (category:base,tabindex:5)
+2022-05-09 14:29:22,021 [INFO] PluginManage:302 - Check plugin lpbam
+2022-05-09 14:29:22,031 [INFO] PluginManage:352 - Loaded plugin lpbam (category:base,tabindex:0)
+2022-05-09 14:29:22,031 [INFO] PluginManage:302 - Check plugin pinoutandconfiguration
+2022-05-09 14:29:22,039 [INFO] PluginManage:352 - Loaded plugin pinoutandconfiguration (category:base,tabindex:1)
+2022-05-09 14:29:22,039 [INFO] PluginManage:302 - Check plugin pinoutconfig
+2022-05-09 14:29:22,070 [INFO] PluginManage:352 - Loaded plugin pinoutconfig (category:base,tabindex:0)
+2022-05-09 14:29:22,071 [INFO] PluginManage:302 - Check plugin power
+2022-05-09 14:29:22,079 [INFO] PluginManage:352 - Loaded plugin power (category:power,tabindex:4)
+2022-05-09 14:29:22,080 [INFO] PluginManage:302 - Check plugin projectmanager
+2022-05-09 14:29:22,098 [INFO] PluginManage:352 - Loaded plugin projectmanager (category:projectmanager,tabindex:3)
+2022-05-09 14:29:22,098 [INFO] PluginManage:302 - Check plugin thirdparty
+2022-05-09 14:29:22,289 [WARN] IntegrityCheckThread:78 - waiting for thirdparty lock release [integrity check]
+2022-05-09 14:29:22,289 [INFO] PluginManage:352 - Loaded plugin thirdparty (category:base,tabindex:-1)
+2022-05-09 14:29:22,289 [INFO] IntegrityCheckThread:80 - entering critical section [integrity check]
+2022-05-09 14:29:22,290 [INFO] PluginManage:302 - Check plugin tools
+2022-05-09 14:29:22,293 [INFO] ThirdPartyUpdaterWithRetryManager:66 - Updater plugin not ready yet. [1/15]
+2022-05-09 14:29:22,294 [INFO] PluginManage:352 - Loaded plugin tools (category:base,tabindex:7)
+2022-05-09 14:29:22,294 [INFO] PluginManage:302 - Check plugin tutovideos
+2022-05-09 14:29:22,585 [INFO] PluginManage:352 - Loaded plugin tutovideos (category:base,tabindex:-1)
+2022-05-09 14:29:22,586 [INFO] PluginManage:302 - Check plugin updater
+2022-05-09 14:29:22,617 [INFO] PluginManage:352 - Loaded plugin updater (category:base,tabindex:12)
+2022-05-09 14:29:22,619 [INFO] PluginManage:275 - PluginManage : Loaded plugins [14]
+2022-05-09 14:29:23,007 [INFO] PinOutPanel:1465 - setPackage(No Configuration,No Configuration)
+2022-05-09 14:29:23,120 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,120 [INFO] PluginManager:213 - loadIPPluginJar : add adc
+2022-05-09 14:29:23,124 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,124 [INFO] PluginManager:213 - loadIPPluginJar : add aes
+2022-05-09 14:29:23,127 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,127 [INFO] PluginManager:213 - loadIPPluginJar : add can
+2022-05-09 14:29:23,129 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,129 [INFO] PluginManager:213 - loadIPPluginJar : add comp
+2022-05-09 14:29:23,132 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,132 [INFO] PluginManager:213 - loadIPPluginJar : add cryp
+2022-05-09 14:29:23,135 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,136 [INFO] PluginManager:213 - loadIPPluginJar : add dfsdm
+2022-05-09 14:29:23,142 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,142 [INFO] PluginManager:213 - loadIPPluginJar : add dma
+2022-05-09 14:29:23,146 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,146 [INFO] PluginManager:213 - loadIPPluginJar : add dma3
+2022-05-09 14:29:23,157 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,158 [INFO] PluginManager:213 - loadIPPluginJar : add fatfs
+2022-05-09 14:29:23,163 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,163 [INFO] PluginManager:213 - loadIPPluginJar : add fmc
+2022-05-09 14:29:23,168 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,169 [INFO] PluginManager:213 - loadIPPluginJar : add freertos
+2022-05-09 14:29:23,170 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,171 [INFO] PluginManager:213 - loadIPPluginJar : add genericplugin
+2022-05-09 14:29:23,173 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,173 [INFO] PluginManager:213 - loadIPPluginJar : add gfxmmu
+2022-05-09 14:29:23,178 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,178 [INFO] PluginManager:213 - loadIPPluginJar : add gic
+2022-05-09 14:29:23,182 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,182 [INFO] PluginManager:213 - loadIPPluginJar : add gpio
+2022-05-09 14:29:23,185 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,186 [INFO] PluginManager:213 - loadIPPluginJar : add gtzc
+2022-05-09 14:29:23,189 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,190 [INFO] PluginManager:213 - loadIPPluginJar : add hash
+2022-05-09 14:29:23,194 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,194 [INFO] PluginManager:213 - loadIPPluginJar : add i2c
+2022-05-09 14:29:23,197 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,197 [INFO] PluginManager:213 - loadIPPluginJar : add i2s
+2022-05-09 14:29:23,201 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,201 [INFO] PluginManager:213 - loadIPPluginJar : add ipddr
+2022-05-09 14:29:23,209 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,209 [INFO] PluginManager:213 - loadIPPluginJar : add linkedlist
+2022-05-09 14:29:23,212 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,213 [INFO] PluginManager:213 - loadIPPluginJar : add lorawan
+2022-05-09 14:29:23,215 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,215 [INFO] PluginManager:213 - loadIPPluginJar : add ltdc
+2022-05-09 14:29:23,224 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,224 [INFO] PluginManager:213 - loadIPPluginJar : add mdma
+2022-05-09 14:29:23,230 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,230 [INFO] PluginManager:213 - loadIPPluginJar : add nvic
+2022-05-09 14:29:23,236 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,236 [INFO] PluginManager:213 - loadIPPluginJar : add opamp
+2022-05-09 14:29:23,241 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,242 [INFO] PluginManager:213 - loadIPPluginJar : add openamp
+2022-05-09 14:29:23,245 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,246 [INFO] PluginManager:213 - loadIPPluginJar : add pdm2pcm
+2022-05-09 14:29:23,255 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,257 [INFO] PluginManager:213 - loadIPPluginJar : add plateformsettings
+2022-05-09 14:29:23,260 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,260 [INFO] PluginManager:213 - loadIPPluginJar : add quadspi
+2022-05-09 14:29:23,263 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,264 [INFO] PluginManager:213 - loadIPPluginJar : add resmgrutility
+2022-05-09 14:29:23,267 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,267 [INFO] PluginManager:213 - loadIPPluginJar : add sai
+2022-05-09 14:29:23,270 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,270 [INFO] PluginManager:213 - loadIPPluginJar : add spi
+2022-05-09 14:29:23,275 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,275 [INFO] PluginManager:213 - loadIPPluginJar : add stm32_wpan
+2022-05-09 14:29:23,277 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,277 [INFO] PluginManager:213 - loadIPPluginJar : add tim
+2022-05-09 14:29:23,281 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,281 [INFO] PluginManager:213 - loadIPPluginJar : add touchsensing
+2022-05-09 14:29:23,293 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,293 [INFO] PluginManager:213 - loadIPPluginJar : add tracer_emb
+2022-05-09 14:29:23,295 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,296 [INFO] PluginManager:213 - loadIPPluginJar : add ts
+2022-05-09 14:29:23,297 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,298 [INFO] PluginManager:213 - loadIPPluginJar : add tsc
+2022-05-09 14:29:23,299 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,300 [INFO] PluginManager:213 - loadIPPluginJar : add ucpd
+2022-05-09 14:29:23,303 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,303 [INFO] PluginManager:213 - loadIPPluginJar : add usart
+2022-05-09 14:29:23,307 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:23,308 [INFO] PluginManager:213 - loadIPPluginJar : add usbx
+2022-05-09 14:29:23,640 [FATAL] Updater:297 - Updater called before beeing initialized
+2022-05-09 14:29:23,817 [FATAL] Updater:297 - Updater called before beeing initialized
+2022-05-09 14:29:23,826 [INFO] DbMcusAds:47 - JSON generation date=Thu Sep 30 08:55:09 CEST 2021 (1632984909265)
+2022-05-09 14:29:23,826 [FATAL] Updater:297 - Updater called before beeing initialized
+2022-05-09 14:29:23,876 [WARN] DetailPanel:320 - Failed to get advertising image, set to default
+2022-05-09 14:29:24,017 [FATAL] Updater:297 - Updater called before beeing initialized
+2022-05-09 14:29:24,020 [FATAL] Updater:297 - Updater called before beeing initialized
+2022-05-09 14:29:24,020 [FATAL] Updater:297 - Updater called before beeing initialized
+2022-05-09 14:29:24,020 [WARN] DetailPanel:320 - Failed to get advertising image, set to default
+2022-05-09 14:29:24,022 [FATAL] Updater:297 - Updater called before beeing initialized
+2022-05-09 14:29:24,091 [INFO] Updater:1026 - Updater Version found : 6.5.0
+2022-05-09 14:29:24,108 [INFO] ApplicationProperties:181 - Using Application install path: C:\ST\STM32CubeIDE_1.9.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913
+2022-05-09 14:29:24,272 [INFO] MainUpdater:2729 - connection check result : 10
+2022-05-09 14:29:24,273 [INFO] MainUpdater:276 - Updater Check For Update Now.
+2022-05-09 14:29:24,273 [INFO] MicroXplorer:477 - Change Database Version : DB.6.0.50
+2022-05-09 14:29:24,440 [INFO] CheckServerUpdateThread:115 - End of CheckServer Thread
+2022-05-09 14:29:24,508 [INFO] MainUpdater:2729 - connection check result : 10
+2022-05-09 14:29:24,509 [INFO] MainUpdater:2729 - connection check result : 10
+2022-05-09 14:29:24,553 [INFO] MicroXplorer:447 - Change Database Path : 
+2022-05-09 14:29:24,553 [INFO] MicroXplorer:477 - Change Database Version : DB.6.0.50
+2022-05-09 14:29:24,554 [WARN] ThirdParty:823 - waiting for thirdparty lock release [close project]
+2022-05-09 14:29:25,591 [WARN] PackLoader:238 - Cannot read IP mode file for wolfSSL.I-CUBE-wolfSSL.5.2.0
+2022-05-09 14:29:25,763 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-MEMS1.9.2.0
+2022-05-09 14:29:26,099 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AI.7.1.0
+2022-05-09 14:29:26,110 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-TOUCHGFX.4.19.1
+2022-05-09 14:29:26,118 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-BLE1.6.2.3
+2022-05-09 14:29:26,125 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-NFC4.2.0.4
+2022-05-09 14:29:26,134 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-BLE2.3.2.2
+2022-05-09 14:29:26,144 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-NFC4.2.0.3
+2022-05-09 14:29:26,159 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-SFXS2LP1.3.1.0
+2022-05-09 14:29:26,201 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-F4.1.0.0
+2022-05-09 14:29:26,221 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-NFC7.1.0.0
+2022-05-09 14:29:26,247 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-SUBG2.4.2.0
+2022-05-09 14:29:26,290 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-G0.1.0.0
+2022-05-09 14:29:26,307 [WARN] PackLoader:238 - Cannot read IP mode file for RoweBots.I-CUBE-UNISONRTOS.5.5.0-4
+2022-05-09 14:29:26,329 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-H7.2.1.0
+2022-05-09 14:29:26,348 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-ALGOBUILD.1.3.0
+2022-05-09 14:29:26,373 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-SUBG2.5.0.0
+2022-05-09 14:29:26,490 [WARN] PackLoader:238 - Cannot read IP mode file for SEGGER.I-CUBE-embOS.1.2.0
+2022-05-09 14:29:26,547 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-DISPLAY.2.1.0
+2022-05-09 14:29:26,563 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-H7.2.0.0
+2022-05-09 14:29:26,597 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-G4.1.0.0
+2022-05-09 14:29:26,625 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-L4.1.0.0
+2022-05-09 14:29:26,641 [WARN] PackLoader:238 - Cannot read IP mode file for emotas.I-CUBE-CANOPEN.1.1.2
+2022-05-09 14:29:26,670 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-F7.1.0.0
+2022-05-09 14:29:26,687 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-WL.1.0.0
+2022-05-09 14:29:26,697 [WARN] PackLoader:238 - Cannot read IP mode file for portGmbH.I-Cube-SoM-uGOAL.1.1.0
+2022-05-09 14:29:26,707 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-ALS.1.0.1
+2022-05-09 14:29:26,738 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-AZRTOS-L5.1.0.0
+2022-05-09 14:29:26,751 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-EEPRMA1.3.1.1
+2022-05-09 14:29:26,766 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-GNSS1.5.2.0
+2022-05-09 14:29:26,773 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-DISPLAY.2.0.1
+2022-05-09 14:29:26,783 [WARN] PackLoader:238 - Cannot read IP mode file for STMicroelectronics.X-CUBE-TOF1.3.0.0
+2022-05-09 14:29:26,787 [INFO] ThirdParty:925 - Integrity check success = true
+2022-05-09 14:29:26,788 [INFO] IntegrityCheckThread:94 - exiting critical section [integrity check]
+2022-05-09 14:29:26,788 [INFO] IntegrityCheckThread:97 - End integrity checks thread
+2022-05-09 14:29:26,788 [INFO] ThirdParty:825 - entering critical section [close project]
+2022-05-09 14:29:26,789 [INFO] ThirdParty:835 - exiting critical section [close project]
+2022-05-09 14:29:26,793 [INFO] PinOutPanel:1465 - setPackage(No Configuration,No Configuration)
+2022-05-09 14:29:26,799 [INFO] UtilMem:74 - Begin LoadConfig() Used Memory: 381966520 Bytes (413138944)
+2022-05-09 14:29:26,801 [INFO] MicroXplorer:447 - Change Database Path : 
+2022-05-09 14:29:26,801 [INFO] MicroXplorer:477 - Change Database Version : DB.6.0.50
+2022-05-09 14:29:26,802 [INFO] OpenFileManager:303 - Change cursor
+2022-05-09 14:29:26,895 [INFO] Mcu:1893 - Initializing MCU STM32L471R(E-G)Tx STM32L471RGTx STM32L471RGT6
+2022-05-09 14:29:29,517 [INFO] Context:599 - Trying to add GPIOservice into a context  which must be forbidden
+2022-05-09 14:29:30,689 [WARN] ApiManager:304 - Cannot register API 'Board Extension:IKS01A3' from pack STMicroelectronics.X-CUBE-MEMS1.9.2.0: no header file found
+2022-05-09 14:29:30,690 [WARN] ApiManager:304 - Cannot register API 'Board Extension:IKS01A2' from pack STMicroelectronics.X-CUBE-MEMS1.9.2.0: no header file found
+2022-05-09 14:29:30,690 [WARN] ApiManager:304 - Cannot register API 'Board Extension:IKS02A1' from pack STMicroelectronics.X-CUBE-MEMS1.9.2.0: no header file found
+2022-05-09 14:29:30,710 [WARN] ApiManager:304 - Cannot register API 'Wireless:BlueNRG-MS' from pack STMicroelectronics.X-CUBE-BLE1.6.2.3: no header file found
+2022-05-09 14:29:30,719 [INFO] RtosManager:484 - Registered RTOS mode: class=CMSIS, group=RTOS, mode=CMSIS_V1, owner=FREERTOS
+2022-05-09 14:29:30,720 [INFO] RtosManager:484 - Registered RTOS mode: class=CMSIS, group=RTOS2, mode=CMSIS_V2, owner=FREERTOS
+2022-05-09 14:29:30,720 [INFO] RtosManager:484 - Registered RTOS mode: class=RTOS, group=Core, mode=CMSIS_V1, owner=FREERTOS
+2022-05-09 14:29:30,720 [INFO] RtosManager:484 - Registered RTOS mode: class=RTOS, group=Core, mode=CMSIS_V2, owner=FREERTOS
+2022-05-09 14:29:30,720 [WARN] ModelIntegratedComponent:181 - Missing modes for component STMicroelectronics:FreeRTOS:0.0.1:STMicroelectronics:RTOS:FreeRTOS:Core:::10.2.0:
+2022-05-09 14:29:30,729 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2868A1' from pack STMicroelectronics.X-CUBE-SUBG2.5.0.0: no header file found
+2022-05-09 14:29:30,729 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2868A2' from pack STMicroelectronics.X-CUBE-SUBG2.5.0.0: no header file found
+2022-05-09 14:29:30,729 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2915A1' from pack STMicroelectronics.X-CUBE-SUBG2.5.0.0: no header file found
+2022-05-09 14:29:30,739 [WARN] ApiManager:304 - Cannot register API 'Board Extension:NFC04A1' from pack STMicroelectronics.X-CUBE-NFC4.2.0.4: no header file found
+2022-05-09 14:29:30,740 [WARN] ApiManager:304 - Cannot register API 'Wireless:BlueNRG-2' from pack STMicroelectronics.X-CUBE-BLE2.3.2.2: no header file found
+2022-05-09 14:29:30,741 [WARN] ApiManager:304 - Cannot register API 'Board Extension:NFC04A1' from pack STMicroelectronics.X-CUBE-NFC4.2.0.3: no header file found
+2022-05-09 14:29:30,744 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2868A1' from pack STMicroelectronics.X-CUBE-SFXS2LP1.3.1.0: no header file found
+2022-05-09 14:29:30,744 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2868A2' from pack STMicroelectronics.X-CUBE-SFXS2LP1.3.1.0: no header file found
+2022-05-09 14:29:30,744 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2915A1' from pack STMicroelectronics.X-CUBE-SFXS2LP1.3.1.0: no header file found
+2022-05-09 14:29:30,756 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,757 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,757 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,757 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,757 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,757 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,757 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,758 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,758 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,758 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,758 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,758 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,758 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,758 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,758 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,758 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,758 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,758 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,758 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,758 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,758 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,759 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,759 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,759 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,759 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,759 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,759 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,759 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,759 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,759 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,760 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,760 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,760 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2022-05-09 14:29:30,763 [WARN] ApiManager:304 - Cannot register API 'Board Extension:NFC07A1' from pack STMicroelectronics.X-CUBE-NFC7.1.0.0: no header file found
+2022-05-09 14:29:30,772 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2868A1' from pack STMicroelectronics.X-CUBE-SUBG2.4.2.0: no header file found
+2022-05-09 14:29:30,772 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2868A2' from pack STMicroelectronics.X-CUBE-SUBG2.4.2.0: no header file found
+2022-05-09 14:29:30,772 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2915A1' from pack STMicroelectronics.X-CUBE-SUBG2.4.2.0: no header file found
+2022-05-09 14:29:30,776 [WARN] ApiManager:304 - Cannot register API 'Board Extension:EEPRMA1' from pack STMicroelectronics.X-CUBE-EEPRMA1.3.1.1: no header file found
+2022-05-09 14:29:30,777 [WARN] ApiManager:304 - Cannot register API 'Board Extension:EEPRMA2' from pack STMicroelectronics.X-CUBE-EEPRMA1.3.1.1: no header file found
+2022-05-09 14:29:30,778 [WARN] ApiManager:304 - Cannot register API 'Board Extension:GNSS1A1' from pack STMicroelectronics.X-CUBE-GNSS1.5.2.0: no header file found
+2022-05-09 14:29:30,778 [WARN] ApiManager:304 - Cannot register API 'Board Support:Custom' from pack STMicroelectronics.X-CUBE-GNSS1.5.2.0: no header file found
+2022-05-09 14:29:30,778 [WARN] ApiManager:304 - Cannot register API 'Data Exchange:lib_gnss' from pack STMicroelectronics.X-CUBE-GNSS1.5.2.0: no header file found
+2022-05-09 14:29:30,791 [INFO] ThirdPartyModel:282 - Start build external matchings
+2022-05-09 14:29:31,010 [INFO] ThirdPartyModel:295 - End build external matchings
+2022-05-09 14:29:31,433 [INFO] UtilMem:74 - End LoadConfig() Used Memory: 475468480 Bytes (557842432)
+2022-05-09 14:29:31,642 [INFO] ApiDb:567 - Connected to CubeFinder SQLite database (C:\Users\fabia\.stmcufinder\plugins\mcufinder\mcu\cube-finder-db.db)
+2022-05-09 14:29:31,687 [INFO] ApiDb:654 - CubeFinder database Data Model version=2.1
+2022-05-09 14:29:31,687 [INFO] ApiDb:655 - CubeFinder database Configuration version=3.0.28
+2022-05-09 14:29:31,687 [INFO] ApiDb:656 - CubeFinder database generation date=2022-04-07 (1649336788)
+2022-05-09 14:29:31,688 [INFO] ApiDb:657 - CubeFinder database FW Pack versions=[STM32Cube_FW_C0_V1.0.0, STM32Cube_FW_F4_V1.27.0, STM32Cube_FW_F7_V1.16.2, STM32Cube_FW_G0_V1.5.1, STM32Cube_FW_G4_V1.5.0, STM32Cube_FW_H7_V1.10.0, STM32Cube_FW_L5_V1.4.0, STM32Cube_FW_U5_V1.1.0, STM32Cube_FW_WB_V1.13.3, STM32Cube_FW_WL_V1.2.0, X-CUBE-ALGOBUILD_V1.3.0, X-CUBE-ALS_V1.0.1, X-CUBE-AZRTOS-F4_V1.0.0, X-CUBE-AZRTOS-F7_V1.0.0, X-CUBE-AZRTOS-G0_V1.0.0, X-CUBE-AZRTOS-G4_V1.0.0, X-CUBE-AZRTOS-H7_V2.0.0, X-CUBE-AZRTOS-L4_V1.0.0, X-CUBE-AZRTOS-L5_V1.0.0, X-CUBE-AZRTOS-WL_V1.0.0, X-CUBE-BLE1_V6.2.3, X-CUBE-BLE2_V3.2.2, X-CUBE-EEPRMA1_V3.1.1, X-CUBE-GNSS1_V5.2.0, X-CUBE-MEMS1_V9.1.0, X-CUBE-NFC4_V2.0.3, X-CUBE-NFC7_V1.0.0, X-CUBE-SFXS2LP1_V3.1.0, X-CUBE-SUBG2_V4.2.0]
+2022-05-09 14:29:33,262 [INFO] ApiDb:212 - Found 97 in-development CPN: [NUCLEO-C031C6, STM32C0116-DK, STM32C011D6Y3TR, STM32C011D6Y6TR, STM32C011F4P3, STM32C011F4P6, STM32C011F4U3, STM32C011F4U6TR, STM32C011F6P3, STM32C011F6P6, STM32C011F6U3, STM32C011F6U6TR, STM32C011J4M3, STM32C011J4M6, STM32C011J6M3, STM32C011J6M6, STM32C0316-DK, STM32C031C4T3, STM32C031C4T6, STM32C031C4U3, STM32C031C4U6, STM32C031C6T3, STM32C031C6T6, STM32C031C6U3, STM32C031C6U6, STM32C031F4P3, STM32C031F4P6, STM32C031F6P3, STM32C031F6P6, STM32C031G4U3, STM32C031G4U6, STM32C031G6U3, STM32C031G6U6, STM32C031K4T3, STM32C031K4T6, STM32C031K4U3, STM32C031K4U6, STM32C031K6T3, STM32C031K6T6, STM32C031K6U3, STM32C031K6U6, STM32G071K8TXN, STM32G071K8UXN, STM32G081GBU6N, STM32G081KBT6N, STM32G081KBUXN, STM32G0B1CCT6N, STM32G0B1KCT6, STM32G0B1NEY6, STM32G0B1NEY6TR, STM32G0B1RCT6N, STM32G0C1CCT6, STM32G0C1CCT6N, STM32G0C1CCU6N, STM32G0C1CET6N, STM32G0C1CEU6N, STM32G0C1KCT6, STM32G0C1NEY6TR, STM32G0C1RCI6N, STM32G0C1RCT6N, STM32G0C1REI6N, STM32G0C1RET6N, STM32G0C1VCI6, STM32G0C1VEI6, STM32G471CCT6, STM32G471CCU6, STM32G471CET3, STM32G471CET6, STM32G471CEU3, STM32G471CEU6, STM32G471MCT6, STM32G471MET3, STM32G471MET6, STM32G471MEY6TR, STM32G471QCT6, STM32G471QET3, STM32G471RCT6, STM32G471RET3, STM32G471RET6, STM32G471VCH6, STM32G471VCI6, STM32G471VCT6, STM32G471VEH3, STM32G471VEH6, STM32G471VEI3, STM32G471VEI6, STM32G471VET3, STM32G471VET6, STM32G474CCT6, STM32L4R5QGI6STR, STM32U595ZJT6Q, STM32U599BJY6QTR, STM32U599NIH6Q, STM32U599NJH6Q, STM32U5A5ZJT6Q, STM32U5A9BJY6QTR, STM32U5A9NJH6Q]
+2022-05-09 14:29:33,265 [INFO] DbMcus:201 - Found 3458 MCUs, 3458 are supported
+2022-05-09 14:29:33,267 [INFO] ApiDb:407 - Load user favorites file C:\Users\fabia/.stm32cubeide/favorites.mcus.txt: 0 item(s)
+2022-05-09 14:29:33,268 [INFO] ApiDb:411 - User favorites MCUs=[]
+2022-05-09 14:29:33,268 [INFO] DbMcus:207 - Set 0 / 0 favorites MCUs
+2022-05-09 14:29:33,284 [WARN] ThirdParty:785 - waiting for thirdparty lock release [change project]
+2022-05-09 14:29:33,284 [INFO] ThirdParty:787 - entering critical section [change project]
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :wolfSSL I-CUBE-wolfSSL 5.2.0
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :RoweBots I-CUBE-UNISONRTOS 5.5.0-4
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-H7 2.1.0
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics USB_HOST 2.0.0
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics LIBJPEG 8.0.0
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics USB_DEVICE 3.0.0
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-MEMS1 9.2.0
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics USB_DEVICE 2.0.0
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AI 7.1.0
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-TOUCHGFX 4.19.1
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-BLE1 6.2.3
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-ALGOBUILD 1.3.0
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics FreeRTOS 0.0.1
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-SUBG2 5.0.0
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :SEGGER I-CUBE-embOS 1.2.0
+2022-05-09 14:29:33,285 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics STM32_WPAN 1.0.0
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics lwIP 2.0.3
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-NFC4 2.0.4
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-BLE2 3.2.2
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics USB_HOST 1.0.0
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-NFC4 2.0.3
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-DISPLAY 2.1.0
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics PDM2PCM 3.1.0
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics PDM2PCM 3.3.0
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-SFXS2LP1 3.1.0
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-F4 1.0.0
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-H7 2.0.0
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-G4 1.0.0
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-L4 1.0.0
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics HAL Drivers 0.0.0
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics MBEDTLS 2.16.2
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :emotas I-CUBE-CANOPEN 1.1.2
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics MBEDTLS 2.14.1
+2022-05-09 14:29:33,286 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-NFC7 1.0.0
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-F7 1.0.0
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-WL 1.0.0
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-SUBG2 4.2.0
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :portGmbH I-Cube-SoM-uGOAL 1.1.0
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-ALS 1.0.1
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics ThreadX 1.0.0
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-L5 1.0.0
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics USB_DEVICE 1.0.0
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-G0 1.0.0
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-EEPRMA1 3.1.1
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-GNSS1 5.2.0
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics ThreadX 0.0.2
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics lwIP 2.1.2
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-DISPLAY 2.0.1
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics PDM2PCM 3.2.0
+2022-05-09 14:29:33,287 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-TOF1 3.0.0
+2022-05-09 14:29:33,287 [INFO] ThirdParty:793 - exiting critical section [change project]
+2022-05-09 14:29:33,857 [INFO] PinOutPanel:1465 - setPackage(No Configuration,No Configuration)
+2022-05-09 14:29:33,859 [INFO] PinOutPanel:1465 - setPackage(STM32L471RGTx,LQFP64)
+2022-05-09 14:29:34,868 [INFO] UtilMem:74 - Before build in PCC Used Memory: 429404224 Bytes (557842432)
+2022-05-09 14:29:36,144 [INFO] UtilMem:74 - After build in PCC Used Memory: 411644896 Bytes (557842432)
+2022-05-09 14:29:36,210 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,211 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,211 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,211 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,211 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,211 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,212 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,212 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,212 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,212 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,212 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,212 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,213 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,213 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,213 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,213 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,213 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,213 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,214 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,214 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,214 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,214 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,214 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,215 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,215 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,215 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,215 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,215 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,216 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,216 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,216 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,216 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,216 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,216 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,218 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,218 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,218 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,218 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,219 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,219 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,219 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,219 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,220 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,220 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,221 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,221 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,222 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,222 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,223 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,223 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,224 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,224 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,225 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,225 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,226 [INFO] IPUIPlugin:75 - create IPUIPlugin
+2022-05-09 14:29:36,447 [INFO] OpenFileManager:323 - Restore cursor
+2022-05-09 15:02:52,549 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:04:20,684 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,2,27,459x517,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:05:32,394 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:05:32,421 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:05:32,535 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:05:32,573 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:06:59,225 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:06:59,253 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:06:59,355 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:06:59,387 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:08:42,938 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:08:42,977 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:08:43,053 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:08:43,085 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:08:43,214 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:08:43,244 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:09:10,701 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:09:10,751 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:09:10,991 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:09:11,031 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:22:42,966 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:22:42,999 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:22:43,135 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:22:43,164 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:24:08,038 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:24:08,061 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:24:08,178 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:24:08,199 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:25:11,554 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:25:11,576 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:25:11,676 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:25:11,700 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:25:45,261 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:25:45,287 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:25:45,437 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:25:45,467 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:26:07,625 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:26:07,646 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:26:12,236 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:26:12,261 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:26:31,682 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:26:31,713 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:26:31,902 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:26:31,936 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:26:48,962 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:26:48,992 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:26:49,093 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:26:49,116 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:27:53,779 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:27:53,828 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:28:06,907 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:28:06,934 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:28:12,984 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:28:13,007 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:28:22,935 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:28:22,960 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:29:22,890 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 233306016 Bytes (557842432)
+2022-05-09 15:30:07,294 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:30:07,356 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:30:07,495 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:30:07,524 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:30:16,001 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:30:16,036 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:30:16,179 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:30:16,219 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:30:47,060 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:30:47,093 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:31:14,774 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:31:14,832 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:31:14,963 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:31:14,987 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:31:42,799 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:31:42,824 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:31:42,927 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:31:42,953 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:33:48,080 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:33:48,114 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:33:48,241 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:33:48,268 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:34:04,018 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 236262208 Bytes (557842432)
+2022-05-09 15:36:16,691 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:36:16,717 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:36:16,815 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:36:16,844 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:36:39,704 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:36:39,730 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:36:39,831 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:36:39,855 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:36:49,334 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:36:49,357 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:36:49,479 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:36:49,510 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:37:01,041 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:37:01,066 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:37:01,162 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:37:01,185 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:37:26,328 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 482871312 Bytes (557842432)
+2022-05-09 15:37:35,194 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:37:35,223 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:37:35,370 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:37:35,393 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:37:49,822 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:37:49,857 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:37:50,008 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:37:50,036 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:38:34,499 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:38:34,521 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:38:34,619 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:38:34,649 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:38:51,817 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:38:51,863 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:38:52,001 [INFO] Gpio:254 - dependency for GPIO []
+2022-05-09 15:38:52,024 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-05-09 15:38:59,820 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 239840560 Bytes (557842432)
+2022-05-09 15:39:00,958 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 270249264 Bytes (557842432)
+2022-05-09 15:39:04,878 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 309022456 Bytes (557842432)
+2022-05-09 15:39:05,687 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: SYS
+2022-05-09 15:39:05,687 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: RCC
+2022-05-09 15:39:05,687 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: NVIC
+2022-05-09 15:39:05,688 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: GPIO
+2022-05-09 15:39:05,692 [INFO] CodeGenerator:681 - code generatio: config db path: C:\ST\STM32CubeIDE_1.9.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.5.0.202202251913\\db\
+2022-05-09 15:39:06,126 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\MXTmpFiles\license.tmp_save
+2022-05-09 15:39:06,555 [INFO] CodeEngine:261 - Generated code: C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\MXTmpFiles\license.tmp
+2022-05-09 15:39:06,814 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\MXTmpFiles\gpio.tmp_save
+2022-05-09 15:39:07,012 [INFO] CodeEngine:261 - Generated code: C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\MXTmpFiles\gpio.tmp
+2022-05-09 15:39:07,184 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\Core\Src\stm32l4xx_it.c_save
+2022-05-09 15:39:07,420 [INFO] CodeEngine:261 - Generated code: C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\Core\Src\stm32l4xx_it.c
+2022-05-09 15:39:07,435 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\Core\Inc\stm32l4xx_it.h_save
+2022-05-09 15:39:07,603 [INFO] CodeEngine:261 - Generated code: C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\Core\Inc\stm32l4xx_it.h
+2022-05-09 15:39:07,629 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\Core\Src\stm32l4xx_hal_msp.c_save
+2022-05-09 15:39:07,842 [INFO] CodeEngine:261 - Generated code: C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\Core\Src\stm32l4xx_hal_msp.c
+2022-05-09 15:39:07,867 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\MXTmpFiles\system.tmp_save
+2022-05-09 15:39:07,962 [INFO] CodeEngine:261 - Generated code: C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\MXTmpFiles\system.tmp
+2022-05-09 15:39:07,984 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\Core\Inc\stm32l4xx_hal_conf.h_save
+2022-05-09 15:39:08,176 [INFO] CodeEngine:261 - Generated code: C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\Core\Inc\stm32l4xx_hal_conf.h
+2022-05-09 15:39:08,255 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\Core\Inc\main.h_save
+2022-05-09 15:39:08,383 [INFO] CodeEngine:261 - Generated code: C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\Core\Inc\main.h
+2022-05-09 15:39:08,404 [INFO] CodeEngine:237 - oldGeneratedFile, C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\Core\Src\main.c_save
+2022-05-09 15:39:08,606 [INFO] CodeEngine:261 - Generated code: C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\Core\Src\main.c
+2022-05-09 15:39:09,727 [INFO] ProjectBuilder:2913 - Time for Copy HAL[1] : 418mS.
+2022-05-09 15:39:09,741 [INFO] ProjectBuilder:4015 - Project Generator version: 3.16.0
+2022-05-09 15:39:10,152 [INFO] ConfigFileManager:1287 - The Die is : DIE415
+2022-05-09 15:39:10,167 [INFO] ApiDbMcu:488 - Load IP Config File for FATFS
+2022-05-09 15:39:10,176 [INFO] ApiDbMcu:488 - Load IP Config File for FREERTOS
+2022-05-09 15:39:10,196 [INFO] ApiDbMcu:488 - Load IP Config File for TOUCHSENSING
+2022-05-09 15:39:12,878 [INFO] ProjectBuilder:4183 - Time for Generating toolchain IDE Files: 3136mS.
+2022-05-09 15:39:12,881 [INFO] ProjectBuilder:2785 - Time for Copy CMSIS : 2mS.
+2022-05-09 15:39:12,887 [INFO] ProjectBuilder:2785 - Time for Copy CMSIS : 1mS.
