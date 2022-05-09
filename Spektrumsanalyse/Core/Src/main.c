@@ -42,6 +42,7 @@
 
 /* USER CODE BEGIN PV */
 
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -153,11 +154,33 @@ static void MX_GPIO_Init(void)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, RESET_GPS_Pin|RESET_LoRa_Pin|RESET_n_MUX_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, RESET_GPS_Pin|DIO4_LoRa_Pin|LoRa_LC3_Pin|LoRa_LC1_Pin
+                          |RESET_n_MUX_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, SD_LC_Pin|POWER_SW_Pin|LORA_DIO0_Pin|LORA_DIO2_Pin
+                          |LORA_DIO3_Pin|SS1_Pin|SS2_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, LoRa_LC2_Pin|READY_LED_Pin|STATUS_LED_Pin|SS4_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : ADC_3V3_Pin ADC_BATTERIE_Pin */
+  GPIO_InitStruct.Pin = ADC_3V3_Pin|ADC_BATTERIE_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG_ADC_CONTROL;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : GPS_LC_Pin LORA_DIO1_Pin INT_SS1_Pin */
+  GPIO_InitStruct.Pin = GPS_LC_Pin|LORA_DIO1_Pin|INT_SS1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PA0 PA1 */
   GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
@@ -167,14 +190,16 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF8_UART4;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : INT_GPS_Pin DIO4_LoRa_Pin DIO5_LoRa_Pin */
-  GPIO_InitStruct.Pin = INT_GPS_Pin|DIO4_LoRa_Pin|DIO5_LoRa_Pin;
+  /*Configure GPIO pins : INT_GPS_Pin DIO5_LoRa_Pin Reset_LoRa_Pin */
+  GPIO_InitStruct.Pin = INT_GPS_Pin|DIO5_LoRa_Pin|Reset_LoRa_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : RESET_GPS_Pin RESET_LoRa_Pin RESET_n_MUX_Pin */
-  GPIO_InitStruct.Pin = RESET_GPS_Pin|RESET_LoRa_Pin|RESET_n_MUX_Pin;
+  /*Configure GPIO pins : RESET_GPS_Pin DIO4_LoRa_Pin LoRa_LC3_Pin LoRa_LC1_Pin
+                           RESET_n_MUX_Pin */
+  GPIO_InitStruct.Pin = RESET_GPS_Pin|DIO4_LoRa_Pin|LoRa_LC3_Pin|LoRa_LC1_Pin
+                          |RESET_n_MUX_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -188,11 +213,47 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : GPIO_SS3_Pin */
-  GPIO_InitStruct.Pin = GPIO_SS3_Pin;
+  /*Configure GPIO pins : SD_LC_Pin POWER_SW_Pin LORA_DIO0_Pin LORA_DIO2_Pin
+                           LORA_DIO3_Pin SS1_Pin SS2_Pin */
+  GPIO_InitStruct.Pin = SD_LC_Pin|POWER_SW_Pin|LORA_DIO0_Pin|LORA_DIO2_Pin
+                          |LORA_DIO3_Pin|SS1_Pin|SS2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : INT1_AS_Pin INT2_AS_Pin INT_SS3_Pin INT_SS4_Pin */
+  GPIO_InitStruct.Pin = INT1_AS_Pin|INT2_AS_Pin|INT_SS3_Pin|INT_SS4_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LoRa_LC2_Pin READY_LED_Pin STATUS_LED_Pin SS4_Pin */
+  GPIO_InitStruct.Pin = LoRa_LC2_Pin|READY_LED_Pin|STATUS_LED_Pin|SS4_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LORA_NSS_Pin LORA_SCK_Pin LORA_MISO_Pin LORA_MOSI_Pin */
+  GPIO_InitStruct.Pin = LORA_NSS_Pin|LORA_SCK_Pin|LORA_MISO_Pin|LORA_MOSI_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : INT_SS2_Pin */
+  GPIO_InitStruct.Pin = INT_SS2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(INT_SS2_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : SS3_Pin */
+  GPIO_InitStruct.Pin = SS3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIO_SS3_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(SS3_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PB8 PB9 */
   GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
