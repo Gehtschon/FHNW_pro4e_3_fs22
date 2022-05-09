@@ -1,6 +1,6 @@
-#include "PCA9546A.h"
+#include "PCA9847.h"
 
-uint8_t PCA9546A_Initialise(PCA9546A *dev, I2C_HandleTypeDef *i2cHandle){
+uint8_t PCA9847_Initialise(PCA9847 *dev, I2C_HandleTypeDef *i2cHandle){
 	/* Set struct parameters */
 	dev->i2cHandle 	= i2cHandle;
 
@@ -11,13 +11,13 @@ uint8_t PCA9546A_Initialise(PCA9546A *dev, I2C_HandleTypeDef *i2cHandle){
 
 	/* Set to reset default state (all channels disabled) */
 	regData = DISABLE_CHANNELS;
-	status = PCA9546A_Write(dev, &regData);
+	status = PCA9847_Write(dev, &regData);
 	errNum += (status != HAL_OK);
 
 	return errNum;
 }
 
-void PCA9546A_SetChannel(PCA9546A *dev, uint8_t channelNumber){
+void PCA9847_SetChannel(PCA9847 *dev, uint8_t channelNumber){
 	uint8_t regData;
 	switch (channelNumber) {
 	case 0:
@@ -32,22 +32,34 @@ void PCA9546A_SetChannel(PCA9546A *dev, uint8_t channelNumber){
 	case 3:
 		regData = ENABLE_CHANNEL_3;
 		break;
+	case 4:
+		regData = ENABLE_CHANNEL_4;
+		break;
+	case 5:
+		regData = ENABLE_CHANNEL_5;
+		break;
+	case 6:
+		regData = ENABLE_CHANNEL_6;
+		break;
+	case 7:
+		regData = ENABLE_CHANNEL_7;
+		break;
 	default:
-		printf("Channelnumber should be 0-3 but is %d \r\n", channelNumber);
+		printf("Channelnumber should be 0-7 but is %d \r\n", channelNumber);
 		return;
 	}
-	PCA9546A_Write(dev, &regData);
+	PCA9847_Write(dev, &regData);
 }
 
-void PCA9546A_SetResetState(PCA9546A *dev){
+void PCA9847_SetResetState(PCA9847 *dev){
 	uint8_t regData;
 	regData = DISABLE_CHANNELS;
-	PCA9546A_Write(dev, &regData);
+	PCA9847_Write(dev, &regData);
 }
 
-uint8_t PCA9546A_CheckChannel(PCA9546A *dev) {
+uint8_t PCA9847_CheckChannel(PCA9847 *dev) {
 	uint8_t regData;
-	PCA9546A_Read(dev, &regData);
+	PCA9847_Read(dev, &regData);
 	switch (regData) {
 	case ENABLE_CHANNEL_0:
 		return 0;
@@ -70,11 +82,11 @@ uint8_t PCA9546A_CheckChannel(PCA9546A *dev) {
  * DEFAULT FUNCTIONS
  */
 
-HAL_StatusTypeDef PCA9546A_Write(PCA9546A *dev, uint8_t *data){
-	return HAL_I2C_Master_Transmit(dev->i2cHandle, PCA9546A_I2C_ADDR, data, 1, 10);
+HAL_StatusTypeDef PCA9847_Write(PCA9847 *dev, uint8_t *data){
+	return HAL_I2C_Master_Transmit(dev->i2cHandle, PCA9847_I2C_ADDR, data, 1, 10);
 }
 
-HAL_StatusTypeDef PCA9546A_Read(PCA9546A *dev, uint8_t *data){
-	return HAL_I2C_Master_Receive(dev->i2cHandle, PCA9546A_I2C_ADDR, data, 1, 10);
+HAL_StatusTypeDef PCA9847_Read(PCA9847 *dev, uint8_t *data){
+	return HAL_I2C_Master_Receive(dev->i2cHandle, PCA9847_I2C_ADDR, data, 1, 10);
 }
 
