@@ -41,6 +41,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+PCA9847 sensor;
 
 /* USER CODE END PV */
 

@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "../../Drivers/PCA9847_Driver/PCA9847.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,7 +44,9 @@
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
+PCA9847 multiplexer;
+uint8_t channelNumber;
+uint8_t errIni = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -92,7 +94,8 @@ int main(void)
   MX_USART2_UART_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-
+  errIni = PCA9847_Initialise(&multiplexer, &hi2c1);
+  printf("Error-Initialsierung: %d \n",errIni);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -102,6 +105,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  PCA9847_SetChannel(&multiplexer, 1);
+	  channelNumber = PCA9847_CheckChannel(&multiplexer);
+	  PCA9847_SetNextChannel(&multiplexer);
   }
   /* USER CODE END 3 */
 }
