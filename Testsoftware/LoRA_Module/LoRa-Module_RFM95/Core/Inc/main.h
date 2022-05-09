@@ -53,6 +53,10 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
+static uint32_t get_precision_tick();
+static void precision_sleep_until(uint32_t target_ticks);
+static uint8_t random_int(uint8_t max);
+static uint8_t get_battery_level();
 
 /* USER CODE END EFP */
 
@@ -67,6 +71,8 @@ void Error_Handler(void);
 #define USART_RX_GPIO_Port GPIOA
 #define LD4_Pin GPIO_PIN_5
 #define LD4_GPIO_Port GPIOA
+#define NSS_Pin GPIO_PIN_8
+#define NSS_GPIO_Port GPIOA
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14

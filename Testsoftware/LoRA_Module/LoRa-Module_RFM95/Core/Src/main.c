@@ -41,6 +41,8 @@
 /* Private variables ---------------------------------------------------------*/
  I2C_HandleTypeDef hi2c3;
 
+LPTIM_HandleTypeDef hlptim1;
+
 SPI_HandleTypeDef hspi1;
 
 UART_HandleTypeDef huart2;
@@ -55,8 +57,11 @@ static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_I2C3_Init(void);
 static void MX_SPI1_Init(void);
+static void MX_LPTIM1_Init(void);
 /* USER CODE BEGIN PFP */
 #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -95,22 +100,29 @@ int main(void)
   MX_USART2_UART_Init();
   MX_I2C3_Init();
   MX_SPI1_Init();
+  MX_LPTIM1_Init();
   /* USER CODE BEGIN 2 */
 	rfm95_handle_t rfm95_handle =
-			{ .spi_handle = &hspi1, .nss_port = GPIOA, .nss_pin = GPIO_PIN_4,
+			{ .spi_handle = &hspi1, .nss_port = GPIOB, .nss_pin = GPIO_PIN_8,
 					.nrst_port = RFM95_NRST_GPIO_Port, .nrst_pin =
-							RFM95_NRST_Pin, .device_address = { 0x00, 0x00,
-							0x00, 0x00 }, .application_session_key = { 0x00,
-							0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-							0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
-					.network_session_key = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-							0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-							0x00, 0x00 }, .receive_mode =
-							RFM95_RECEIVE_MODE_NONE };
+							RFM95_NRST_Pin, .device_address = { 0x82, 0x0D, 0x0B, 0x26 },
+							.application_session_key = { 0x28, 0xA8, 0x53, 0x35, 0xD6, 0x72, 0xA9, 0x7B, 0xC5, 0x94, 0xC8, 0x59, 0x51, 0x43, 0x84, 0xC9 },
+					.network_session_key = { 0x24, 0xDA, 0x81, 0x15, 0xAE, 0x41, 0x7D, 0x54, 0xD7, 0x90, 0x85, 0x1F, 0x9A, 0xD7, 0x8B, 0xBA },
+							.precision_tick_frequency = 32768,
+							    .precision_tick_drift_ns_per_s = 5000,
+							    .receive_mode = RFM95_RECEIVE_MODE_RX12,
+							    .get_precision_tick = get_precision_tick,
+							    .precision_sleep_until = precision_sleep_until,
+							    .random_int = random_int,
+							    .get_battery_level = get_battery_level};
+
+
 
 	// Initialise RFM95 module.
 	if (!rfm95_init(&rfm95_handle)) {
 		printf("RFM95 init failed\n\r");
+	}else {
+		printf("RFM95 init sucess\n\r");
 	}
 
 	uint8_t data_packet[] = { 0x01, 0x02, 0x03, 0x4 };
@@ -236,6 +248,40 @@ static void MX_I2C3_Init(void)
 }
 
 /**
+  * @brief LPTIM1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_LPTIM1_Init(void)
+{
+
+  /* USER CODE BEGIN LPTIM1_Init 0 */
+
+  /* USER CODE END LPTIM1_Init 0 */
+
+  /* USER CODE BEGIN LPTIM1_Init 1 */
+
+  /* USER CODE END LPTIM1_Init 1 */
+  hlptim1.Instance = LPTIM1;
+  hlptim1.Init.Clock.Source = LPTIM_CLOCKSOURCE_APBCLOCK_LPOSC;
+  hlptim1.Init.Clock.Prescaler = LPTIM_PRESCALER_DIV1;
+  hlptim1.Init.Trigger.Source = LPTIM_TRIGSOURCE_SOFTWARE;
+  hlptim1.Init.OutputPolarity = LPTIM_OUTPUTPOLARITY_HIGH;
+  hlptim1.Init.UpdateMode = LPTIM_UPDATE_IMMEDIATE;
+  hlptim1.Init.CounterSource = LPTIM_COUNTERSOURCE_INTERNAL;
+  hlptim1.Init.Input1Source = LPTIM_INPUT1SOURCE_GPIO;
+  hlptim1.Init.Input2Source = LPTIM_INPUT2SOURCE_GPIO;
+  if (HAL_LPTIM_Init(&hlptim1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN LPTIM1_Init 2 */
+
+  /* USER CODE END LPTIM1_Init 2 */
+
+}
+
+/**
   * @brief SPI1 Initialization Function
   * @param None
   * @retval None
@@ -326,7 +372,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, RFM95_NRST_Pin|LD4_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, RFM95_NRST_Pin|LD4_Pin|NSS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -334,8 +380,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : RFM95_NRST_Pin LD4_Pin */
-  GPIO_InitStruct.Pin = RFM95_NRST_Pin|LD4_Pin;
+  /*Configure GPIO pins : RFM95_NRST_Pin LD4_Pin NSS_Pin */
+  GPIO_InitStruct.Pin = RFM95_NRST_Pin|LD4_Pin|NSS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -356,6 +402,76 @@ PUTCHAR_PROTOTYPE {
 
 	return ch;
 }
+
+volatile uint32_t lptim_tick_msb = 0;
+
+static uint32_t get_precision_tick()
+{
+    __disable_irq();
+    uint32_t precision_tick = lptim_tick_msb | HAL_LPTIM_ReadCounter(&hlptim1);
+    __enable_irq();
+    return precision_tick;
+}
+
+void HAL_LPTIM_AutoReloadMatchCallback(LPTIM_HandleTypeDef *hlptim)
+{
+    lptim_tick_msb += 0x10000;
+}
+
+static void precision_sleep_until(uint32_t target_ticks)
+{
+    while (true) {
+
+    uint32_t start_ticks = get_precision_tick();
+    if (start_ticks > target_ticks) {
+        break;
+    }
+
+    uint32_t ticks_to_sleep = target_ticks - start_ticks;
+
+    // Only use sleep for at least 10 ticks.
+    if (ticks_to_sleep >= 10) {
+
+        // Calculate required value of compare register for the sleep minus a small buffer time to compensate
+        // for any ticks that occur while we perform this calculation.
+        uint32_t compare = (start_ticks & 0xffff) + ticks_to_sleep - 2;
+
+        // If the counter auto-reloads we will be woken up anyway.
+        if (compare > 0xffff) {
+            HAL_SuspendTick();
+            HAL_PWREx_EnterSTOP2Mode(PWR_STOPENTRY_WFI);
+            HAL_ResumeTick();
+
+        // Otherwise, set compare register and use the compare match interrupt to wake up in time.
+        } else {
+            __HAL_LPTIM_COMPARE_SET(&hlptim1, compare);
+            while (!__HAL_LPTIM_GET_FLAG(&hlptim1, LPTIM_FLAG_CMPOK));
+            __HAL_LPTIM_CLEAR_FLAG(&hlptim1, LPTIM_FLAG_CMPM);
+            __HAL_LPTIM_ENABLE_IT(&hlptim1, LPTIM_IT_CMPM);
+            HAL_SuspendTick();
+            HAL_PWREx_EnterSTOP2Mode(PWR_STOPENTRY_WFI);
+            HAL_ResumeTick();
+            __HAL_LPTIM_DISABLE_IT(&hlptim1, LPTIM_IT_CMPM);
+        }
+    } else {
+        break;
+    }
+
+    // Busy wait until we have reached the target.
+    while (get_precision_tick() < target_ticks);
+}
+}
+
+static uint8_t random_int(uint8_t max)
+{
+    return 0; // Use ADC other means of obtaining a random number.
+}
+
+static uint8_t get_battery_level()
+{
+    return 0xff; // 0xff = Unknown battery level.
+}
+
 
 /* USER CODE END 4 */
 

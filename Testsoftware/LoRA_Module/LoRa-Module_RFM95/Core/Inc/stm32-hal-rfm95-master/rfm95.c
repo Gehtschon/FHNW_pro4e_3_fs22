@@ -4,7 +4,8 @@
 #include <assert.h>
 #include <string.h>
 
-#define RFM9x_VER 0x12
+
+#define RFM9x_VER 0x00
 
 /**
  * Registers addresses.
