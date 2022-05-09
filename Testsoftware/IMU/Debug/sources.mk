@@ -23,6 +23,7 @@ C_DEPS :=
 SUBDIRS := \
 Core/Src \
 Core/Startup \
+Drivers/BMX160_Driver \
 Drivers/STM32L0xx_HAL_Driver/Src \
 External/src \
 

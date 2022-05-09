@@ -25,6 +25,8 @@
 #include "bmi160.h"
 #include "bmi160_defs.h"
 #include "stdio.h"
+#include "stdbool.h"
+#include "bmx160.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -53,8 +55,7 @@
 I2C_HandleTypeDef hi2c1;
 
 UART_HandleTypeDef huart2;
-
-struct bmi160_dev bmi160dev;
+bmx160_dev bmx160dev;
 
 uint16_t size = 0x1;
 uint16_t memAddSize8 = I2C_MEMADD_SIZE_8BIT;
@@ -110,16 +111,20 @@ int main(void) {
 	MX_I2C1_Init();
 	MX_USART2_UART_Init();
 	/* USER CODE BEGIN 2 */
-	bmi160dev.id = BMI160_I2C_ADDR;
-//	bmi160dev.read = HAL_I2C_Mem_Read;
-	//bmi160dev.write = HAL_I2C_Mem_Write;
+
+	uint8_t rslt;
+	rslt = bmx160_if_init(&bmx160dev, &hi2c1);
+	if (rslt==BMX160_OK) {
+		printf("\nDevice ready\r");
+		printf("\nDevice ID: 0x%02X\r",bmx160dev.chip_id);
+	}
 
 	// Process to initialize magnetometer to low power preset at 12.5Hz and enable magnetometer interface data mode
 	// see also DS of BMX160 p.25
 	// put MAG_IF into normal mode
 	data_write = 0x19;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x7E, memAddSize8,
-			&data_write, size, timeout);
+//	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x7E, memAddSize8,
+//			&data_write, size, timeout);
 	HAL_Delay(1);
 
 	// mag_manual_en= 0b1, mag_if setup mode mag_offset<3:0>= 0b0000, maximum offset, recommend for
@@ -127,10 +132,10 @@ int main(void) {
 	// enable magnetometer register access on MAG_IF[1] (read operations) or MAG_IF[2] (write access)
 	// setup mode ON, data mode OFF
 	data_write = 0x80;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4C, memAddSize8,
-			&data_write, size, timeout);
+	//HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4C, memAddSize8,
+	//		&data_write, size, timeout);
 
-	// indirect write 0x01 to MAG register 0x4B
+	// indirect write 0x01 to MAG register 0x4B (put magnetometer into sleep-mode)
 	data_write = 0x01;
 	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4F, memAddSize8,
 			&data_write, size, timeout);
@@ -197,6 +202,50 @@ int main(void) {
 	//			size, timeout);
 	HAL_Delay(1);
 	// end of magnetometer initialization
+/*
+	// magnetometer self-test
+	// normal self-test of the magnetometer according to DS p.49
+	// put magnetometer interface into normal mode
+	data_write = 0x19;
+	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x7E, memAddSize8,
+			&data_write, size, timeout);
+	// enter setup-mode
+	data_write = 0x80;
+	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4C, memAddSize8,
+			&data_write, size, timeout);
+	// put magnetometer into sleep-mode
+	data_write = 0x01;
+	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4F, memAddSize8,
+			&data_write, size, timeout);
+	data_write = 0x4B;
+	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4E, memAddSize8,
+			&data_write, size, timeout);
+	// enter self-test: indirect mag register write to 0x4C Bit0 to 1
+	data_write = 0b10000001;// write the write data into Register (0x4F) MAG_IF[3]
+	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4F, memAddSize8,
+			&data_write, size, timeout);
+	data_write = 0x4C;// write magnetometer register address to write into Register (0x4E) MAG_IF[2]
+	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4E, memAddSize8,
+			&data_write, size, timeout);
+	// read Register (0x1B) STATUS until the bit mag_man_op is “0” to confirm the write access has been completed
+	uint8_t status = 0x00;
+	uint8_t timeout_status = 50;
+	while ((!status) && (timeout_status)) {	// wait until the write access has been confirmed
+		HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x1B, memAddSize8,
+				&status, size, timeout);
+		status = status & (0b00000100);
+		timeout_status--;
+	};
+	// check end of self-test: indirect mag register read to 0x4C Bit0 to 1
+	data_write = 0x4C;// write magnetometer register address to read from into Register (0x4D) MAG_IF[1]
+	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4D, memAddSize8,
+			&data_write, size, timeout);
+	data_read = 0x4C;// read register (0x1B) STATUS until the bit mag_man_op is “0”
+	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4E, memAddSize8,
+			&data_write, size, timeout);
+*/
+
+
 
 	/* USER CODE END 2 */
 
@@ -206,76 +255,114 @@ int main(void) {
 		uint8_t data;
 		uint8_t dev_ID;
 		uint16_t status;
-
 		if (HAL_I2C_IsDeviceReady(&hi2c1, (bmi160dev.id << 1), trials, timeout)
-				!= HAL_OK) {
-			printf("\nDevice not ready\r");
-		};
-		if (HAL_I2C_IsDeviceReady(&hi2c1, (bmi160dev.id << 1), trials, timeout)
-				== HAL_OK) {
-			printf("\nDevice ready\r");
-		};
+						!= HAL_OK) {
+					printf("\nDevice not ready\r");
+				};
+				if (HAL_I2C_IsDeviceReady(&hi2c1, (bmi160dev.id << 1), trials, timeout)
+						== HAL_OK) {
+					printf("\nDevice ready\r");
+				};
 
-		status = HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1),
-		BMI160_CHIP_ID_ADDR, memAddSize8, &data, size, timeout);
+				status = HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1),
+				BMI160_CHIP_ID_ADDR, memAddSize8, &data, size, timeout);
 
-		if (status == HAL_OK) {
-			printf("\nI2C ok\r");
-		};
-		if (status != HAL_OK) {
-			printf("\nI2C read error\r");
-			if (hi2c1.ErrorCode == HAL_I2C_ERROR_TIMEOUT) {
-				printf(" - HAL_I2C_ERROR_TIMEOUT\r"); // HAL_I2C_ERROR_TIMEOUT
-			}
+				if (status == HAL_OK) {
+					printf("\nI2C ok\r");
+				};
+				if (status != HAL_OK) {
+					printf("\nI2C read error\r");
+					if (hi2c1.ErrorCode == HAL_I2C_ERROR_TIMEOUT) {
+						printf(" - HAL_I2C_ERROR_TIMEOUT\r"); // HAL_I2C_ERROR_TIMEOUT
+					}
 
-		} else {
-			dev_ID = data;
-			printf("\nDevice-ID=%X\r", dev_ID);
-		};
-		HAL_Delay(1);
+				} else {
+					dev_ID = data;
+					printf("\nDevice-ID=%X\r", dev_ID);
+				};
+				HAL_Delay(1);
 
-		// read temperature data:
-		uint16_t sens_temperature;
-		uint8_t data_read[2] = { 0, 0 };
-		HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x20, memAddSize8,
-				&data_read[0], size, timeout);
-		HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x21, memAddSize8,
-				&data_read[1], size, timeout);
-		sens_temperature = (data_read[1] << 8) | (data_read[0]);
-		printf("\nSensortemperatur: 0x%04X\r", sens_temperature);
+				// read temperature data:
+				uint16_t sens_temperature;
+				uint8_t data_read[2] = { 0, 0 };
+				HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x20, memAddSize8,
+						&data_read[0], size, timeout);
+				HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x21, memAddSize8,
+						&data_read[1], size, timeout);
+				sens_temperature = (data_read[1] << 8) | (data_read[0]);
+				printf("\nSensortemperatur: 0x%04X\r", sens_temperature);
 
-		// read magnetometer data:
-		uint8_t reg_status;
-		uint8_t mag_x[2] = { 0, 0 };
-		uint8_t mag_y[2] = { 0, 0 };
-		uint8_t mag_z[2] = { 0, 0 };
-		uint16_t mag_x_data;
-		uint16_t mag_y_data;
-		uint16_t mag_z_data;
-		HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x1B, memAddSize8,
-				&reg_status, size, timeout);
-		if (reg_status & (0b00100000)) {
-			// read each magnetometer registers (2 per channel)
-			HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x04, memAddSize8,
-					&mag_x[0], size, timeout);
-			HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x05, memAddSize8,
-					&mag_x[1], size, timeout);
-			HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x06, memAddSize8,
-					&mag_y[0], size, timeout);
-			HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x07, memAddSize8,
-					&mag_y[1], size, timeout);
-			HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x08, memAddSize8,
-					&mag_z[0], size, timeout);
-			HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x09, memAddSize8,
-					&mag_z[1], size, timeout);
-			mag_x_data = (mag_x[1] << 8) | (mag_x[0]);
-			mag_y_data = (mag_y[1] << 8) | (mag_y[0]);
-			mag_z_data = (mag_z[1] << 8) | (mag_z[0]);
-			printf("\nMagnetometer (X,Y,Z): %d, %d, %d\r", mag_x_data, mag_y_data, mag_z_data);
-		}
+				// read magnetometer data:
+				uint8_t reg_status;
+				uint8_t mag_x[2] = { 0, 0 };
+				uint8_t mag_y[2] = { 0, 0 };
+				uint8_t mag_z[2] = { 0, 0 };
+				uint16_t mag_x_data;
+				uint16_t mag_y_data;
+				uint16_t mag_z_data;
+				HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x1B, memAddSize8,
+						&reg_status, size, timeout);
+				if (reg_status & (0b00100000)) {
+					// read each magnetometer registers (2 per channel)
+					HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x04, memAddSize8,
+							&mag_x[0], size, timeout);
+					HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x05, memAddSize8,
+							&mag_x[1], size, timeout);
+					HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x06, memAddSize8,
+							&mag_y[0], size, timeout);
+					HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x07, memAddSize8,
+							&mag_y[1], size, timeout);
+					HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x08, memAddSize8,
+							&mag_z[0], size, timeout);
+					HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x09, memAddSize8,
+							&mag_z[1], size, timeout);
+					mag_x_data = (mag_x[1] << 8) + (mag_x[0]);
+					mag_y_data = (mag_y[1] << 8) + (mag_y[0]);
+					mag_z_data = (mag_z[1] << 8) + (mag_z[0]);
+					printf("\nMagnetometer (X,Y,Z): %d, %d, %d\r", mag_x_data,
+							mag_y_data, mag_z_data);
+				}
 
-		// rf 08.05.2022 15:00
+				int8_t bmi160_init(struct bmi160_dev *dev) {
+					int8_t rslt;
+				//	uint8_t data;
+					uint8_t try = 3;
 
+					/* Null-pointer check */
+					rslt = null_ptr_check(dev);
+
+					/* Dummy read of 0x7F register to enable SPI Interface
+					 * if SPI is used */
+					if ((rslt == BMI160_OK) && (dev->intf == BMI160_SPI_INTF)) {
+						rslt = bmi160_get_regs(BMI160_SPI_COMM_TEST_ADDR, &data, 1, dev);
+					}
+
+					if (rslt == BMI160_OK) {
+						/* Assign chip id as zero */
+						dev->chip_id = 0;
+
+						while ((try--) && (dev->chip_id != BMI160_CHIP_ID)) {
+							/* Read chip_id */
+							rslt = bmi160_get_regs(BMI160_CHIP_ID_ADDR, &dev->chip_id, 1, dev);
+						}
+
+						if ((rslt == BMI160_OK) && (dev->chip_id == BMI160_CHIP_ID)) {
+							dev->any_sig_sel = BMI160_BOTH_ANY_SIG_MOTION_DISABLED;
+
+							/* Soft reset */
+							rslt = bmi160_soft_reset(dev);
+						} else {
+							rslt = BMI160_E_DEV_NOT_FOUND;
+						}
+					}
+
+					return rslt;
+				}
+
+
+		// rf 10.05.2022 00:08
+		// init mag testen und Daten ausgeben. self-test in bmx160.c implementieren
+		printf("\nDevice ID: 0x%02X\r",bmx160dev.chip_id);
 		HAL_Delay(500);
 
 		/* USER CODE END WHILE */
