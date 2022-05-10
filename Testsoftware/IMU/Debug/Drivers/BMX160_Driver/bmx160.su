@@ -1,7 +1,0 @@
-../Drivers/BMX160_Driver/bmx160.c:23:16:BMX160_Write_Byte	48	static
-../Drivers/BMX160_Driver/bmx160.c:38:16:BMX160_Read_Byte	56	static
-../Drivers/BMX160_Driver/bmx160.c:54:16:BMX160_Read_Word	48	static
-../Drivers/BMX160_Driver/bmx160.c:76:16:bmx160_get_status_conf	40	static
-../Drivers/BMX160_Driver/bmx160.c:113:9:bmx160_if_init	40	static
-../Drivers/BMX160_Driver/bmx160.c:134:9:bmx160_mag_init	32	static
-../Drivers/BMX160_Driver/bmx160.c:221:9:bmx160_mag_setup2datamode	32	static

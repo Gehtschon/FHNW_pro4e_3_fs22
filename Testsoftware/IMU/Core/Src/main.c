@@ -115,135 +115,15 @@ int main(void) {
 	uint8_t rslt;
 	rslt = bmx160_if_init(&bmx160dev, &hi2c1);
 	if (rslt==BMX160_OK) {
-		printf("\nDevice ready\r");
+		printf("\nBMX160 IF Init succesful\r");
 		printf("\nDevice ID: 0x%02X\r",bmx160dev.chip_id);
 	}
+	rslt = bmx160_mag_init(&bmx160dev);
+	if (rslt==BMX160_OK) {
+		printf("\nBMX160 Mag Init succesful\r");
+	}
 
-	// Process to initialize magnetometer to low power preset at 12.5Hz and enable magnetometer interface data mode
-	// see also DS of BMX160 p.25
-	// put MAG_IF into normal mode
-	data_write = 0x19;
-//	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x7E, memAddSize8,
-//			&data_write, size, timeout);
-	HAL_Delay(1);
 
-	// mag_manual_en= 0b1, mag_if setup mode mag_offset<3:0>= 0b0000, maximum offset, recommend for
-	// BSX library
-	// enable magnetometer register access on MAG_IF[1] (read operations) or MAG_IF[2] (write access)
-	// setup mode ON, data mode OFF
-	data_write = 0x80;
-	//HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4C, memAddSize8,
-	//		&data_write, size, timeout);
-
-	// indirect write 0x01 to MAG register 0x4B (put magnetometer into sleep-mode)
-	data_write = 0x01;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4F, memAddSize8,
-			&data_write, size, timeout);
-	data_write = 0x4B;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4E, memAddSize8,
-			&data_write, size, timeout);
-
-	/* Indirect write REPXY=
-	 * 			0x01 for low power preset
-	 * 			0x04 for regular preset
-	 * 			0x07 for enhanced regular preset
-	 * 			0x17 for high accuracy preset
-	 to MAG register 0x51
-	 */
-	data_write = 0x01;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4F, memAddSize8,
-			&data_write, size, timeout);
-	data_write = 0x51;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4E, memAddSize8,
-			&data_write, size, timeout);
-
-	/* Indirect write REPZ=
-	 * 			0x02 for low power preset
-	 * 			0x0E for regular preset
-	 * 			0x1A for enhanced regular preset
-	 * 			0x52 for high accuracy preset
-	 to MAG register 0x52
-	 */
-	data_write = 0x0E;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4F, memAddSize8,
-			&data_write, size, timeout);
-	data_write = 0x52;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4E, memAddSize8,
-			&data_write, size, timeout);
-
-	// Prepare MAG_IF[1-3] for mag_if data mode
-	data_write = 0x02;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4F, memAddSize8,
-			&data_write, size, timeout);
-	data_write = 0x4C;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4E, memAddSize8,
-			&data_write, size, timeout);
-	data_write = 0x42;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4D, memAddSize8,
-			&data_write, size, timeout);
-
-	// mag_odr<3:0>= 0b0101, set ODR to 12.5Hz (50/(2^7-val(mag_odr<3:0>))Hz
-	data_write = 0x05;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x44, memAddSize8,
-			&data_write, size, timeout);
-
-	// mag_manual_en= 0b0, mag_if data mode mag_offset<3:0>= 0b0000, maximum offset, recommend for BSX library
-	data_write = 0x00;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4C, memAddSize8,
-			&data_write, size, timeout);
-
-	// put MAG_IF into low power mode
-	data_write = 0x1A;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x7E, memAddSize8,
-			&data_write, size, timeout);
-	// optional: put MAG_IF into normal power mode
-	// data_write=0x19;
-	//		HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x7E, memAddSize8, &data_write,
-	//			size, timeout);
-	HAL_Delay(1);
-	// end of magnetometer initialization
-/*
-	// magnetometer self-test
-	// normal self-test of the magnetometer according to DS p.49
-	// put magnetometer interface into normal mode
-	data_write = 0x19;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x7E, memAddSize8,
-			&data_write, size, timeout);
-	// enter setup-mode
-	data_write = 0x80;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4C, memAddSize8,
-			&data_write, size, timeout);
-	// put magnetometer into sleep-mode
-	data_write = 0x01;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4F, memAddSize8,
-			&data_write, size, timeout);
-	data_write = 0x4B;
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4E, memAddSize8,
-			&data_write, size, timeout);
-	// enter self-test: indirect mag register write to 0x4C Bit0 to 1
-	data_write = 0b10000001;// write the write data into Register (0x4F) MAG_IF[3]
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4F, memAddSize8,
-			&data_write, size, timeout);
-	data_write = 0x4C;// write magnetometer register address to write into Register (0x4E) MAG_IF[2]
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4E, memAddSize8,
-			&data_write, size, timeout);
-	// read Register (0x1B) STATUS until the bit mag_man_op is “0” to confirm the write access has been completed
-	uint8_t status = 0x00;
-	uint8_t timeout_status = 50;
-	while ((!status) && (timeout_status)) {	// wait until the write access has been confirmed
-		HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x1B, memAddSize8,
-				&status, size, timeout);
-		status = status & (0b00000100);
-		timeout_status--;
-	};
-	// check end of self-test: indirect mag register read to 0x4C Bit0 to 1
-	data_write = 0x4C;// write magnetometer register address to read from into Register (0x4D) MAG_IF[1]
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4D, memAddSize8,
-			&data_write, size, timeout);
-	data_read = 0x4C;// read register (0x1B) STATUS until the bit mag_man_op is “0”
-	HAL_I2C_Mem_Write(&hi2c1, (bmi160dev.id << 1), 0x4E, memAddSize8,
-			&data_write, size, timeout);
-*/
 
 
 
