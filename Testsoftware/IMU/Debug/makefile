@@ -63,7 +63,7 @@ main-build: IMU_Test.elf secondary-outputs
 
 # Tool invocations
 IMU_Test.elf IMU_Test.map: $(OBJS) $(USER_OBJS) C:\Users\rolan\Documents\FHNW\2022\ FS\pro4E\02_Unterricht\Software\pro4e_3_fs22\Testsoftware\IMU\STM32L053R8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "IMU_Test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\rolan\Documents\FHNW\2022 FS\pro4E\02_Unterricht\Software\pro4e_3_fs22\Testsoftware\IMU\STM32L053R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "IMU_Test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\rolan\Documents\FHNW\2022 FS\pro4E\02_Unterricht\Software\pro4e_3_fs22\Testsoftware\IMU\STM32L053R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IMU_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

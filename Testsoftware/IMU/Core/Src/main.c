@@ -114,141 +114,82 @@ int main(void) {
 
 	uint8_t rslt;
 	rslt = bmx160_if_init(&bmx160dev, &hi2c1);
-	if (rslt==BMX160_OK) {
+	if (rslt == BMX160_OK) {
 		printf("\nBMX160 IF Init succesful\r");
-		printf("\nDevice ID: 0x%02X\r",bmx160dev.chip_id);
+		printf("\nDevice ID: 0x%02X\r", bmx160dev.chip_id);
 	}
 	rslt = bmx160_mag_init(&bmx160dev);
-	if (rslt==BMX160_OK) {
+	if (rslt == BMX160_OK) {
 		printf("\nBMX160 Mag Init succesful\r");
 	}
 
-
-
-
+	uint16_t mag_data_x_raw;
+	uint16_t mag_data_y_raw;
+	uint16_t mag_data_z_raw;
+	int16_t mag_data_x = 0;
+	int16_t mag_data_y = 0;
+	int16_t mag_data_z = 0;
+	int16_t mag_tot;
+	int16_t angle;
+	float_t xy_factor = 0.035;
+	float_t z_factor = 0.076;
 
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
 	while (1) {
-		uint8_t data;
-		uint8_t dev_ID;
-		uint16_t status;
-		if (HAL_I2C_IsDeviceReady(&hi2c1, (bmi160dev.id << 1), trials, timeout)
-						!= HAL_OK) {
-					printf("\nDevice not ready\r");
-				};
-				if (HAL_I2C_IsDeviceReady(&hi2c1, (bmi160dev.id << 1), trials, timeout)
-						== HAL_OK) {
-					printf("\nDevice ready\r");
-				};
+		/*
+		 // read temperature data:
+		 uint16_t sens_temperature;
+		 uint8_t data_read[2] = { 0, 0 };
+		 HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x20, memAddSize8,
+		 &data_read[0], size, timeout);
+		 HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x21, memAddSize8,
+		 &data_read[1], size, timeout);
+		 sens_temperature = (data_read[1] << 8) | (data_read[0]);
+		 printf("\nSensortemperatur: 0x%04X\r", sens_temperature);
+		 */
+		// test atan funktioniert so
+		/*
+		 int16_t number1 = 5;
+		 int16_t number2 = 3;
+		 float_t angle_test;
+		 float_t angle_test_deg;
+		 angle_test = atan2f(number2, number1);
+		 angle_test_deg = angle_test * 180.0 / M_PI;
+		 printf("\nAngle (rad): %f rad\r", angle_test);
+		 printf("\nAngle (deg): %f rad\r", angle_test_deg);
+		 */
+		// read magnetometer data:
+		bmx160_mag_read_data(&bmx160dev, &mag_data_x_raw, &mag_data_y_raw,
+				&mag_data_z_raw);
+		mag_data_x = (int16_t) ((int16_t)mag_data_x_raw * xy_factor);
+		mag_data_y = (int16_t) ((int16_t)mag_data_y_raw * xy_factor);
+		mag_data_z = (int16_t) ((int16_t)mag_data_z_raw * z_factor);
 
-				status = HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1),
-				BMI160_CHIP_ID_ADDR, memAddSize8, &data, size, timeout);
+		mag_tot = sqrt(
+				(mag_data_x * mag_data_x) + (mag_data_y * mag_data_y)
+						+ (mag_data_z * mag_data_z));
 
-				if (status == HAL_OK) {
-					printf("\nI2C ok\r");
-				};
-				if (status != HAL_OK) {
-					printf("\nI2C read error\r");
-					if (hi2c1.ErrorCode == HAL_I2C_ERROR_TIMEOUT) {
-						printf(" - HAL_I2C_ERROR_TIMEOUT\r"); // HAL_I2C_ERROR_TIMEOUT
-					}
+		angle = atan2f(mag_data_x, mag_data_y) * (180.0 / M_PI);
+		printf("\nMagnetometer (X,Y,Z): %d, %d, %d\r", mag_data_x, mag_data_y,
+				mag_data_z);
+		printf("\nTotal B-field: %d uT\r", mag_tot);
+		printf("\nAngle: %d°\r", angle);
 
-				} else {
-					dev_ID = data;
-					printf("\nDevice-ID=%X\r", dev_ID);
-				};
-				HAL_Delay(1);
-
-				// read temperature data:
-				uint16_t sens_temperature;
-				uint8_t data_read[2] = { 0, 0 };
-				HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x20, memAddSize8,
-						&data_read[0], size, timeout);
-				HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x21, memAddSize8,
-						&data_read[1], size, timeout);
-				sens_temperature = (data_read[1] << 8) | (data_read[0]);
-				printf("\nSensortemperatur: 0x%04X\r", sens_temperature);
-
-				// read magnetometer data:
-				uint8_t reg_status;
-				uint8_t mag_x[2] = { 0, 0 };
-				uint8_t mag_y[2] = { 0, 0 };
-				uint8_t mag_z[2] = { 0, 0 };
-				uint16_t mag_x_data;
-				uint16_t mag_y_data;
-				uint16_t mag_z_data;
-				HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x1B, memAddSize8,
-						&reg_status, size, timeout);
-				if (reg_status & (0b00100000)) {
-					// read each magnetometer registers (2 per channel)
-					HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x04, memAddSize8,
-							&mag_x[0], size, timeout);
-					HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x05, memAddSize8,
-							&mag_x[1], size, timeout);
-					HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x06, memAddSize8,
-							&mag_y[0], size, timeout);
-					HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x07, memAddSize8,
-							&mag_y[1], size, timeout);
-					HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x08, memAddSize8,
-							&mag_z[0], size, timeout);
-					HAL_I2C_Mem_Read(&hi2c1, (bmi160dev.id << 1), 0x09, memAddSize8,
-							&mag_z[1], size, timeout);
-					mag_x_data = (mag_x[1] << 8) + (mag_x[0]);
-					mag_y_data = (mag_y[1] << 8) + (mag_y[0]);
-					mag_z_data = (mag_z[1] << 8) + (mag_z[0]);
-					printf("\nMagnetometer (X,Y,Z): %d, %d, %d\r", mag_x_data,
-							mag_y_data, mag_z_data);
-				}
-
-				int8_t bmi160_init(struct bmi160_dev *dev) {
-					int8_t rslt;
-				//	uint8_t data;
-					uint8_t try = 3;
-
-					/* Null-pointer check */
-					rslt = null_ptr_check(dev);
-
-					/* Dummy read of 0x7F register to enable SPI Interface
-					 * if SPI is used */
-					if ((rslt == BMI160_OK) && (dev->intf == BMI160_SPI_INTF)) {
-						rslt = bmi160_get_regs(BMI160_SPI_COMM_TEST_ADDR, &data, 1, dev);
-					}
-
-					if (rslt == BMI160_OK) {
-						/* Assign chip id as zero */
-						dev->chip_id = 0;
-
-						while ((try--) && (dev->chip_id != BMI160_CHIP_ID)) {
-							/* Read chip_id */
-							rslt = bmi160_get_regs(BMI160_CHIP_ID_ADDR, &dev->chip_id, 1, dev);
-						}
-
-						if ((rslt == BMI160_OK) && (dev->chip_id == BMI160_CHIP_ID)) {
-							dev->any_sig_sel = BMI160_BOTH_ANY_SIG_MOTION_DISABLED;
-
-							/* Soft reset */
-							rslt = bmi160_soft_reset(dev);
-						} else {
-							rslt = BMI160_E_DEV_NOT_FOUND;
-						}
-					}
-
-					return rslt;
-				}
+		// weiter mit Aufruf acc_read_data
+		// rf, 11.05.2022 17:24
 
 
-		// rf 10.05.2022 00:08
-		// init mag testen und Daten ausgeben. self-test in bmx160.c implementieren
-		printf("\nDevice ID: 0x%02X\r",bmx160dev.chip_id);
-		HAL_Delay(500);
+		// Magnetometer hat wahrscheinlich einen Offset, gem. DS bis zu +/-40uT
+		//-> Kalibrierung notwendig
+		HAL_Delay(1000);
 
 		/* USER CODE END WHILE */
-
-		/* USER CODE BEGIN 3 */
 	}
+	/* USER CODE BEGIN 3 */
+
 	/* USER CODE END 3 */
 }
 
