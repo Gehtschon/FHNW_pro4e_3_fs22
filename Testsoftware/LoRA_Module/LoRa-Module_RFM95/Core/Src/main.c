@@ -103,7 +103,7 @@ int main(void)
   MX_LPTIM1_Init();
   /* USER CODE BEGIN 2 */
 	rfm95_handle_t rfm95_handle =
-			{ .spi_handle = &hspi1, .nss_port = GPIOB, .nss_pin = GPIO_PIN_8,
+			{ .spi_handle = &hspi1, .nss_port = GPIOB, .nss_pin = GPIO_PIN_6,
 					.nrst_port = RFM95_NRST_GPIO_Port, .nrst_pin =
 							RFM95_NRST_Pin, .device_address = { 0x82, 0x0D, 0x0B, 0x26 },
 							.application_session_key = { 0x28, 0xA8, 0x53, 0x35, 0xD6, 0x72, 0xA9, 0x7B, 0xC5, 0x94, 0xC8, 0x59, 0x51, 0x43, 0x84, 0xC9 },

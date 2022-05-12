@@ -3088,7 +3088,7 @@ bool rfm95_init(rfm95_handle_t *handle)
  80016e0:	e0a7      	b.n	8001832 <rfm95_init+0x276>
 	if (version != RFM9x_VER) return false;
  80016e2:	7bfb      	ldrb	r3, [r7, #15]
- 80016e4:	2b00      	cmp	r3, #0
+ 80016e4:	2b12      	cmp	r3, #18
  80016e6:	d001      	beq.n	80016ec <rfm95_init+0x130>
  80016e8:	2300      	movs	r3, #0
  80016ea:	e0a2      	b.n	8001832 <rfm95_init+0x276>
@@ -5554,101 +5554,102 @@ int main(void)
  800282c:	607b      	str	r3, [r7, #4]
  800282e:	4b2d      	ldr	r3, [pc, #180]	; (80028e4 <main+0xe8>)
  8002830:	60bb      	str	r3, [r7, #8]
- 8002832:	f44f 7380 	mov.w	r3, #256	; 0x100
- 8002836:	81bb      	strh	r3, [r7, #12]
- 8002838:	f04f 4390 	mov.w	r3, #1207959552	; 0x48000000
- 800283c:	613b      	str	r3, [r7, #16]
- 800283e:	2301      	movs	r3, #1
- 8002840:	82bb      	strh	r3, [r7, #20]
- 8002842:	4a29      	ldr	r2, [pc, #164]	; (80028e8 <main+0xec>)
- 8002844:	f107 0316 	add.w	r3, r7, #22
- 8002848:	6810      	ldr	r0, [r2, #0]
- 800284a:	6018      	str	r0, [r3, #0]
- 800284c:	4b27      	ldr	r3, [pc, #156]	; (80028ec <main+0xf0>)
- 800284e:	f107 041a 	add.w	r4, r7, #26
- 8002852:	461d      	mov	r5, r3
- 8002854:	cd0f      	ldmia	r5!, {r0, r1, r2, r3}
- 8002856:	6020      	str	r0, [r4, #0]
- 8002858:	6061      	str	r1, [r4, #4]
- 800285a:	60a2      	str	r2, [r4, #8]
- 800285c:	60e3      	str	r3, [r4, #12]
- 800285e:	4b24      	ldr	r3, [pc, #144]	; (80028f0 <main+0xf4>)
- 8002860:	f107 042a 	add.w	r4, r7, #42	; 0x2a
- 8002864:	461d      	mov	r5, r3
- 8002866:	cd0f      	ldmia	r5!, {r0, r1, r2, r3}
- 8002868:	6020      	str	r0, [r4, #0]
- 800286a:	6061      	str	r1, [r4, #4]
- 800286c:	60a2      	str	r2, [r4, #8]
- 800286e:	60e3      	str	r3, [r4, #12]
- 8002870:	f44f 4300 	mov.w	r3, #32768	; 0x8000
- 8002874:	63fb      	str	r3, [r7, #60]	; 0x3c
- 8002876:	f241 3388 	movw	r3, #5000	; 0x1388
- 800287a:	643b      	str	r3, [r7, #64]	; 0x40
- 800287c:	2302      	movs	r3, #2
- 800287e:	f887 3044 	strb.w	r3, [r7, #68]	; 0x44
- 8002882:	4b1c      	ldr	r3, [pc, #112]	; (80028f4 <main+0xf8>)
- 8002884:	64bb      	str	r3, [r7, #72]	; 0x48
- 8002886:	4b1c      	ldr	r3, [pc, #112]	; (80028f8 <main+0xfc>)
- 8002888:	64fb      	str	r3, [r7, #76]	; 0x4c
- 800288a:	4b1c      	ldr	r3, [pc, #112]	; (80028fc <main+0x100>)
- 800288c:	653b      	str	r3, [r7, #80]	; 0x50
- 800288e:	4b1c      	ldr	r3, [pc, #112]	; (8002900 <main+0x104>)
- 8002890:	657b      	str	r3, [r7, #84]	; 0x54
+ 8002832:	2340      	movs	r3, #64	; 0x40
+ 8002834:	81bb      	strh	r3, [r7, #12]
+ 8002836:	f04f 4390 	mov.w	r3, #1207959552	; 0x48000000
+ 800283a:	613b      	str	r3, [r7, #16]
+ 800283c:	2301      	movs	r3, #1
+ 800283e:	82bb      	strh	r3, [r7, #20]
+ 8002840:	4a29      	ldr	r2, [pc, #164]	; (80028e8 <main+0xec>)
+ 8002842:	f107 0316 	add.w	r3, r7, #22
+ 8002846:	6810      	ldr	r0, [r2, #0]
+ 8002848:	6018      	str	r0, [r3, #0]
+ 800284a:	4b28      	ldr	r3, [pc, #160]	; (80028ec <main+0xf0>)
+ 800284c:	f107 041a 	add.w	r4, r7, #26
+ 8002850:	461d      	mov	r5, r3
+ 8002852:	cd0f      	ldmia	r5!, {r0, r1, r2, r3}
+ 8002854:	6020      	str	r0, [r4, #0]
+ 8002856:	6061      	str	r1, [r4, #4]
+ 8002858:	60a2      	str	r2, [r4, #8]
+ 800285a:	60e3      	str	r3, [r4, #12]
+ 800285c:	4b24      	ldr	r3, [pc, #144]	; (80028f0 <main+0xf4>)
+ 800285e:	f107 042a 	add.w	r4, r7, #42	; 0x2a
+ 8002862:	461d      	mov	r5, r3
+ 8002864:	cd0f      	ldmia	r5!, {r0, r1, r2, r3}
+ 8002866:	6020      	str	r0, [r4, #0]
+ 8002868:	6061      	str	r1, [r4, #4]
+ 800286a:	60a2      	str	r2, [r4, #8]
+ 800286c:	60e3      	str	r3, [r4, #12]
+ 800286e:	f44f 4300 	mov.w	r3, #32768	; 0x8000
+ 8002872:	63fb      	str	r3, [r7, #60]	; 0x3c
+ 8002874:	f241 3388 	movw	r3, #5000	; 0x1388
+ 8002878:	643b      	str	r3, [r7, #64]	; 0x40
+ 800287a:	2302      	movs	r3, #2
+ 800287c:	f887 3044 	strb.w	r3, [r7, #68]	; 0x44
+ 8002880:	4b1c      	ldr	r3, [pc, #112]	; (80028f4 <main+0xf8>)
+ 8002882:	64bb      	str	r3, [r7, #72]	; 0x48
+ 8002884:	4b1c      	ldr	r3, [pc, #112]	; (80028f8 <main+0xfc>)
+ 8002886:	64fb      	str	r3, [r7, #76]	; 0x4c
+ 8002888:	4b1c      	ldr	r3, [pc, #112]	; (80028fc <main+0x100>)
+ 800288a:	653b      	str	r3, [r7, #80]	; 0x50
+ 800288c:	4b1c      	ldr	r3, [pc, #112]	; (8002900 <main+0x104>)
+ 800288e:	657b      	str	r3, [r7, #84]	; 0x54
 							    .get_battery_level = get_battery_level};
 
 
 
 	// Initialise RFM95 module.
 	if (!rfm95_init(&rfm95_handle)) {
- 8002892:	1d3b      	adds	r3, r7, #4
- 8002894:	4618      	mov	r0, r3
- 8002896:	f7fe fe91 	bl	80015bc <rfm95_init>
- 800289a:	4603      	mov	r3, r0
- 800289c:	f083 0301 	eor.w	r3, r3, #1
- 80028a0:	b2db      	uxtb	r3, r3
- 80028a2:	2b00      	cmp	r3, #0
- 80028a4:	d003      	beq.n	80028ae <main+0xb2>
+ 8002890:	1d3b      	adds	r3, r7, #4
+ 8002892:	4618      	mov	r0, r3
+ 8002894:	f7fe fe92 	bl	80015bc <rfm95_init>
+ 8002898:	4603      	mov	r3, r0
+ 800289a:	f083 0301 	eor.w	r3, r3, #1
+ 800289e:	b2db      	uxtb	r3, r3
+ 80028a0:	2b00      	cmp	r3, #0
+ 80028a2:	d003      	beq.n	80028ac <main+0xb0>
 		printf("RFM95 init failed\n\r");
- 80028a6:	4817      	ldr	r0, [pc, #92]	; (8002904 <main+0x108>)
- 80028a8:	f004 fba0 	bl	8006fec <iprintf>
- 80028ac:	e002      	b.n	80028b4 <main+0xb8>
+ 80028a4:	4817      	ldr	r0, [pc, #92]	; (8002904 <main+0x108>)
+ 80028a6:	f004 fba1 	bl	8006fec <iprintf>
+ 80028aa:	e002      	b.n	80028b2 <main+0xb6>
 	}else {
 		printf("RFM95 init sucess\n\r");
- 80028ae:	4816      	ldr	r0, [pc, #88]	; (8002908 <main+0x10c>)
- 80028b0:	f004 fb9c 	bl	8006fec <iprintf>
+ 80028ac:	4816      	ldr	r0, [pc, #88]	; (8002908 <main+0x10c>)
+ 80028ae:	f004 fb9d 	bl	8006fec <iprintf>
 	}
 
 	uint8_t data_packet[] = { 0x01, 0x02, 0x03, 0x4 };
- 80028b4:	4b15      	ldr	r3, [pc, #84]	; (800290c <main+0x110>)
- 80028b6:	603b      	str	r3, [r7, #0]
+ 80028b2:	4b16      	ldr	r3, [pc, #88]	; (800290c <main+0x110>)
+ 80028b4:	603b      	str	r3, [r7, #0]
 
 	if (!rfm95_send_receive_cycle(&rfm95_handle, data_packet,
- 80028b8:	4639      	mov	r1, r7
- 80028ba:	1d3b      	adds	r3, r7, #4
- 80028bc:	2204      	movs	r2, #4
- 80028be:	4618      	mov	r0, r3
- 80028c0:	f7ff feae 	bl	8002620 <rfm95_send_receive_cycle>
- 80028c4:	4603      	mov	r3, r0
- 80028c6:	f083 0301 	eor.w	r3, r3, #1
- 80028ca:	b2db      	uxtb	r3, r3
- 80028cc:	2b00      	cmp	r3, #0
- 80028ce:	d003      	beq.n	80028d8 <main+0xdc>
+ 80028b6:	4639      	mov	r1, r7
+ 80028b8:	1d3b      	adds	r3, r7, #4
+ 80028ba:	2204      	movs	r2, #4
+ 80028bc:	4618      	mov	r0, r3
+ 80028be:	f7ff feaf 	bl	8002620 <rfm95_send_receive_cycle>
+ 80028c2:	4603      	mov	r3, r0
+ 80028c4:	f083 0301 	eor.w	r3, r3, #1
+ 80028c8:	b2db      	uxtb	r3, r3
+ 80028ca:	2b00      	cmp	r3, #0
+ 80028cc:	d003      	beq.n	80028d6 <main+0xda>
 			sizeof(data_packet))) {
 		printf("RFM95 send failed\n\r");
- 80028d0:	480f      	ldr	r0, [pc, #60]	; (8002910 <main+0x114>)
- 80028d2:	f004 fb8b 	bl	8006fec <iprintf>
- 80028d6:	e002      	b.n	80028de <main+0xe2>
+ 80028ce:	4810      	ldr	r0, [pc, #64]	; (8002910 <main+0x114>)
+ 80028d0:	f004 fb8c 	bl	8006fec <iprintf>
+ 80028d4:	e002      	b.n	80028dc <main+0xe0>
 	} else {
 		printf("RFM95 send success\n\r");
- 80028d8:	480e      	ldr	r0, [pc, #56]	; (8002914 <main+0x118>)
- 80028da:	f004 fb87 	bl	8006fec <iprintf>
+ 80028d6:	480f      	ldr	r0, [pc, #60]	; (8002914 <main+0x118>)
+ 80028d8:	f004 fb88 	bl	8006fec <iprintf>
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 while (1) {
- 80028de:	e7fe      	b.n	80028de <main+0xe2>
+ 80028dc:	e7fe      	b.n	80028dc <main+0xe0>
+ 80028de:	bf00      	nop
  80028e0:	20000220 	.word	0x20000220
  80028e4:	48000400 	.word	0x48000400
  80028e8:	08007cd0 	.word	0x08007cd0

@@ -5,7 +5,7 @@
 #include <string.h>
 
 
-#define RFM9x_VER 0x00
+#define RFM9x_VER 0x12
 
 /**
  * Registers addresses.
