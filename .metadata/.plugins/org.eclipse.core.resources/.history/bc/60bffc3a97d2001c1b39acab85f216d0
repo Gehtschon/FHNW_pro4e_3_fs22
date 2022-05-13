@@ -1,0 +1,22 @@
+/*
+ * flow.c
+ *
+ *  Created on: May 13, 2022
+ *      Author: Fabian Glutz
+ */
+
+#include "flow.h"
+#include "main.h"
+
+#define LORAINTERVALL 5
+
+Flow(){
+	static uint8_t loraCounter;
+
+	if (loraCounter == LORAINTERVALL) {
+
+	}
+
+
+	loraCounter++;
+}

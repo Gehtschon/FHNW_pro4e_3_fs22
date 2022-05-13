@@ -1,0 +1,37 @@
+/*
+ * flow.c
+ *
+ *  Created on: May 13, 2022
+ *      Author: Fabian Glutz
+ */
+
+#include "flow.h"
+#include "main.h"
+#include "../../Core/Inc/stm32-hal-rfm95/rfm95.h"
+
+#define LORAINTERVALL 5
+extern SPI_HandleTypeDef hspi2;
+rfm95_handle_t rfm95_handle = { };
+
+FlowInit() {
+
+}
+
+Flow() {
+	static uint8_t loraCounter;
+	uint8_t data_packet[] = { 0x01, 0x02, 0x03, 0x4 };
+
+
+	if (loraCounter == LORAINTERVALL) {
+		if (!rfm95_send_data(&rfm95_handle, data_packet, sizeof(data_packet))) {
+			printf("RFM95 send failed\n\r");
+		} else {
+			printf("RFM95 send success\n\r");
+		}
+
+	}
+
+	loraCounter++;
+}
+
+

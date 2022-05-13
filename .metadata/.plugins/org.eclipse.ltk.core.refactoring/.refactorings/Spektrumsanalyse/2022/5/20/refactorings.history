@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Spektrumsanalyse/Core/Inc/flow&apos; to &apos;flow.h&apos;" description="Rename resource &apos;flow&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Inc/flow" name="flow.h" stamp="1652429950535" updateReferences="true"/>
+</session>

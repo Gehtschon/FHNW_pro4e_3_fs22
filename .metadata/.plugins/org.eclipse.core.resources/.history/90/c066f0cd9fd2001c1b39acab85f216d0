@@ -1,0 +1,12 @@
+#ifndef FLOW_H
+#define FLOW_H
+#include <stdbool.h>
+#include "../../Core/Inc/stm32-hal-rfm95/rfm95.h"
+
+
+
+void Flow();
+void FlowInit();
+
+
+#endif

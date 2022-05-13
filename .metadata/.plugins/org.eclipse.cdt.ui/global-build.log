@@ -1,73 +1,24 @@
-18:05:44 **** Incremental Build of configuration Debug for project LoRa-Module_RFM95_TTN_GROUNDSTATION ****
+11:44:52 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L452xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:125:4: warning: braces around scalar initializer
-  125 |    .latitude_or[0] = {'N'},
-      |    ^
-../Core/Src/main.c:125:4: note: (near initialization for 'rfm95_handle.latitude_or[0]')
-../Core/Src/main.c:107:33: warning: missing braces around initializer [-Wmissing-braces]
-  107 |   rfm95_handle_t rfm95_handle = {
-      |                                 ^
-......
-  125 |    .latitude_or[0] = {'N'},
-      |                           }
-  126 |    .altitude = 2461,
-  127 |    .indent = 0
-      |              {
-  128 |   };
-      |   }
-../Core/Src/main.c:134:3: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
-  134 |   printf("RFM95 init failed\n\r");
-      |   ^~~~~~
-../Core/Src/main.c:134:3: warning: incompatible implicit declaration of built-in function 'printf'
-../Core/Src/main.c:25:1: note: include '<stdio.h>' or provide a declaration of 'printf'
-   24 | #include "../../Core/Inc/stm32-hal-rfm95/rfm95.h"
-  +++ |+#include <stdio.h>
-   25 | /* USER CODE END Includes */
-../Core/Src/main.c:136:3: warning: incompatible implicit declaration of built-in function 'printf'
-  136 |   printf("RFM95 init sucess\n\r");
-      |   ^~~~~~
-../Core/Src/main.c:136:3: note: include '<stdio.h>' or provide a declaration of 'printf'
-../Core/Src/main.c:165:7: warning: incompatible implicit declaration of built-in function 'printf'
-  165 |       printf("RFM95 send failed\n\r");
-      |       ^~~~~~
-../Core/Src/main.c:165:7: note: include '<stdio.h>' or provide a declaration of 'printf'
-../Core/Src/main.c:167:7: warning: incompatible implicit declaration of built-in function 'printf'
-  167 |       printf("RFM95 send success\n\r");
-      |       ^~~~~~
-../Core/Src/main.c:167:7: note: include '<stdio.h>' or provide a declaration of 'printf'
-../Core/Src/main.c:139:10: warning: unused variable 'data_packet' [-Wunused-variable]
-  139 |  uint8_t data_packet[] = { 0x01, 0x02, 0x03, 0x4 };
-      |          ^~~~~~~~~~~
-../Core/Src/main.c:79:10: warning: unused variable 'buf' [-Wunused-variable]
-   79 |  uint8_t buf[12]; // For UART
-      |          ^~~
-At top level:
-../Core/Src/main.c:509:16: warning: 'get_battery_level' defined but not used [-Wunused-function]
-  509 | static uint8_t get_battery_level()
-      |                ^~~~~~~~~~~~~~~~~
-../Core/Src/main.c:504:16: warning: 'random_int' defined but not used [-Wunused-function]
-  504 | static uint8_t random_int(uint8_t max)
-      |                ^~~~~~~~~~
-../Core/Src/main.c:460:13: warning: 'precision_sleep_until' defined but not used [-Wunused-function]
-  460 | static void precision_sleep_until(uint32_t target_ticks)
-      |             ^~~~~~~~~~~~~~~~~~~~~
-arm-none-eabi-g++ -o "LoRa-Module_RFM95_TTN_GROUNDSTATION.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Testsoftware\LoRa-Module_RFM95_TTN_GROUNDSTATION\STM32L452RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LoRa-Module_RFM95_TTN_GROUNDSTATION.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: LoRa-Module_RFM95_TTN_GROUNDSTATION.elf
+arm-none-eabi-gcc "../Core/Inc/stm32-hal-rfm95/rfm95.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L471xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Inc/stm32-hal-rfm95/rfm95.d" -MT"Core/Inc/stm32-hal-rfm95/rfm95.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Inc/stm32-hal-rfm95/rfm95.o"
+../Core/Inc/stm32-hal-rfm95/rfm95.c: In function 'rfm95_send_data_groundstation':
+../Core/Inc/stm32-hal-rfm95/rfm95.c:305:11: warning: unused variable 'altitude' [-Wunused-variable]
+  305 |  unsigned altitude = handle->altitude;
+      |           ^~~~~~~~
+../Core/Inc/stm32-hal-rfm95/rfm95.c:304:16: warning: unused variable 'longitude' [-Wunused-variable]
+  304 |  unsigned long longitude = handle->longitude;
+      |                ^~~~~~~~~
+../Core/Inc/stm32-hal-rfm95/rfm95.c:303:16: warning: unused variable 'latitude' [-Wunused-variable]
+  303 |  unsigned long latitude = handle->latitude;
+      |                ^~~~~~~~
+arm-none-eabi-g++ -o "Spektrumsanalyse.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\STM32L471RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Spektrumsanalyse.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: Spektrumsanalyse.elf
  
-arm-none-eabi-size   LoRa-Module_RFM95_TTN_GROUNDSTATION.elf 
-arm-none-eabi-objdump -h -S  LoRa-Module_RFM95_TTN_GROUNDSTATION.elf  > "LoRa-Module_RFM95_TTN_GROUNDSTATION.list"
+arm-none-eabi-size   Spektrumsanalyse.elf 
+arm-none-eabi-objdump -h -S  Spektrumsanalyse.elf  > "Spektrumsanalyse.list"
    text	   data	    bss	    dec	    hex	filename
-  24592	    120	   1952	  26664	   6828	LoRa-Module_RFM95_TTN_GROUNDSTATION.elf
+  23916	    484	   1908	  26308	   66c4	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  
-Finished building: LoRa-Module_RFM95_TTN_GROUNDSTATION.list
- 
-18:05:57 **** Incremental Build of configuration Debug for project LoRa-Module_RFM95_TTN_GROUNDSTATION ****
-make -j8 all 
-arm-none-eabi-size   LoRa-Module_RFM95_TTN_GROUNDSTATION.elf 
-   text	   data	    bss	    dec	    hex	filename
-  24592	    120	   1952	  26664	   6828	LoRa-Module_RFM95_TTN_GROUNDSTATION.elf
-Finished building: default.size.stdout
+Finished building: Spektrumsanalyse.list
  
