@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;LoRa-Module_RFM95_TTN_GROUNDSTATION/LoRa-Module_RFM95_OLD_GIT.ioc&apos; to &apos;LoRa-Module_RFM95_TTN_GROUNDSTATION.ioc&apos;" description="Rename resource &apos;LoRa-Module_RFM95_OLD_GIT.ioc&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="LoRa-Module_RFM95_OLD_GIT.ioc" name="LoRa-Module_RFM95_TTN_GROUNDSTATION.ioc" stamp="1652346638026" updateReferences="true"/>
+</session>

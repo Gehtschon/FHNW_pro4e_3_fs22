@@ -1,0 +1,17 @@
+11:49:58 **** Incremental Build of configuration Debug for project I2C_Multiplexer ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/PCA9847_Driver/PCA9847.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L452xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/PCA9847_Driver/PCA9847.d" -MT"Drivers/PCA9847_Driver/PCA9847.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/PCA9847_Driver/PCA9847.o"
+arm-none-eabi-g++ -o "I2C_Multiplexer.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Testsoftware\I2C_Multiplexer\STM32L452RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="I2C_Multiplexer.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: I2C_Multiplexer.elf
+ 
+arm-none-eabi-size   I2C_Multiplexer.elf 
+arm-none-eabi-objdump -h -S  I2C_Multiplexer.elf  > "I2C_Multiplexer.list"
+   text	   data	    bss	    dec	    hex	filename
+  19684	    120	   1816	  21620	   5474	I2C_Multiplexer.elf
+Finished building: default.size.stdout
+ 
+Finished building: I2C_Multiplexer.list
+ 
+
+11:50:00 Build Finished. 0 errors, 0 warnings. (took 2s.286ms)
+

@@ -1,0 +1,10 @@
+14:08:15 **** Incremental Build of configuration Debug for project SD_CARD_Nucleo ****
+make -j8 all 
+arm-none-eabi-size   SD_CARD_Nucleo.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26596	    140	   2140	  28876	   70cc	SD_CARD_Nucleo.elf
+Finished building: default.size.stdout
+ 
+
+14:08:15 Build Finished. 0 errors, 0 warnings. (took 500ms)
+
