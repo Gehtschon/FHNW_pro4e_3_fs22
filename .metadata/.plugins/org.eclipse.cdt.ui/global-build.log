@@ -1,5 +1,6 @@
-11:44:52 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+14:59:59 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L471xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc "../Core/Inc/stm32-hal-rfm95/rfm95.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L471xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Inc/stm32-hal-rfm95/rfm95.d" -MT"Core/Inc/stm32-hal-rfm95/rfm95.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Inc/stm32-hal-rfm95/rfm95.o"
 ../Core/Inc/stm32-hal-rfm95/rfm95.c: In function 'rfm95_send_data_groundstation':
 ../Core/Inc/stm32-hal-rfm95/rfm95.c:305:11: warning: unused variable 'altitude' [-Wunused-variable]
@@ -17,7 +18,7 @@ Finished building target: Spektrumsanalyse.elf
 arm-none-eabi-size   Spektrumsanalyse.elf 
 arm-none-eabi-objdump -h -S  Spektrumsanalyse.elf  > "Spektrumsanalyse.list"
    text	   data	    bss	    dec	    hex	filename
-  23916	    484	   1908	  26308	   66c4	Spektrumsanalyse.elf
+  23108	    484	   1908	  25500	   639c	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  
 Finished building: Spektrumsanalyse.list
