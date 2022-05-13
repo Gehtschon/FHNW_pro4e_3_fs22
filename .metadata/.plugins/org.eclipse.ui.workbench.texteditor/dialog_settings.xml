@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="DELAY"/>
+		<item key="selection" value="Init"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="init"/>
+			<item value="HAL_TIM_PeriodElapsedCallback"/>
+			<item value="MX_TIM2_Init"/>
+			<item value="RFM95_NRST_GPIO_Port"/>
+			<item value="hspi2"/>
+			<item value="led"/>
+			<item value="HAL_TIM_IRQHandler"/>
+			<item value="tim2"/>
+			<item value="tim2_ir"/>
 			<item value="delay"/>
 			<item value="ground"/>
 			<item value="send"/>
 			<item value="rfm95_set_power"/>
 			<item value="save_frame_counter"/>
 			<item value="rfm95_reload_frame_counter_t"/>
-			<item value="error"/>
-			<item value="3"/>
-			<item value="mount error"/>
-			<item value="  /* USER CODE BEGIN 2 */"/>
-			<item value="/* USER CODE BEGIN 0 */"/>
-			<item value="USER CODE BEGIN PFP"/>
-			<item value="/* Private includes ----------------------------------------------------------*/"/>
-			<item value="hspi"/>
-			<item value="note"/>
 		</list>
 		<list key="replacehistory">
 		</list>
