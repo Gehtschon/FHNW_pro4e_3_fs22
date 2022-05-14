@@ -3512,8 +3512,8 @@ int main(void)
  80019da:	480d      	ldr	r0, [pc, #52]	; (8001a10 <main+0x134>)
  80019dc:	f004 fad2 	bl	8005f84 <iprintf>
 	}
-	HAL_Delay(30000);
- 80019e0:	f247 5030 	movw	r0, #30000	; 0x7530
+	HAL_Delay(15000);
+ 80019e0:	f643 2098 	movw	r0, #15000	; 0x3a98
  80019e4:	f000 fce4 	bl	80023b0 <HAL_Delay>
 	if (!rfm95_send_data(&rfm95_handle, data_packet, sizeof(data_packet))) {
  80019e8:	e7e6      	b.n	80019b8 <main+0xdc>
