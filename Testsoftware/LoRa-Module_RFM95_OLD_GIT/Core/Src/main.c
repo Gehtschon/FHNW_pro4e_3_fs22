@@ -155,7 +155,7 @@ while (1) {
 	} else {
 	    printf("RFM95 send success\n\r");
 	}
-	HAL_Delay(3000);
+	HAL_Delay(30000);
 }
   /* USER CODE END 3 */
 }
