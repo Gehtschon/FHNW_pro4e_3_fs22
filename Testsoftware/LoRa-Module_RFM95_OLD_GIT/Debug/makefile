@@ -77,8 +77,8 @@ all: main-build
 main-build: LoRa-Module_RFM95_OLD_GIT.elf secondary-outputs
 
 # Tool invocations
-LoRa-Module_RFM95_OLD_GIT.elf LoRa-Module_RFM95_OLD_GIT.map: $(OBJS) $(USER_OBJS) C:\Users\Fabian\Google\ Drive\FHNW\pro4\git\pro4e_3_fs22\Testsoftware\LoRa-Module_RFM95_OLD_GIT\STM32L452RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "LoRa-Module_RFM95_OLD_GIT.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Fabian\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Testsoftware\LoRa-Module_RFM95_OLD_GIT\STM32L452RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LoRa-Module_RFM95_OLD_GIT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+LoRa-Module_RFM95_OLD_GIT.elf LoRa-Module_RFM95_OLD_GIT.map: $(OBJS) $(USER_OBJS) C:\Users\fabia\Google\ Drive\FHNW\pro4\git\pro4e_3_fs22\Testsoftware\LoRa-Module_RFM95_OLD_GIT\STM32L452RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "LoRa-Module_RFM95_OLD_GIT.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Testsoftware\LoRa-Module_RFM95_OLD_GIT\STM32L452RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LoRa-Module_RFM95_OLD_GIT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

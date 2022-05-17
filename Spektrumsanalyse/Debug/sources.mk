@@ -35,5 +35,7 @@ Core/Inc/stm32-hal-rfm95/lib/ideetron \
 Core/Inc/stm32-hal-rfm95 \
 Core/Src \
 Core/Startup \
+Drivers/AS7341_Driver \
+Drivers/PCA9847_Driver \
 Drivers/STM32L4xx_HAL_Driver/Src \
 

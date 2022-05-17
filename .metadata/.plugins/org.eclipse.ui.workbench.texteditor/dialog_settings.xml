@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Init"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="init"/>
-			<item value="HAL_TIM_PeriodElapsedCallback"/>
-			<item value="MX_TIM2_Init"/>
-			<item value="RFM95_NRST_GPIO_Port"/>
-			<item value="hspi2"/>
-			<item value="led"/>
-			<item value="HAL_TIM_IRQHandler"/>
-			<item value="tim2"/>
-			<item value="tim2_ir"/>
-			<item value="delay"/>
-			<item value="ground"/>
-			<item value="send"/>
-			<item value="rfm95_set_power"/>
-			<item value="save_frame_counter"/>
-			<item value="rfm95_reload_frame_counter_t"/>
+			<item value="i2c"/>
+			<item value="hi2c3"/>
+			<item value="errIni"/>
+			<item value="flow"/>
+			<item value="hi2c1"/>
+			<item value="end 2"/>
+			<item value="Flow"/>
+			<item value="begin pv"/>
+			<item value="multiplexer"/>
+			<item value="i"/>
+			<item value="while"/>
+			<item value="devi"/>
+			<item value="LORAINTERVALL"/>
+			<item value="spi"/>
+			<item value="hal_ini"/>
 		</list>
 		<list key="replacehistory">
+			<item value="hi2c1"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

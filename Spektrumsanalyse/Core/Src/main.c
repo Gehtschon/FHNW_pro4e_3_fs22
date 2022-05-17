@@ -23,6 +23,8 @@
 /* USER CODE BEGIN Includes */
 #include "flow.h"
 #include "../../Core/Inc/stm32-hal-rfm95/rfm95.h"
+#include "../../Drivers/PCA9847_Driver/PCA9847.h"
+#include "../../Drivers/AS7341_Driver/Waveshare_AS7341.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,16 +49,16 @@ SPI_HandleTypeDef hspi2;
 TIM_HandleTypeDef htim16;
 
 /* USER CODE BEGIN PV */
-
-
+PCA9847 multiplexer;
+uint8_t errIni = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_I2C1_Init(void);
 static void MX_SPI2_Init(void);
 static void MX_TIM16_Init(void);
+static void MX_I2C1_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -82,7 +84,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-  FlowInit();
+
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -94,21 +96,32 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_I2C1_Init();
   MX_SPI2_Init();
   MX_TIM16_Init();
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT(&htim16);
+  FlowInit();
+
+
+  errIni = PCA9847_Initialise(&multiplexer, &hi2c1);
+  PCA9847_SetChannel(&multiplexer, 3);
+	AS7341_Init(eSpm);
+	AS7341_ATIME_config(100);
+	AS7341_ASTEP_config(999);
+	AS7341_AGAIN_config(6);
+
+
+	HAL_TIM_Base_Start_IT(&htim16);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  HAL_GPIO_TogglePin(SS1_GPIO_Port, SS1_Pin);
-	  HAL_GPIO_TogglePin(STATUS_LED_GPIO_Port, STATUS_LED_Pin);
-	  HAL_GPIO_TogglePin(READY_LED_GPIO_Port, READY_LED_Pin);
-	  HAL_Delay(5000);
+	  //HAL_GPIO_TogglePin(SS1_GPIO_Port, SS1_Pin);
+	  //HAL_GPIO_TogglePin(STATUS_LED_GPIO_Port, STATUS_LED_Pin);
+	 // HAL_GPIO_TogglePin(READY_LED_GPIO_Port, READY_LED_Pin);
+	 // HAL_Delay(5000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -231,7 +244,7 @@ static void MX_SPI2_Init(void)
   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi2.Init.NSS = SPI_NSS_SOFT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -296,13 +309,19 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, RESET_GPS_Pin|LORA_LC3_Pin|LORA_LC1_Pin|RESET_n_MUX_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(RESET_GPS_GPIO_Port, RESET_GPS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, SD_LC_Pin|POWER_SW_Pin|SS1_Pin|SS2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LoRa_LC2_Pin|READY_LED_Pin|STATUS_LED_Pin|SS4_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LoRa_LC2_GPIO_Port, LoRa_LC2_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, READY_LED_Pin|STATUS_LED_Pin|LORA_NSS_Pin|SS4_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, LORA_LC3_Pin|LORA_LC1_Pin|RESET_n_MUX_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : ADC_3V3_Pin ADC_BATTERIE_Pin */
   GPIO_InitStruct.Pin = ADC_3V3_Pin|ADC_BATTERIE_Pin;
@@ -332,8 +351,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : RESET_GPS_Pin LORA_LC3_Pin LORA_LC1_Pin RESET_n_MUX_Pin */
-  GPIO_InitStruct.Pin = RESET_GPS_Pin|LORA_LC3_Pin|LORA_LC1_Pin|RESET_n_MUX_Pin;
+  /*Configure GPIO pins : RESET_GPS_Pin RESET_n_MUX_Pin */
+  GPIO_InitStruct.Pin = RESET_GPS_Pin|RESET_n_MUX_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -360,12 +379,26 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LoRa_LC2_Pin READY_LED_Pin STATUS_LED_Pin SS4_Pin */
-  GPIO_InitStruct.Pin = LoRa_LC2_Pin|READY_LED_Pin|STATUS_LED_Pin|SS4_Pin;
+  /*Configure GPIO pin : LoRa_LC2_Pin */
+  GPIO_InitStruct.Pin = LoRa_LC2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(LoRa_LC2_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : READY_LED_Pin STATUS_LED_Pin LORA_NSS_Pin SS4_Pin */
+  GPIO_InitStruct.Pin = READY_LED_Pin|STATUS_LED_Pin|LORA_NSS_Pin|SS4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LORA_LC3_Pin LORA_LC1_Pin */
+  GPIO_InitStruct.Pin = LORA_LC3_Pin|LORA_LC1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : INT_SS2_Pin */
   GPIO_InitStruct.Pin = INT_SS2_Pin;
@@ -387,6 +420,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
 	if (htim == &htim16) {
 	    HAL_GPIO_TogglePin(STATUS_LED_GPIO_Port, STATUS_LED_Pin);
 	    Flow();
+
+	    PCA9847_SetChannel(&multiplexer, 3);
+		sModeOneData_t data1;
+		sModeTwoData_t data2;
+		AS7341_startMeasure(eF1F4ClearNIR);
+		data1 = AS7341_ReadSpectralDataOne();
+		AS7341_startMeasure(eF5F8ClearNIR);
+		data2 = AS7341_ReadSpectralDataTwo();
+
 	}
 
 }

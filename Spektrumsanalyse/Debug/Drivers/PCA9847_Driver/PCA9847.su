@@ -1,0 +1,7 @@
+../Drivers/PCA9847_Driver/PCA9847.c:3:9:PCA9847_Initialise	24	static
+../Drivers/PCA9847_Driver/PCA9847.c:20:6:PCA9847_SetChannel	24	static
+../Drivers/PCA9847_Driver/PCA9847.c:54:6:PCA9847_SetNextChannel	24	static
+../Drivers/PCA9847_Driver/PCA9847.c:66:6:PCA9847_SetResetState	24	static
+../Drivers/PCA9847_Driver/PCA9847.c:72:9:PCA9847_CheckChannel	24	static
+../Drivers/PCA9847_Driver/PCA9847.c:104:19:PCA9847_Write	24	static
+../Drivers/PCA9847_Driver/PCA9847.c:109:19:PCA9847_Read	24	static

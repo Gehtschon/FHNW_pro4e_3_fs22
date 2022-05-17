@@ -29,7 +29,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_spi_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h \
- ../Core/Inc/flow.h ../Core/Src/../../Core/Inc/stm32-hal-rfm95/rfm95.h
+ ../Core/Inc/flow.h ../Core/Src/../../Core/Inc/stm32-hal-rfm95/rfm95.h \
+ ../Core/Src/../../Drivers/PCA9847_Driver/PCA9847.h \
+ ../Core/Src/../../Drivers/AS7341_Driver/Waveshare_AS7341.h \
+ ../Core/Src/../../Drivers/AS7341_Driver/DEV_Config.h
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
@@ -63,3 +66,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h:
 ../Core/Inc/flow.h:
 ../Core/Src/../../Core/Inc/stm32-hal-rfm95/rfm95.h:
+../Core/Src/../../Drivers/PCA9847_Driver/PCA9847.h:
+../Core/Src/../../Drivers/AS7341_Driver/Waveshare_AS7341.h:
+../Core/Src/../../Drivers/AS7341_Driver/DEV_Config.h:

@@ -1,0 +1,16 @@
+13:35:21 **** Build of configuration Debug for project LoRa-Module_RFM95_OLD_GIT ****
+make -j8 all 
+arm-none-eabi-g++ -o "LoRa-Module_RFM95_OLD_GIT.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Testsoftware\LoRa-Module_RFM95_OLD_GIT\STM32L452RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LoRa-Module_RFM95_OLD_GIT.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: LoRa-Module_RFM95_OLD_GIT.elf
+ 
+arm-none-eabi-size   LoRa-Module_RFM95_OLD_GIT.elf 
+arm-none-eabi-objdump -h -S  LoRa-Module_RFM95_OLD_GIT.elf  > "LoRa-Module_RFM95_OLD_GIT.list"
+   text	   data	    bss	    dec	    hex	filename
+  27900	    376	   2008	  30284	   764c	LoRa-Module_RFM95_OLD_GIT.elf
+Finished building: default.size.stdout
+ 
+Finished building: LoRa-Module_RFM95_OLD_GIT.list
+ 
+
+13:35:22 Build Finished. 0 errors, 0 warnings. (took 1s.509ms)
+

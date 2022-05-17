@@ -64,10 +64,10 @@
 
 class MS5607 {
 public:
-	MS5607();
-	MS5607(uint8_t address);
-	bool begin();
-	void setOSR(uint16_t OSR_SET);
+	 MS5607();
+	 MS5607(uint8_t address);
+	bool setup(I2C_HandleTypeDef *i2cHandle);
+	bool setOSR(uint16_t OSR_SET);
 	float getTemperature(void);
 	float getPressure(void);
 	bool readRawData(void);
@@ -85,6 +85,7 @@ uint16_t C1,C2,C3,C4,C5,C6; // see datasheet page 8
 uint32_t Digital_Pressure,Digital_Temperature; // see datasheet page 8
 int32_t dt, TEMP, P; // see datasheet page 8
 int64_t OFF, SENS; // see datasheet page 8
+I2C_HandleTypeDef *i2cHandle;
 
 
 
