@@ -133,6 +133,8 @@ int main(void) {
 	int16_t angle;
 	float_t xy_factor = 0.035;
 	float_t z_factor = 0.076;
+	int8_t mag_offset_x = 20;
+	int8_t mag_offset_y = -20;
 
 	/* USER CODE END 2 */
 
@@ -164,9 +166,11 @@ int main(void) {
 		// read magnetometer data:
 		bmx160_mag_read_data(&bmx160dev, &mag_data_x_raw, &mag_data_y_raw,
 				&mag_data_z_raw);
-		mag_data_x = (int16_t) ((int16_t)mag_data_x_raw * xy_factor);
-		mag_data_y = (int16_t) ((int16_t)mag_data_y_raw * xy_factor);
-		mag_data_z = (int16_t) ((int16_t)mag_data_z_raw * z_factor);
+		mag_data_x = (int16_t) (((int16_t) mag_data_x_raw * xy_factor)
+				+ mag_offset_x);
+		mag_data_y = (int16_t) (((int16_t) mag_data_y_raw * xy_factor)
+				+ mag_offset_y);
+		mag_data_z = (int16_t) ((int16_t) mag_data_z_raw * z_factor);
 
 		mag_tot = sqrt(
 				(mag_data_x * mag_data_x) + (mag_data_y * mag_data_y)
@@ -180,7 +184,6 @@ int main(void) {
 
 		// weiter mit Aufruf acc_read_data
 		// rf, 11.05.2022 17:24
-
 
 		// Magnetometer hat wahrscheinlich einen Offset, gem. DS bis zu +/-40uT
 		//-> Kalibrierung notwendig
