@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "fatfs.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -25,6 +26,9 @@
 #include "../../Core/Inc/stm32-hal-rfm95/rfm95.h"
 #include "../../Drivers/PCA9847_Driver/PCA9847.h"
 #include "../../Drivers/AS7341_Driver/Waveshare_AS7341.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdarg.h> //for va_list var arg functions
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,6 +48,7 @@
 /* Private variables ---------------------------------------------------------*/
  I2C_HandleTypeDef hi2c1;
 
+SPI_HandleTypeDef hspi1;
 SPI_HandleTypeDef hspi2;
 
 TIM_HandleTypeDef htim16;
@@ -59,13 +64,24 @@ static void MX_GPIO_Init(void);
 static void MX_SPI2_Init(void);
 static void MX_TIM16_Init(void);
 static void MX_I2C1_Init(void);
+static void MX_SPI1_Init(void);
 /* USER CODE BEGIN PFP */
-
+void myprintf(const char *fmt, ...);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void myprintf(const char *fmt, ...) {
+  static char buffer[256];
+  va_list args;
+  va_start(args, fmt);
+  vsnprintf(buffer, sizeof(buffer), fmt, args);
+  va_end(args);
 
+  int len = strlen(buffer);
+  //HAL_UART_Transmit(&huart2, (uint8_t*)buffer, len, -1);
+
+}
 /* USER CODE END 0 */
 
 /**
@@ -99,6 +115,8 @@ int main(void)
   MX_SPI2_Init();
   MX_TIM16_Init();
   MX_I2C1_Init();
+  MX_SPI1_Init();
+  MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
   FlowInit();
 
@@ -112,6 +130,87 @@ int main(void)
 
 
 	HAL_TIM_Base_Start_IT(&htim16);
+
+
+	  myprintf("\r\n~ SD card demo by kiwih ~\r\n\r\n");
+
+	  HAL_Delay(1000); //a short delay is important to let the SD card settle
+
+	  //some variables for FatFs
+	  FATFS FatFs; 	//Fatfs handle
+	  FIL fil; 		//File handle
+	  FRESULT fres; //Result after operations
+
+	  //Open the file system
+	  fres = f_mount(&FatFs, "", 1); //1=mount now
+	  if (fres != FR_OK) {
+		myprintf("f_mount error (%i)\r\n", fres);
+		while(1);
+	  }
+
+	  //Let's get some statistics from the SD card
+	  DWORD free_clusters, free_sectors, total_sectors;
+
+	  FATFS* getFreeFs;
+
+	  fres = f_getfree("", &free_clusters, &getFreeFs);
+	  if (fres != FR_OK) {
+		myprintf("f_getfree error (%i)\r\n", fres);
+		while(1);
+	  }
+
+	  //Formula comes from ChaN's documentation
+	  total_sectors = (getFreeFs->n_fatent - 2) * getFreeFs->csize;
+	  free_sectors = free_clusters * getFreeFs->csize;
+
+	  myprintf("SD card stats:\r\n%10lu KiB total drive space.\r\n%10lu KiB available.\r\n", total_sectors / 2, free_sectors / 2);
+
+	  //Now let's try to open file "test.txt"
+	  fres = f_open(&fil, "test.txt", FA_READ);
+	  if (fres != FR_OK) {
+		myprintf("f_open error (%i)\r\n");
+		while(1);
+	  }
+	  myprintf("I was able to open 'test.txt' for reading!\r\n");
+
+	  //Read 30 bytes from "test.txt" on the SD card
+	  BYTE readBuf[30];
+
+	  //We can either use f_read OR f_gets to get data out of files
+	  //f_gets is a wrapper on f_read that does some string formatting for us
+	  TCHAR* rres = f_gets((TCHAR*)readBuf, 30, &fil);
+	  if(rres != 0) {
+		myprintf("Read string from 'test.txt' contents: %s\r\n", readBuf);
+	  } else {
+		myprintf("f_gets error (%i)\r\n", fres);
+	  }
+
+	  //Be a tidy kiwi - don't forget to close your file!
+	  f_close(&fil);
+
+	  //Now let's try and write a file "write.txt"
+	  fres = f_open(&fil, "write.txt", FA_WRITE | FA_OPEN_ALWAYS | FA_CREATE_ALWAYS);
+	  if(fres == FR_OK) {
+		myprintf("I was able to open 'write.txt' for writing\r\n");
+	  } else {
+		myprintf("f_open error (%i)\r\n", fres);
+	  }
+
+	  //Copy in a string
+	  strncpy((char*)readBuf, "a new file is made!", 19);
+	  UINT bytesWrote;
+	  fres = f_write(&fil, readBuf, 19, &bytesWrote);
+	  if(fres == FR_OK) {
+		myprintf("Wrote %i bytes to 'write.txt'!\r\n", bytesWrote);
+	  } else {
+		myprintf("f_write error (%i)\r\n");
+	  }
+
+	  //Be a tidy kiwi - don't forget to close your file!
+	  f_close(&fil);
+
+	  //We're done, so de-mount the drive
+	  f_mount(NULL, "", 0);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -222,6 +321,46 @@ static void MX_I2C1_Init(void)
 }
 
 /**
+  * @brief SPI1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SPI1_Init(void)
+{
+
+  /* USER CODE BEGIN SPI1_Init 0 */
+
+  /* USER CODE END SPI1_Init 0 */
+
+  /* USER CODE BEGIN SPI1_Init 1 */
+
+  /* USER CODE END SPI1_Init 1 */
+  /* SPI1 parameter configuration*/
+  hspi1.Instance = SPI1;
+  hspi1.Init.Mode = SPI_MODE_MASTER;
+  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.NSS = SPI_NSS_SOFT;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi1.Init.CRCPolynomial = 7;
+  hspi1.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
+  hspi1.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SPI1_Init 2 */
+
+  /* USER CODE END SPI1_Init 2 */
+
+}
+
+/**
   * @brief SPI2 Initialization Function
   * @param None
   * @retval None
@@ -309,10 +448,13 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(RESET_GPS_GPIO_Port, RESET_GPS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_3|SD_LC_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, SD_LC_Pin|POWER_SW_Pin|SS1_Pin|SS2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, RESET_GPS_Pin|SD_NSS_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, POWER_SW_Pin|SS1_Pin|SS2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LoRa_LC2_GPIO_Port, LoRa_LC2_Pin, GPIO_PIN_SET);
@@ -329,12 +471,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : GPS_LC_Pin LORA_DIO0_Pin LORA_DIO1_Pin LORA_DIO2_Pin
-                           LORA_DIO3_Pin INT_SS1_Pin */
-  GPIO_InitStruct.Pin = GPS_LC_Pin|LORA_DIO0_Pin|LORA_DIO1_Pin|LORA_DIO2_Pin
-                          |LORA_DIO3_Pin|INT_SS1_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  /*Configure GPIO pins : PC3 SD_LC_Pin POWER_SW_Pin SS1_Pin
+                           SS2_Pin */
+  GPIO_InitStruct.Pin = GPIO_PIN_3|SD_LC_Pin|POWER_SW_Pin|SS1_Pin
+                          |SS2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PA0 PA1 */
@@ -351,27 +494,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : RESET_GPS_Pin RESET_n_MUX_Pin */
-  GPIO_InitStruct.Pin = RESET_GPS_Pin|RESET_n_MUX_Pin;
+  /*Configure GPIO pins : RESET_GPS_Pin SD_NSS_Pin RESET_n_MUX_Pin */
+  GPIO_InitStruct.Pin = RESET_GPS_Pin|SD_NSS_Pin|RESET_n_MUX_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PA4 PA5 PA6 PA7 */
-  GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : SD_LC_Pin POWER_SW_Pin SS1_Pin SS2_Pin */
-  GPIO_InitStruct.Pin = SD_LC_Pin|POWER_SW_Pin|SS1_Pin|SS2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : INT1_AS_Pin INT2_AS_Pin INT_SS3_Pin INT_SS4_Pin */
   GPIO_InitStruct.Pin = INT1_AS_Pin|INT2_AS_Pin|INT_SS3_Pin|INT_SS4_Pin;
@@ -392,6 +520,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LORA_DIO0_Pin LORA_DIO1_Pin LORA_DIO2_Pin LORA_DIO3_Pin
+                           INT_SS1_Pin */
+  GPIO_InitStruct.Pin = LORA_DIO0_Pin|LORA_DIO1_Pin|LORA_DIO2_Pin|LORA_DIO3_Pin
+                          |INT_SS1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LORA_LC3_Pin LORA_LC1_Pin */
   GPIO_InitStruct.Pin = LORA_LC3_Pin|LORA_LC1_Pin;

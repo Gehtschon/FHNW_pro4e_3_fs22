@@ -1,10 +1,10 @@
-15:57:59 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+21:06:42 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
 arm-none-eabi-size   Spektrumsanalyse.elf 
    text	   data	    bss	    dec	    hex	filename
-  31588	    484	   1916	  33988	   84c4	Spektrumsanalyse.elf
+  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  
 
-15:58:00 Build Finished. 0 errors, 0 warnings. (took 523ms)
+21:06:42 Build Finished. 0 errors, 0 warnings. (took 673ms)
 

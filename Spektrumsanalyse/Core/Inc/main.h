@@ -61,12 +61,12 @@ void Error_Handler(void);
 #define ADC_3V3_GPIO_Port GPIOC
 #define ADC_BATTERIE_Pin GPIO_PIN_1
 #define ADC_BATTERIE_GPIO_Port GPIOC
-#define GPS_LC_Pin GPIO_PIN_3
-#define GPS_LC_GPIO_Port GPIOC
 #define INT_GPS_Pin GPIO_PIN_2
 #define INT_GPS_GPIO_Port GPIOA
 #define RESET_GPS_Pin GPIO_PIN_3
 #define RESET_GPS_GPIO_Port GPIOA
+#define SD_NSS_Pin GPIO_PIN_4
+#define SD_NSS_GPIO_Port GPIOA
 #define SD_LC_Pin GPIO_PIN_4
 #define SD_LC_GPIO_Port GPIOC
 #define POWER_SW_Pin GPIO_PIN_5
@@ -132,7 +132,7 @@ void Error_Handler(void);
 #define INT_SS4_Pin GPIO_PIN_7
 #define INT_SS4_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
-
+#define SD_SPI_HANDLE hspi1
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

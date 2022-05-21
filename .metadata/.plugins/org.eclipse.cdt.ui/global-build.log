@@ -1,21 +1,70 @@
-15:57:27 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+19:41:55 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
 arm-none-eabi-size   Spektrumsanalyse.elf 
    text	   data	    bss	    dec	    hex	filename
-  31588	    484	   1916	  33988	   84c4	Spektrumsanalyse.elf
+  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  
-15:57:36 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+19:41:58 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
 arm-none-eabi-size   Spektrumsanalyse.elf 
    text	   data	    bss	    dec	    hex	filename
-  31588	    484	   1916	  33988	   84c4	Spektrumsanalyse.elf
+  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  
-15:57:59 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+20:21:48 **** Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
 arm-none-eabi-size   Spektrumsanalyse.elf 
    text	   data	    bss	    dec	    hex	filename
-  31588	    484	   1916	  33988	   84c4	Spektrumsanalyse.elf
+  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
+Finished building: default.size.stdout
+ 
+20:22:10 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+make -j8 all 
+arm-none-eabi-size   Spektrumsanalyse.elf 
+   text	   data	    bss	    dec	    hex	filename
+  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
+Finished building: default.size.stdout
+ 
+20:22:31 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+make -j8 all 
+arm-none-eabi-size   Spektrumsanalyse.elf 
+   text	   data	    bss	    dec	    hex	filename
+  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
+Finished building: default.size.stdout
+ 
+20:22:48 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+make -j8 all 
+arm-none-eabi-size   Spektrumsanalyse.elf 
+   text	   data	    bss	    dec	    hex	filename
+  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
+Finished building: default.size.stdout
+ 
+20:50:52 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+make -j8 all 
+arm-none-eabi-size   Spektrumsanalyse.elf 
+   text	   data	    bss	    dec	    hex	filename
+  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
+Finished building: default.size.stdout
+ 
+20:57:28 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+make -j8 all 
+arm-none-eabi-size   Spektrumsanalyse.elf 
+   text	   data	    bss	    dec	    hex	filename
+  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
+Finished building: default.size.stdout
+ 
+20:58:41 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+make -j8 all 
+arm-none-eabi-size   Spektrumsanalyse.elf 
+   text	   data	    bss	    dec	    hex	filename
+  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
+Finished building: default.size.stdout
+ 
+21:06:42 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+make -j8 all 
+arm-none-eabi-size   Spektrumsanalyse.elf 
+   text	   data	    bss	    dec	    hex	filename
+  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  
