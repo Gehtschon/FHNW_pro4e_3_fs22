@@ -341,6 +341,13 @@ HAL_StatusTypeDef LSM303AGR_ReadAcceleration(LSM303AGR *dev) {
 	/* Store number of transaction errors (gets returned at the end of the function) */
 	uint8_t errNum = 0;
 
+	/*
+	 * Temp. read ctrl register
+	 */
+	uint8_t reg_data;
+	LSM303AGR_ACC_ReadRegister(dev, LSM303AGR_STATUS_REG_A, &reg_data);
+	printf("\nSTATUS_REG_A: %X\r", reg_data);
+
 	/* Read raw values from Resgister (x, y, z -> 16 bits each) */
 	uint8_t regDataXL, regDataXH, regDataYL, regDataYH, regDataZL, regDataZH;
 	errNum += (LSM303AGR_ACC_ReadRegister(dev, LSM303AGR_OUT_X_L_A, &regDataXL)
@@ -355,6 +362,13 @@ HAL_StatusTypeDef LSM303AGR_ReadAcceleration(LSM303AGR *dev) {
 			!= HAL_OK);
 	errNum += (LSM303AGR_ACC_ReadRegister(dev, LSM303AGR_OUT_Z_H_A, &regDataZH)
 			!= HAL_OK);
+
+	/*
+	 * Temp. read ctrl register
+	 */
+	reg_data = 0;
+	LSM303AGR_ACC_ReadRegister(dev, LSM303AGR_STATUS_REG_A, &reg_data);
+	printf("\nSTATUS_REG_A: %X\r", reg_data);
 
 	/* Combining 2x8bit unsigned to 12bit signed */
 	int16_t accRawSigned[3];
@@ -384,6 +398,7 @@ HAL_StatusTypeDef LSM303AGR_ReadAcceleration(LSM303AGR *dev) {
 	dev->acc[1] = accRawSigned[1] * 0.01172;
 	dev->acc[2] = accRawSigned[2] * 0.01172;
 
+
 	/* Calculating Pitch/Roll */
 	dev->pitch = 180 * atan(dev->acc[0] / sqrt(dev->acc[1] * dev->acc[1] + dev->acc[2] * dev->acc[2]))/M_PI;
 	dev->roll = 180	* atan(dev->acc[1] / sqrt(dev->acc[0] * dev->acc[0] + dev->acc[2] * dev->acc[2]))/M_PI;
@@ -392,6 +407,13 @@ HAL_StatusTypeDef LSM303AGR_ReadAcceleration(LSM303AGR *dev) {
 }
 
 HAL_StatusTypeDef LSM303AGR_ReadMagnetometer(LSM303AGR *dev) {
+	/*
+	 * Temp. read ctrl register
+	 */
+	uint8_t reg_data;
+	LSM303AGR_MAG_ReadRegister(dev, LSM303AGR_CFG_REG_B_M, &reg_data);
+	printf("\nCFG_REG_B_M: %X\r", reg_data);
+
 
 	/* Read raw values from Resgister (x, y, z -> 16 bits each) */
 	uint8_t regData[6];

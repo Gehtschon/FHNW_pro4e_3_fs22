@@ -120,8 +120,10 @@ int main(void) {
 
 		errorcode = LSM303AGR_ReadAcceleration(&lsm303agr);
 		if (errorcode == 0) {
-			printf("\nAccelerometer (X,Y,Z): %3.2f, %3.2f, %3.2f\r",
+			printf("\nAccelerometer (X,Y,Z): %4.2f, %4.2f, %4.2f\r",
 					lsm303agr.acc[1], lsm303agr.acc[2], lsm303agr.acc[3]);
+			printf("\nPitch: %3.2f\r", lsm303agr.pitch);
+			printf("\nRoll: %3.2f\r", lsm303agr.roll);
 		} else {
 			printf("Errorcode: %d", errorcode);
 
