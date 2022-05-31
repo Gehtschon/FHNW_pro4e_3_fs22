@@ -17,13 +17,11 @@
  * DEFINES
  */
 
-#define LSM303AGR_MAG_I2C_ADDR 	(0x1E << 1) /* Adresslength is 7 bit (1 bit for read/write) */
+#define LSM303AGR_MAG_I2C_ADDR 	(0x1E << 1) /* Adresslenght is 7 bit (1 bit for read/write) */
 #define LSM303AGR_ACC_I2C_ADDR 	(0x19 << 1)
 
 #define LSM303AGR_MAG_WHO_AM_I 	(0x40) /* Who am I. For communication test at startup.*/
 #define LSM303AGR_ACC_WHO_AM_I 	(0x33) /* Who am I. For communication test at startup.*/
-
-#define LSM303AGR_ACC_ZYXDA_RDY	(0x04) /* ZYXDA new data available (bit 3 Reg. 27h)*/
 
 /*
  * REGISTERS
@@ -122,7 +120,7 @@ typedef struct {
 	float mag[3];
 	int16_t mag_raw[3];
 
-	/* Magnetometer allignement */
+	/* Magnetometer alligement */
 	float alignment;
 
 	/* Temperature */
@@ -134,8 +132,6 @@ typedef struct {
 */
 
 uint8_t LSM303AGR_Initialise(LSM303AGR *dev, I2C_HandleTypeDef *i2cHandle); /* the return is for error reasons */
-uint8_t LSM303AGR_MAG_Selftest(LSM303AGR *dev, I2C_HandleTypeDef *i2cHandle); /* the return is for error reasons */
-
 
 /*
  * DATA ACQUISITION

@@ -111,8 +111,9 @@ int main(void) {
 		errorcode = LSM303AGR_ReadMagnetometer(&lsm303agr);
 		if (errorcode == 0) {
 			printf("\nMagnetometer (X,Y,Z): %3.2f, %3.2f, %3.2f\r",
-					lsm303agr.mag[1], lsm303agr.mag[2], lsm303agr.mag[3]);
+					lsm303agr.mag[0], lsm303agr.mag[1], lsm303agr.mag[2]);
 			printf("\nAlignment: %3.1f\r", lsm303agr.alignment);
+			printf("\nTotal B-Field: %3.2f Gauss\r",sqrt(lsm303agr.mag[0]*lsm303agr.mag[0]+lsm303agr.mag[1]*lsm303agr.mag[1]+lsm303agr.mag[2]*lsm303agr.mag[2]));
 		} else {
 			printf("Errorcode: %d", errorcode);
 
@@ -121,9 +122,9 @@ int main(void) {
 		errorcode = LSM303AGR_ReadAcceleration(&lsm303agr);
 		if (errorcode == 0) {
 			printf("\nAccelerometer (X,Y,Z): %4.2f, %4.2f, %4.2f\r",
-					lsm303agr.acc[1], lsm303agr.acc[2], lsm303agr.acc[3]);
-			printf("\nPitch: %3.2f\r", lsm303agr.pitch);
-			printf("\nRoll: %3.2f\r", lsm303agr.roll);
+					lsm303agr.acc[0], lsm303agr.acc[1], lsm303agr.acc[2]);
+			printf("\nPitch: %3.2f, Roll: %3.2f\r", lsm303agr.pitch, lsm303agr.roll);
+			printf("\nTotal Acc: %3.2f g\r",sqrt(lsm303agr.acc[0]*lsm303agr.acc[0]+lsm303agr.acc[1]*lsm303agr.acc[1]+lsm303agr.acc[2]*lsm303agr.acc[2]));
 		} else {
 			printf("Errorcode: %d", errorcode);
 
