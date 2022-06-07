@@ -64,14 +64,15 @@ typedef struct {
 #define RFM95_REGISTER_INVERT_IQ_2_ON                           0x19
 #define RFM95_REGISTER_INVERT_IQ_2_OFF                          0x1D
 
-static const unsigned char eu863_lora_frequency[8][3] = { { 0xD9, 0x06, 0x8B }, // Channel 0 868.100 MHz / 61.035 Hz = 14222987 = 0xD9068B
+static const unsigned char eu863_lora_frequency[9][3] = { { 0xD9, 0x06, 0x8B }, // Channel 0 868.100 MHz / 61.035 Hz = 14222987 = 0xD9068B
 		{ 0xD9, 0x13, 0x58 }, // Channel 1 868.300 MHz / 61.035 Hz = 14226264 = 0xD91358
 		{ 0xD9, 0x20, 0x24 }, // Channel 2 868.500 MHz / 61.035 Hz = 14229540 = 0xD92024
 		{ 0xD8, 0xC6, 0x8B }, // Channel 3 867.100 MHz / 61.035 Hz = 14206603 = 0xD8C68B
 		{ 0xD8, 0xD3, 0x58 }, // Channel 4 867.300 MHz / 61.035 Hz = 14209880 = 0xD8D358
 		{ 0xD8, 0xE0, 0x24 }, // Channel 5 867.500 MHz / 61.035 Hz = 14213156 = 0xD8E024
 		{ 0xD8, 0xEC, 0xF1 }, // Channel 6 867.700 MHz / 61.035 Hz = 14216433 = 0xD8ECF1
-		{ 0xD8, 0xF9, 0xBE } // Channel 7 867.900 MHz / 61.035 Hz = 14219710 = 0xD8F9BE
+		{ 0xD8, 0xF9, 0xBE }, // Channel 7 867.900 MHz / 61.035 Hz = 14219710 = 0xD8F9BE
+		{ 0xD8, 0xB9, 0xBD }  // Channel 8 866.900 MHz / 61.035 Hz = 14203325 = 0xD8B9BD
 };
 
 // Variables for the encryption library.
@@ -225,7 +226,7 @@ bool rfm95_set_power(rfm95_handle_t *handle, int8_t power) {
 
 static bool rfm95_send_package(rfm95_handle_t *handle, uint8_t *data,
 		size_t length, uint8_t channel) {
-	assert(channel < 8);
+	assert(channel < 9);
 
 	uint32_t tick_start;
 
@@ -296,56 +297,68 @@ static bool rfm95_send_package(rfm95_handle_t *handle, uint8_t *data,
 }
 
 bool rfm95_send_data_groundstation(rfm95_handle_t *handle) {
-	//size_t length = LENGHT_GROUNDSTATION;
-//	uint8_t ident = IDENT;
-//	uint8_t rfm_data[LENGHT_GROUNDSTATION];
-//	uint8_t rfm_package_length = LENGHT_GROUNDSTATION;
+
+	// Set TTN sync word 0x12.
+	if (!rfm95_write(handle, RFM95_REGISTER_SYNC_WORD, 0x12))
+		return false;
+
+	size_t length = LENGHT_GROUNDSTATION;
+	uint8_t ident = IDENT;
+	uint8_t rfm_data[LENGHT_GROUNDSTATION];
+	uint8_t rfm_package_length = LENGHT_GROUNDSTATION;
 	unsigned long latitude = handle->latitude;
 	unsigned long longitude = handle->longitude;
 	unsigned altitude = handle->altitude;
 
-	// set identifier to 1 for bits
-//	rfm_data[0] = ((ident << 4) & 0xf0);
-//	// set the next for bits with the orientation
-//	if (handle->latitude_or[0] == 'N' & handle->longitude_or[0] == 'E') {
-//		rfm_data[0] = (rfm_data[0] | 0x01);
-//	} else if (handle->latitude_or[0] == 'N' & handle->longitude_or[0] == 'W') {
-//		rfm_data[0] = (rfm_data[0] | 0x02);
-//	} else if (handle->latitude_or[0] == 'S' & handle->longitude_or[0] == 'E') {
-//		rfm_data[0] = (rfm_data[0] | 0x03);
-//	} else if (handle->latitude_or[0] == 'S' & handle->longitude_or[0] == 'W') {
-//		rfm_data[0] = (rfm_data[0] | 0x04);
-//	} else {
-//		rfm_data[0] = (rfm_data[0] | 0x00);
-//	}
-//
-//	// set latitude
-//	for (int i = 0; i < 4; i++) {
-//		rfm_data[4 - i] = ((latitude >> (i * 8)) & 0xFF);
-//	}
-//	for (int i = 0; i < 4; i++) {
-//		rfm_data[8 - i] = ((longitude >> (i * 8)) & 0xFF);
-//	}
-//
-//	for (int i = 0; i < 2; i++) {
-//		rfm_data[10 - i] = ((altitude >> (i * 8)) & 0xFF);
-//	}
 
-		uint8_t rfm_data[3];
-		uint8_t rfm_package_length = 3;
-		rfm_data[0] = 0x53;
-		rfm_data[1] = 0x4f;
-		rfm_data[2] = 0x53;
+
+	// set identifier to 1 for bits
+	rfm_data[0] = ((ident << 4) & 0xf0);
+	// set the next for bits with the orientation
+	if (handle->latitude_or[0] == 'N' & handle->longitude_or[0] == 'E') {
+		rfm_data[0] = (rfm_data[0] | 0x01);
+	} else if (handle->latitude_or[0] == 'N' & handle->longitude_or[0] == 'W') {
+		rfm_data[0] = (rfm_data[0] | 0x02);
+	} else if (handle->latitude_or[0] == 'S' & handle->longitude_or[0] == 'E') {
+		rfm_data[0] = (rfm_data[0] | 0x03);
+	} else if (handle->latitude_or[0] == 'S' & handle->longitude_or[0] == 'W') {
+		rfm_data[0] = (rfm_data[0] | 0x04);
+	} else {
+		rfm_data[0] = (rfm_data[0] | 0x00);
+	}
+
+	// set latitude
+	for (int i = 0; i < 4; i++) {
+		rfm_data[4 - i] = ((latitude >> (i * 8)) & 0xFF);
+	}
+	for (int i = 0; i < 4; i++) {
+		rfm_data[8 - i] = ((longitude >> (i * 8)) & 0xFF);
+	}
+
+	for (int i = 0; i < 2; i++) {
+		rfm_data[10 - i] = ((altitude >> (i * 8)) & 0xFF);
+	}
+
+//		uint8_t rfm_data[3];
+//		uint8_t rfm_package_length = 3;
+//		rfm_data[0] = 0x53;
+//		rfm_data[1] = 0x4f;
+//		rfm_data[2] = 0x53;
 
 
 	if (!rfm95_send_package(handle, rfm_data, rfm_package_length,
-			0)) {
+			8)) {
 		return false;
 	}
 	return true;
 }
 
 bool rfm95_send_data(rfm95_handle_t *handle, const uint8_t *data, size_t length) {
+
+	// Set TTN sync word 0x34.
+	if (!rfm95_write(handle, RFM95_REGISTER_SYNC_WORD, 0x34))
+		return false;
+
 	// 64 bytes is maximum size of FIFO
 	assert(length + 4 + 9 <= 64);
 

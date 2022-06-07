@@ -2,7 +2,7 @@
 
 #include <stdbool.h>
 #include <string.h>
-
+#include "../../Drivers/AS7341_Driver/Waveshare_AS7341.h"
 
 #if (defined STM32L011xx) || (defined STM32L021xx) || \
 	(defined STM32L031xx) || (defined STM32L041xx) || \
@@ -40,12 +40,13 @@
 #endif
 
 #ifndef RFM95_SEND_TIMEOUT
-#define RFM95_SEND_TIMEOUT 1000
+#define RFM95_SEND_TIMEOUT 20
 #endif
 
-typedef bool (*rfm95_reload_frame_counter_t)(uint16_t *tx_counter, uint16_t *rx_counter);
-typedef void (*rfm95_save_frame_counter_t)(uint16_t tx_counter, uint16_t rx_counter);
-
+typedef bool (*rfm95_reload_frame_counter_t)(uint16_t *tx_counter,
+		uint16_t *rx_counter);
+typedef void (*rfm95_save_frame_counter_t)(uint16_t tx_counter,
+		uint16_t rx_counter);
 
 // Groundstation defines
 #ifndef LENGHT_GROUNDSTATION
@@ -147,8 +148,7 @@ typedef struct {
 	/**
 	 * The current longitude.
 	 */
-	unsigned long longitude;
-
+	uint32_t longitude;
 
 	/**
 	 * The current longitude orientation.
@@ -160,12 +160,10 @@ typedef struct {
 	 */
 	unsigned long latitude;
 
-
 	/**
 	 * The current latitude orientation.
 	 */
 	char latitude_or[1];
-
 
 	/**
 	 * The current altitude.
@@ -177,6 +175,42 @@ typedef struct {
 	 */
 	uint8_t indent[1];
 
+	/**
+	 * The first spectral data
+	 */
+	sModeOneData_t spectraldata_1[4];
+
+	/**
+	 * The first spectral data
+	 */
+	sModeTwoData_t spectraldata_2[4];
+
+
+	/**
+	 * temp innen
+	 */
+	float tem_innen;
+
+	/**
+	 * temp aussen
+	 */
+	float tem_aussen;
+
+
+	/**
+	 * rph innne
+	 */
+	float rph_innen;
+
+	/**
+	 * rph aussen
+	 */
+	float rph_aussen;
+
+	/**
+	 * battery voltage
+	 */
+	uint16_t battery_voltage;
 
 } rfm95_handle_t;
 
@@ -184,5 +218,6 @@ bool rfm95_init(rfm95_handle_t *handle);
 
 bool rfm95_set_power(rfm95_handle_t *handle, int8_t power);
 
-bool rfm95_send_data(rfm95_handle_t *handle, const uint8_t *data, size_t length);
+bool rfm95_send_data(rfm95_handle_t *handle, const uint8_t *data,
+		size_t length);
 bool rfm95_send_data_groundstation(rfm95_handle_t *handle);

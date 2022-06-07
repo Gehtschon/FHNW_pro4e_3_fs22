@@ -14,7 +14,9 @@ RM := rm -rf
 -include FATFS/Target/subdir.mk
 -include FATFS/App/subdir.mk
 -include Drivers/STM32L4xx_HAL_Driver/Src/subdir.mk
+-include Drivers/SHT41/subdir.mk
 -include Drivers/PCA9847_Driver/subdir.mk
+-include Drivers/MS5607_Driver_C/subdir.mk
 -include Drivers/AS7341_Driver/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
@@ -84,7 +86,7 @@ main-build: Spektrumsanalyse.elf secondary-outputs
 
 # Tool invocations
 Spektrumsanalyse.elf Spektrumsanalyse.map: $(OBJS) $(USER_OBJS) C:\Users\fabia\Google\ Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\STM32L471RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "Spektrumsanalyse.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\STM32L471RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Spektrumsanalyse.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+	arm-none-eabi-g++ -o "Spektrumsanalyse.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\STM32L471RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Spektrumsanalyse.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

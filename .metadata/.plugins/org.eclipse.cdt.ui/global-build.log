@@ -1,70 +1,169 @@
-19:41:55 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+15:32:45 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L471xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:81:3: warning: braces around scalar initializer
+   81 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0 };
+      |   ^
+../Core/Src/main.c:81:3: note: (near initialization for 'rfm95_handle.latitude_or[0]')
+../Core/Src/main.c:69:31: warning: missing braces around initializer [-Wmissing-braces]
+   69 | rfm95_handle_t rfm95_handle = { .spi_handle = &hspi2, .nss_port =
+      |                               ^
+......
+   81 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0 };
+      |                            }                             { }
+../Core/Src/main.c: In function 'myprintf':
+../Core/Src/main.c:108:6: warning: unused variable 'len' [-Wunused-variable]
+  108 |  int len = strlen(buffer);
+      |      ^~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:152:2: warning: implicit declaration of function 'Setup_Spectralsensor' [-Wimplicit-function-declaration]
+  152 |  Setup_Spectralsensor();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:227:15: warning: passing argument 1 of 'printf' makes pointer from integer without a cast [-Wint-conversion]
+  227 |     printf(bfr[i]);
+      |            ~~~^~~
+      |               |
+      |               char
+In file included from ../Core/Src/../../Drivers/PCA9847_Driver/PCA9847.h:14,
+                 from ../Core/Src/main.c:27:
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\include\stdio.h:200:13: note: expected 'const char * restrict' but argument is of type 'char'
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+../Core/Src/main.c:300:4: warning: implicit declaration of function 'Read_Spectralsensor' [-Wimplicit-function-declaration]
+  300 |    Read_Spectralsensor(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:301:4: warning: implicit declaration of function 'SHT41_read' [-Wimplicit-function-declaration]
+  301 |    SHT41_read(&temp_innen);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:304:4: warning: implicit declaration of function 'read_temp_innen' [-Wimplicit-function-declaration]
+  304 |    read_temp_innen(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~
+../Core/Src/main.c:305:4: warning: implicit declaration of function 'Write_SD_Card_Spectral' [-Wimplicit-function-declaration]
+  305 |    Write_SD_Card_Spectral(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:215:21: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  215 |   HAL_StatusTypeDef status;
+      |                     ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:697:6: warning: conflicting types for 'Setup_Spectralsensor'
+  697 | void Setup_Spectralsensor(void) {
+      |      ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:152:2: note: previous implicit declaration of 'Setup_Spectralsensor' was here
+  152 |  Setup_Spectralsensor();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:709:6: warning: conflicting types for 'Read_Spectralsensor'
+  709 | void Read_Spectralsensor(rfm95_handle_t *handle) {
+      |      ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:300:4: note: previous implicit declaration of 'Read_Spectralsensor' was here
+  300 |    Read_Spectralsensor(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Read_Spectralsensor':
+../Core/Src/main.c:711:17: warning: unused variable 'data2' [-Wunused-variable]
+  711 |  sModeTwoData_t data2;
+      |                 ^~~~~
+../Core/Src/main.c:710:17: warning: unused variable 'data1' [-Wunused-variable]
+  710 |  sModeOneData_t data1;
+      |                 ^~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:721:6: warning: conflicting types for 'Write_SD_Card_Spectral'
+  721 | void Write_SD_Card_Spectral(rfm95_handle_t *handle) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:305:4: note: previous implicit declaration of 'Write_SD_Card_Spectral' was here
+  305 |    Write_SD_Card_Spectral(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Write_SD_Card':
+../Core/Src/main.c:871:36: warning: format '%d' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  871 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
+      |                                   ~^                       ~~~~~~~~~~~~~~~~~
+      |                                    |                             |
+      |                                    int                           uint32_t {aka long unsigned int}
+      |                                   %ld
+../Core/Src/main.c:871:42: warning: format '%d' expects argument of type 'int', but argument 6 has type 'long unsigned int' [-Wformat=]
+  871 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
+      |                                         ~^
+      |                                          |
+      |                                          int
+      |                                         %ld
+  872 |    handle->longitude_or[0], handle->latitude, handle->latitude_or[0],
+      |                             ~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   long unsigned int
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:883:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  883 | read_temp_innen(rfm95_handle_t *handle) {
+      | ^~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_temp_innen':
+../Core/Src/main.c:895:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
+  895 |  float checksum_rh = value[5];
+      |        ^~~~~~~~~~~
+../Core/Src/main.c:893:8: warning: unused variable 'checksum_t' [-Wunused-variable]
+  893 |  float checksum_t = value[2];
+      |        ^~~~~~~~~~
+../Core/Src/main.c:885:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  885 |  HAL_StatusTypeDef status;
+      |                    ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:908:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  908 | read_temp_aussen(rfm95_handle_t *handle) {
+      | ^~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_temp_aussen':
+../Core/Src/main.c:920:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
+  920 |  float checksum_rh = value[5];
+      |        ^~~~~~~~~~~
+../Core/Src/main.c:918:8: warning: unused variable 'checksum_t' [-Wunused-variable]
+  918 |  float checksum_t = value[2];
+      |        ^~~~~~~~~~
+../Core/Src/main.c:910:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  910 |  HAL_StatusTypeDef status;
+      |                    ^~~~~~
+../Core/Src/main.c: In function 'read_akkuspannung':
+../Core/Src/main.c:934:11: warning: unused variable 'raw' [-Wunused-variable]
+  934 |  uint16_t raw;
+      |           ^~~
+../Core/Src/main.c: In function 'read_temp_innen':
+../Core/Src/main.c:906:1: warning: control reaches end of non-void function [-Wreturn-type]
+  906 | }
+      | ^
+../Core/Src/main.c: In function 'read_temp_aussen':
+../Core/Src/main.c:931:1: warning: control reaches end of non-void function [-Wreturn-type]
+  931 | }
+      | ^
+arm-none-eabi-g++ -o "Spektrumsanalyse.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\STM32L471RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Spektrumsanalyse.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: Spektrumsanalyse.elf
+ 
 arm-none-eabi-size   Spektrumsanalyse.elf 
+arm-none-eabi-objdump -h -S  Spektrumsanalyse.elf  > "Spektrumsanalyse.list"
    text	   data	    bss	    dec	    hex	filename
-  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
+  63392	   1024	   2480	  66896	  10550	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  
-19:41:58 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+Finished building: Spektrumsanalyse.list
+ 
+15:33:13 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
 arm-none-eabi-size   Spektrumsanalyse.elf 
    text	   data	    bss	    dec	    hex	filename
-  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
+  63392	   1024	   2480	  66896	  10550	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  
-20:21:48 **** Build of configuration Debug for project Spektrumsanalyse ****
+15:33:29 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
 arm-none-eabi-size   Spektrumsanalyse.elf 
    text	   data	    bss	    dec	    hex	filename
-  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
+  63392	   1024	   2480	  66896	  10550	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  
-20:22:10 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+15:38:06 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
 arm-none-eabi-size   Spektrumsanalyse.elf 
    text	   data	    bss	    dec	    hex	filename
-  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
+  63392	   1024	   2480	  66896	  10550	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  
-20:22:31 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+15:38:18 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
 arm-none-eabi-size   Spektrumsanalyse.elf 
    text	   data	    bss	    dec	    hex	filename
-  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
-Finished building: default.size.stdout
- 
-20:22:48 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
-make -j8 all 
-arm-none-eabi-size   Spektrumsanalyse.elf 
-   text	   data	    bss	    dec	    hex	filename
-  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
-Finished building: default.size.stdout
- 
-20:50:52 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
-make -j8 all 
-arm-none-eabi-size   Spektrumsanalyse.elf 
-   text	   data	    bss	    dec	    hex	filename
-  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
-Finished building: default.size.stdout
- 
-20:57:28 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
-make -j8 all 
-arm-none-eabi-size   Spektrumsanalyse.elf 
-   text	   data	    bss	    dec	    hex	filename
-  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
-Finished building: default.size.stdout
- 
-20:58:41 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
-make -j8 all 
-arm-none-eabi-size   Spektrumsanalyse.elf 
-   text	   data	    bss	    dec	    hex	filename
-  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
-Finished building: default.size.stdout
- 
-21:06:42 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
-make -j8 all 
-arm-none-eabi-size   Spektrumsanalyse.elf 
-   text	   data	    bss	    dec	    hex	filename
-  46892	    508	   2348	  49748	   c254	Spektrumsanalyse.elf
+  63392	   1024	   2480	  66896	  10550	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  

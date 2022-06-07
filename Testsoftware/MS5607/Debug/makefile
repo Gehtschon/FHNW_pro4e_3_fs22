@@ -10,6 +10,7 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Drivers/STM32L4xx_HAL_Driver/Src/subdir.mk
+-include Drivers/MS5607_Driver_C/subdir.mk
 -include Drivers/MS5607_Driver/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
@@ -76,8 +77,8 @@ all: main-build
 main-build: MS5607.elf secondary-outputs
 
 # Tool invocations
-MS5607.elf MS5607.map: $(OBJS) $(USER_OBJS) C:\Users\Fabian\Google\ Drive\FHNW\pro4\git\pro4e_3_fs22\Testsoftware\MS5607\STM32L452RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "MS5607.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Fabian\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Testsoftware\MS5607\STM32L452RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MS5607.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+MS5607.elf MS5607.map: $(OBJS) $(USER_OBJS) C:\Users\fabia\Google\ Drive\FHNW\pro4\git\pro4e_3_fs22\Testsoftware\MS5607\STM32L452RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "MS5607.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Testsoftware\MS5607\STM32L452RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MS5607.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -36,7 +36,9 @@ Core/Inc/stm32-hal-rfm95 \
 Core/Src \
 Core/Startup \
 Drivers/AS7341_Driver \
+Drivers/MS5607_Driver_C \
 Drivers/PCA9847_Driver \
+Drivers/SHT41 \
 Drivers/STM32L4xx_HAL_Driver/Src \
 FATFS/App \
 FATFS/Target \

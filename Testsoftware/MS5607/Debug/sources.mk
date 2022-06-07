@@ -34,5 +34,6 @@ SUBDIRS := \
 Core/Src \
 Core/Startup \
 Drivers/MS5607_Driver \
+Drivers/MS5607_Driver_C \
 Drivers/STM32L4xx_HAL_Driver/Src \
 

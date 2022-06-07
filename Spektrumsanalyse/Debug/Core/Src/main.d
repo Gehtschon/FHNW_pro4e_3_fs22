@@ -29,15 +29,21 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_spi_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h \
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h \
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h \
  ../FATFS/App/fatfs.h ../Middlewares/Third_Party/FatFs/src/ff.h \
  ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
  ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h \
- ../Core/Inc/flow.h ../Core/Src/../../Core/Inc/stm32-hal-rfm95/rfm95.h \
+ ../Core/Inc/flow.h ../Core/Inc/../../Core/Inc/stm32-hal-rfm95/rfm95.h \
+ ../Core/Inc/../../Drivers/AS7341_Driver/Waveshare_AS7341.h \
+ ../Core/Inc/../../Drivers/AS7341_Driver/DEV_Config.h \
  ../Core/Src/../../Drivers/PCA9847_Driver/PCA9847.h \
+ ../Core/Src/../../Drivers/MS5607_Driver_C/MS5607.h \
  ../Core/Src/../../Drivers/AS7341_Driver/Waveshare_AS7341.h \
- ../Core/Src/../../Drivers/AS7341_Driver/DEV_Config.h
+ ../Core/Src/../../Drivers/SHT41/SHT41.h \
+ ../Core/Src/../../Drivers/SHT41/../../Drivers/PCA9847_Driver/PCA9847.h
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
@@ -69,6 +75,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_spi_ex.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h:
 ../FATFS/App/fatfs.h:
 ../Middlewares/Third_Party/FatFs/src/ff.h:
 ../Middlewares/Third_Party/FatFs/src/integer.h:
@@ -78,7 +86,11 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Middlewares/Third_Party/FatFs/src/ff.h:
 ../FATFS/Target/user_diskio.h:
 ../Core/Inc/flow.h:
-../Core/Src/../../Core/Inc/stm32-hal-rfm95/rfm95.h:
+../Core/Inc/../../Core/Inc/stm32-hal-rfm95/rfm95.h:
+../Core/Inc/../../Drivers/AS7341_Driver/Waveshare_AS7341.h:
+../Core/Inc/../../Drivers/AS7341_Driver/DEV_Config.h:
 ../Core/Src/../../Drivers/PCA9847_Driver/PCA9847.h:
+../Core/Src/../../Drivers/MS5607_Driver_C/MS5607.h:
 ../Core/Src/../../Drivers/AS7341_Driver/Waveshare_AS7341.h:
-../Core/Src/../../Drivers/AS7341_Driver/DEV_Config.h:
+../Core/Src/../../Drivers/SHT41/SHT41.h:
+../Core/Src/../../Drivers/SHT41/../../Drivers/PCA9847_Driver/PCA9847.h:
