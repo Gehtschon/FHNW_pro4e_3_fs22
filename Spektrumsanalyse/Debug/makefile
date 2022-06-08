@@ -17,6 +17,7 @@ RM := rm -rf
 -include Drivers/SHT41/subdir.mk
 -include Drivers/PCA9847_Driver/subdir.mk
 -include Drivers/MS5607_Driver_C/subdir.mk
+-include Drivers/LSM3030/subdir.mk
 -include Drivers/AS7341_Driver/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk

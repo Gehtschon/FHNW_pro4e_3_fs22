@@ -36,6 +36,7 @@ Core/Inc/stm32-hal-rfm95 \
 Core/Src \
 Core/Startup \
 Drivers/AS7341_Driver \
+Drivers/LSM3030 \
 Drivers/MS5607_Driver_C \
 Drivers/PCA9847_Driver \
 Drivers/SHT41 \

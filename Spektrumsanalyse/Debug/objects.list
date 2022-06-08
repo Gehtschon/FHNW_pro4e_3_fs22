@@ -11,6 +11,7 @@
 "./Core/Startup/startup_stm32l471rgtx.o"
 "./Drivers/AS7341_Driver/DEV_Config.o"
 "./Drivers/AS7341_Driver/Waveshare_AS7341.o"
+"./Drivers/LSM3030/LSM303AGR.o"
 "./Drivers/MS5607_Driver_C/MS5607.o"
 "./Drivers/PCA9847_Driver/PCA9847.o"
 "./Drivers/SHT41/SHT41.o"

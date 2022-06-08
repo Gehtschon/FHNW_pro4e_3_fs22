@@ -324,7 +324,7 @@ bool rfm95_send_data_groundstation(rfm95_handle_t *handle) {
 	} else if (handle->latitude_or[0] == 'S' & handle->longitude_or[0] == 'W') {
 		rfm_data[0] = (rfm_data[0] | 0x04);
 	} else {
-		rfm_data[0] = (rfm_data[0] | 0x00);
+		rfm_data[0] = (rfm_data[0] | 0x01);
 	}
 
 	// set latitude

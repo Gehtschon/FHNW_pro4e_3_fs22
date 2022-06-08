@@ -1,26 +1,26 @@
-15:32:45 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+22:02:03 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L471xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c:81:3: warning: braces around scalar initializer
-   81 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0 };
+../Core/Src/main.c:83:3: warning: braces around scalar initializer
+   83 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0, .gain = 6 };
       |   ^
-../Core/Src/main.c:81:3: note: (near initialization for 'rfm95_handle.latitude_or[0]')
-../Core/Src/main.c:69:31: warning: missing braces around initializer [-Wmissing-braces]
-   69 | rfm95_handle_t rfm95_handle = { .spi_handle = &hspi2, .nss_port =
+../Core/Src/main.c:83:3: note: (near initialization for 'rfm95_handle.latitude_or[0]')
+../Core/Src/main.c:71:31: warning: missing braces around initializer [-Wmissing-braces]
+   71 | rfm95_handle_t rfm95_handle = { .spi_handle = &hspi2, .nss_port =
       |                               ^
 ......
-   81 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0 };
-      |                            }                             { }
+   83 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0, .gain = 6 };
+      |                            }                             {}
 ../Core/Src/main.c: In function 'myprintf':
-../Core/Src/main.c:108:6: warning: unused variable 'len' [-Wunused-variable]
-  108 |  int len = strlen(buffer);
+../Core/Src/main.c:110:6: warning: unused variable 'len' [-Wunused-variable]
+  110 |  int len = strlen(buffer);
       |      ^~~
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:152:2: warning: implicit declaration of function 'Setup_Spectralsensor' [-Wimplicit-function-declaration]
-  152 |  Setup_Spectralsensor();
-      |  ^~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:227:15: warning: passing argument 1 of 'printf' makes pointer from integer without a cast [-Wint-conversion]
-  227 |     printf(bfr[i]);
+../Core/Src/main.c:151:2: warning: implicit declaration of function 'Setup' [-Wimplicit-function-declaration]
+  151 |  Setup();
+      |  ^~~~~
+../Core/Src/main.c:226:15: warning: passing argument 1 of 'printf' makes pointer from integer without a cast [-Wint-conversion]
+  226 |     printf(bfr[i]);
       |            ~~~^~~
       |               |
       |               char
@@ -29,104 +29,178 @@ In file included from ../Core/Src/../../Drivers/PCA9847_Driver/PCA9847.h:14,
 c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\include\stdio.h:200:13: note: expected 'const char * restrict' but argument is of type 'char'
   200 | int printf (const char *__restrict, ...)
       |             ^
-../Core/Src/main.c:300:4: warning: implicit declaration of function 'Read_Spectralsensor' [-Wimplicit-function-declaration]
-  300 |    Read_Spectralsensor(&rfm95_handle);
+../Core/Src/main.c:308:4: warning: implicit declaration of function 'Read_Spectralsensor' [-Wimplicit-function-declaration]
+  308 |    Read_Spectralsensor(&rfm95_handle);
       |    ^~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:301:4: warning: implicit declaration of function 'SHT41_read' [-Wimplicit-function-declaration]
-  301 |    SHT41_read(&temp_innen);
+../Core/Src/main.c:309:4: warning: implicit declaration of function 'check_gain' [-Wimplicit-function-declaration]
+  309 |    check_gain(&rfm95_handle);
       |    ^~~~~~~~~~
-../Core/Src/main.c:304:4: warning: implicit declaration of function 'read_temp_innen' [-Wimplicit-function-declaration]
-  304 |    read_temp_innen(&rfm95_handle);
+../Core/Src/main.c:310:4: warning: implicit declaration of function 'SHT41_read' [-Wimplicit-function-declaration]
+  310 |    SHT41_read(&temp_innen);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:312:4: warning: implicit declaration of function 'read_temp_aussen' [-Wimplicit-function-declaration]
+  312 |    read_temp_aussen(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:313:4: warning: implicit declaration of function 'read_temp_innen' [-Wimplicit-function-declaration]
+  313 |    read_temp_innen(&rfm95_handle);
       |    ^~~~~~~~~~~~~~~
-../Core/Src/main.c:305:4: warning: implicit declaration of function 'Write_SD_Card_Spectral' [-Wimplicit-function-declaration]
-  305 |    Write_SD_Card_Spectral(&rfm95_handle);
+../Core/Src/main.c:314:4: warning: implicit declaration of function 'Write_SD_Card_Spectral' [-Wimplicit-function-declaration]
+  314 |    Write_SD_Card_Spectral(&rfm95_handle, &lsm303agr);
       |    ^~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:215:21: warning: variable 'status' set but not used [-Wunused-but-set-variable]
-  215 |   HAL_StatusTypeDef status;
+../Core/Src/main.c:315:4: warning: implicit declaration of function 'check_stats' [-Wimplicit-function-declaration]
+  315 |    check_stats();
+      |    ^~~~~~~~~~~
+../Core/Src/main.c:316:4: warning: implicit declaration of function 'fail_handler' [-Wimplicit-function-declaration]
+  316 |    fail_handler();
+      |    ^~~~~~~~~~~~
+../Core/Src/main.c:214:21: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  214 |   HAL_StatusTypeDef status;
       |                     ^~~~~~
 ../Core/Src/main.c: At top level:
-../Core/Src/main.c:697:6: warning: conflicting types for 'Setup_Spectralsensor'
-  697 | void Setup_Spectralsensor(void) {
-      |      ^~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:152:2: note: previous implicit declaration of 'Setup_Spectralsensor' was here
-  152 |  Setup_Spectralsensor();
+../Core/Src/main.c:696:6: warning: conflicting types for 'Setup'
+  696 | void Setup(void) {
+      |      ^~~~~
+../Core/Src/main.c:151:2: note: previous implicit declaration of 'Setup' was here
+  151 |  Setup();
+      |  ^~~~~
+../Core/Src/main.c: In function 'Setup':
+../Core/Src/main.c:699:2: warning: implicit declaration of function 'Setup_Spectralsensor' [-Wimplicit-function-declaration]
+  699 |  Setup_Spectralsensor();
       |  ^~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:709:6: warning: conflicting types for 'Read_Spectralsensor'
-  709 | void Read_Spectralsensor(rfm95_handle_t *handle) {
+../Core/Src/main.c:702:2: warning: implicit declaration of function 'Write_SD_Card_Header' [-Wimplicit-function-declaration]
+  702 |  Write_SD_Card_Header();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:704:6: warning: conflicting types for 'Setup_Spectralsensor'
+  704 | void Setup_Spectralsensor(void) {
+      |      ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:699:2: note: previous implicit declaration of 'Setup_Spectralsensor' was here
+  699 |  Setup_Spectralsensor();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:724:6: warning: conflicting types for 'Read_Spectralsensor'
+  724 | void Read_Spectralsensor(rfm95_handle_t *handle) {
       |      ^~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:300:4: note: previous implicit declaration of 'Read_Spectralsensor' was here
-  300 |    Read_Spectralsensor(&rfm95_handle);
+../Core/Src/main.c:308:4: note: previous implicit declaration of 'Read_Spectralsensor' was here
+  308 |    Read_Spectralsensor(&rfm95_handle);
       |    ^~~~~~~~~~~~~~~~~~~
 ../Core/Src/main.c: In function 'Read_Spectralsensor':
-../Core/Src/main.c:711:17: warning: unused variable 'data2' [-Wunused-variable]
-  711 |  sModeTwoData_t data2;
+../Core/Src/main.c:726:17: warning: unused variable 'data2' [-Wunused-variable]
+  726 |  sModeTwoData_t data2;
       |                 ^~~~~
-../Core/Src/main.c:710:17: warning: unused variable 'data1' [-Wunused-variable]
-  710 |  sModeOneData_t data1;
+../Core/Src/main.c:725:17: warning: unused variable 'data1' [-Wunused-variable]
+  725 |  sModeOneData_t data1;
       |                 ^~~~~
 ../Core/Src/main.c: At top level:
-../Core/Src/main.c:721:6: warning: conflicting types for 'Write_SD_Card_Spectral'
-  721 | void Write_SD_Card_Spectral(rfm95_handle_t *handle) {
+../Core/Src/main.c:736:6: warning: conflicting types for 'Write_SD_Card_Header'
+  736 | void Write_SD_Card_Header() {
+      |      ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:702:2: note: previous implicit declaration of 'Write_SD_Card_Header' was here
+  702 |  Write_SD_Card_Header();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:762:6: warning: conflicting types for 'Write_SD_Card_Spectral'
+  762 | void Write_SD_Card_Spectral(rfm95_handle_t *handle, LSM303AGR *dev) {
       |      ^~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:305:4: note: previous implicit declaration of 'Write_SD_Card_Spectral' was here
-  305 |    Write_SD_Card_Spectral(&rfm95_handle);
+../Core/Src/main.c:314:4: note: previous implicit declaration of 'Write_SD_Card_Spectral' was here
+  314 |    Write_SD_Card_Spectral(&rfm95_handle, &lsm303agr);
       |    ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Write_SD_Card_Spectral':
+../Core/Src/main.c:787:6: warning: variable 'sl' set but not used [-Wunused-but-set-variable]
+  787 |  int sl[4];
+      |      ^~
+../Core/Src/main.c:786:15: warning: variable 'cx2' set but not used [-Wunused-but-set-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |               ^~~
+../Core/Src/main.c:786:10: warning: unused variable 'cx1' [-Wunused-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |          ^~~
+../Core/Src/main.c:786:6: warning: unused variable 'cx' [-Wunused-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |      ^~
 ../Core/Src/main.c: In function 'Write_SD_Card':
-../Core/Src/main.c:871:36: warning: format '%d' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  871 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
+../Core/Src/main.c:929:36: warning: format '%d' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  929 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
       |                                   ~^                       ~~~~~~~~~~~~~~~~~
       |                                    |                             |
       |                                    int                           uint32_t {aka long unsigned int}
       |                                   %ld
-../Core/Src/main.c:871:42: warning: format '%d' expects argument of type 'int', but argument 6 has type 'long unsigned int' [-Wformat=]
-  871 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
+../Core/Src/main.c:929:42: warning: format '%d' expects argument of type 'int', but argument 6 has type 'long unsigned int' [-Wformat=]
+  929 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
       |                                         ~^
       |                                          |
       |                                          int
       |                                         %ld
-  872 |    handle->longitude_or[0], handle->latitude, handle->latitude_or[0],
+  930 |    handle->longitude_or[0], handle->latitude, handle->latitude_or[0],
       |                             ~~~~~~~~~~~~~~~~
       |                                   |
       |                                   long unsigned int
 ../Core/Src/main.c: At top level:
-../Core/Src/main.c:883:1: warning: return type defaults to 'int' [-Wimplicit-int]
-  883 | read_temp_innen(rfm95_handle_t *handle) {
+../Core/Src/main.c:941:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  941 | read_temp_innen(rfm95_handle_t *handle) {
       | ^~~~~~~~~~~~~~~
 ../Core/Src/main.c: In function 'read_temp_innen':
-../Core/Src/main.c:895:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
-  895 |  float checksum_rh = value[5];
+../Core/Src/main.c:953:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
+  953 |  float checksum_rh = value[5];
       |        ^~~~~~~~~~~
-../Core/Src/main.c:893:8: warning: unused variable 'checksum_t' [-Wunused-variable]
-  893 |  float checksum_t = value[2];
+../Core/Src/main.c:951:8: warning: unused variable 'checksum_t' [-Wunused-variable]
+  951 |  float checksum_t = value[2];
       |        ^~~~~~~~~~
-../Core/Src/main.c:885:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
-  885 |  HAL_StatusTypeDef status;
+../Core/Src/main.c:943:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  943 |  HAL_StatusTypeDef status;
       |                    ^~~~~~
 ../Core/Src/main.c: At top level:
-../Core/Src/main.c:908:1: warning: return type defaults to 'int' [-Wimplicit-int]
-  908 | read_temp_aussen(rfm95_handle_t *handle) {
+../Core/Src/main.c:966:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  966 | read_temp_aussen(rfm95_handle_t *handle) {
       | ^~~~~~~~~~~~~~~~
 ../Core/Src/main.c: In function 'read_temp_aussen':
-../Core/Src/main.c:920:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
-  920 |  float checksum_rh = value[5];
+../Core/Src/main.c:978:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
+  978 |  float checksum_rh = value[5];
       |        ^~~~~~~~~~~
-../Core/Src/main.c:918:8: warning: unused variable 'checksum_t' [-Wunused-variable]
-  918 |  float checksum_t = value[2];
+../Core/Src/main.c:976:8: warning: unused variable 'checksum_t' [-Wunused-variable]
+  976 |  float checksum_t = value[2];
       |        ^~~~~~~~~~
-../Core/Src/main.c:910:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
-  910 |  HAL_StatusTypeDef status;
+../Core/Src/main.c:968:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  968 |  HAL_StatusTypeDef status;
       |                    ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:991:6: warning: conflicting types for 'check_gain'
+  991 | void check_gain(rfm95_handle_t *handle) {
+      |      ^~~~~~~~~~
+../Core/Src/main.c:309:4: note: previous implicit declaration of 'check_gain' was here
+  309 |    check_gain(&rfm95_handle);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:1057:6: warning: conflicting types for 'check_stats'
+ 1057 | void check_stats() {
+      |      ^~~~~~~~~~~
+../Core/Src/main.c:315:4: note: previous implicit declaration of 'check_stats' was here
+  315 |    check_stats();
+      |    ^~~~~~~~~~~
+../Core/Src/main.c: In function 'check_stats':
+../Core/Src/main.c:1059:12: warning: passing argument 1 of 'check_imu' from incompatible pointer type [-Wincompatible-pointer-types]
+ 1059 |  check_imu(&rfm95_handle);
+      |            ^~~~~~~~~~~~~
+      |            |
+      |            rfm95_handle_t *
+../Core/Src/main.c:1041:27: note: expected 'LSM303AGR *' but argument is of type 'rfm95_handle_t *'
+ 1041 | void check_imu(LSM303AGR *dev) {
+      |                ~~~~~~~~~~~^~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:1063:6: warning: conflicting types for 'fail_handler'
+ 1063 | void fail_handler() {
+      |      ^~~~~~~~~~~~
+../Core/Src/main.c:316:4: note: previous implicit declaration of 'fail_handler' was here
+  316 |    fail_handler();
+      |    ^~~~~~~~~~~~
 ../Core/Src/main.c: In function 'read_akkuspannung':
-../Core/Src/main.c:934:11: warning: unused variable 'raw' [-Wunused-variable]
-  934 |  uint16_t raw;
+../Core/Src/main.c:1076:11: warning: unused variable 'raw' [-Wunused-variable]
+ 1076 |  uint16_t raw;
       |           ^~~
 ../Core/Src/main.c: In function 'read_temp_innen':
-../Core/Src/main.c:906:1: warning: control reaches end of non-void function [-Wreturn-type]
-  906 | }
+../Core/Src/main.c:964:1: warning: control reaches end of non-void function [-Wreturn-type]
+  964 | }
       | ^
 ../Core/Src/main.c: In function 'read_temp_aussen':
-../Core/Src/main.c:931:1: warning: control reaches end of non-void function [-Wreturn-type]
-  931 | }
+../Core/Src/main.c:989:1: warning: control reaches end of non-void function [-Wreturn-type]
+  989 | }
       | ^
 arm-none-eabi-g++ -o "Spektrumsanalyse.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\STM32L471RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Spektrumsanalyse.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 Finished building target: Spektrumsanalyse.elf
@@ -134,36 +208,1090 @@ Finished building target: Spektrumsanalyse.elf
 arm-none-eabi-size   Spektrumsanalyse.elf 
 arm-none-eabi-objdump -h -S  Spektrumsanalyse.elf  > "Spektrumsanalyse.list"
    text	   data	    bss	    dec	    hex	filename
-  63392	   1024	   2480	  66896	  10550	Spektrumsanalyse.elf
+  69912	   1032	   2560	  73504	  11f20	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  
 Finished building: Spektrumsanalyse.list
  
-15:33:13 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+22:02:50 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
 arm-none-eabi-size   Spektrumsanalyse.elf 
    text	   data	    bss	    dec	    hex	filename
-  63392	   1024	   2480	  66896	  10550	Spektrumsanalyse.elf
+  69912	   1032	   2560	  73504	  11f20	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  
-15:33:29 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+22:05:21 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L471xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:83:3: warning: braces around scalar initializer
+   83 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0, .gain = 6 };
+      |   ^
+../Core/Src/main.c:83:3: note: (near initialization for 'rfm95_handle.latitude_or[0]')
+../Core/Src/main.c:71:31: warning: missing braces around initializer [-Wmissing-braces]
+   71 | rfm95_handle_t rfm95_handle = { .spi_handle = &hspi2, .nss_port =
+      |                               ^
+......
+   83 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0, .gain = 6 };
+      |                            }                             {}
+../Core/Src/main.c: In function 'myprintf':
+../Core/Src/main.c:110:6: warning: unused variable 'len' [-Wunused-variable]
+  110 |  int len = strlen(buffer);
+      |      ^~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:151:2: warning: implicit declaration of function 'Setup' [-Wimplicit-function-declaration]
+  151 |  Setup();
+      |  ^~~~~
+../Core/Src/main.c:226:15: warning: passing argument 1 of 'printf' makes pointer from integer without a cast [-Wint-conversion]
+  226 |     printf(bfr[i]);
+      |            ~~~^~~
+      |               |
+      |               char
+In file included from ../Core/Src/../../Drivers/PCA9847_Driver/PCA9847.h:14,
+                 from ../Core/Src/main.c:27:
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\include\stdio.h:200:13: note: expected 'const char * restrict' but argument is of type 'char'
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+../Core/Src/main.c:308:4: warning: implicit declaration of function 'Read_Spectralsensor' [-Wimplicit-function-declaration]
+  308 |    Read_Spectralsensor(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:309:4: warning: implicit declaration of function 'check_gain' [-Wimplicit-function-declaration]
+  309 |    check_gain(&rfm95_handle);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:310:4: warning: implicit declaration of function 'SHT41_read' [-Wimplicit-function-declaration]
+  310 |    SHT41_read(&temp_innen);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:312:4: warning: implicit declaration of function 'read_temp_aussen' [-Wimplicit-function-declaration]
+  312 |    read_temp_aussen(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:313:4: warning: implicit declaration of function 'read_temp_innen' [-Wimplicit-function-declaration]
+  313 |    read_temp_innen(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~
+../Core/Src/main.c:314:4: warning: implicit declaration of function 'Write_SD_Card_Spectral' [-Wimplicit-function-declaration]
+  314 |    Write_SD_Card_Spectral(&rfm95_handle, &lsm303agr);
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:315:4: warning: implicit declaration of function 'check_stats' [-Wimplicit-function-declaration]
+  315 |    check_stats();
+      |    ^~~~~~~~~~~
+../Core/Src/main.c:316:4: warning: implicit declaration of function 'fail_handler' [-Wimplicit-function-declaration]
+  316 |    fail_handler();
+      |    ^~~~~~~~~~~~
+../Core/Src/main.c:214:21: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  214 |   HAL_StatusTypeDef status;
+      |                     ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:696:6: warning: conflicting types for 'Setup'
+  696 | void Setup(void) {
+      |      ^~~~~
+../Core/Src/main.c:151:2: note: previous implicit declaration of 'Setup' was here
+  151 |  Setup();
+      |  ^~~~~
+../Core/Src/main.c: In function 'Setup':
+../Core/Src/main.c:699:2: warning: implicit declaration of function 'Setup_Spectralsensor' [-Wimplicit-function-declaration]
+  699 |  Setup_Spectralsensor();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:702:2: warning: implicit declaration of function 'Write_SD_Card_Header' [-Wimplicit-function-declaration]
+  702 |  Write_SD_Card_Header();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:704:6: warning: conflicting types for 'Setup_Spectralsensor'
+  704 | void Setup_Spectralsensor(void) {
+      |      ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:699:2: note: previous implicit declaration of 'Setup_Spectralsensor' was here
+  699 |  Setup_Spectralsensor();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:724:6: warning: conflicting types for 'Read_Spectralsensor'
+  724 | void Read_Spectralsensor(rfm95_handle_t *handle) {
+      |      ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:308:4: note: previous implicit declaration of 'Read_Spectralsensor' was here
+  308 |    Read_Spectralsensor(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Read_Spectralsensor':
+../Core/Src/main.c:726:17: warning: unused variable 'data2' [-Wunused-variable]
+  726 |  sModeTwoData_t data2;
+      |                 ^~~~~
+../Core/Src/main.c:725:17: warning: unused variable 'data1' [-Wunused-variable]
+  725 |  sModeOneData_t data1;
+      |                 ^~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:736:6: warning: conflicting types for 'Write_SD_Card_Header'
+  736 | void Write_SD_Card_Header() {
+      |      ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:702:2: note: previous implicit declaration of 'Write_SD_Card_Header' was here
+  702 |  Write_SD_Card_Header();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:762:6: warning: conflicting types for 'Write_SD_Card_Spectral'
+  762 | void Write_SD_Card_Spectral(rfm95_handle_t *handle, LSM303AGR *dev) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:314:4: note: previous implicit declaration of 'Write_SD_Card_Spectral' was here
+  314 |    Write_SD_Card_Spectral(&rfm95_handle, &lsm303agr);
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Write_SD_Card_Spectral':
+../Core/Src/main.c:787:6: warning: variable 'sl' set but not used [-Wunused-but-set-variable]
+  787 |  int sl[4];
+      |      ^~
+../Core/Src/main.c:786:15: warning: variable 'cx2' set but not used [-Wunused-but-set-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |               ^~~
+../Core/Src/main.c:786:10: warning: unused variable 'cx1' [-Wunused-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |          ^~~
+../Core/Src/main.c:786:6: warning: unused variable 'cx' [-Wunused-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |      ^~
+../Core/Src/main.c: In function 'Write_SD_Card':
+../Core/Src/main.c:929:36: warning: format '%d' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  929 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
+      |                                   ~^                       ~~~~~~~~~~~~~~~~~
+      |                                    |                             |
+      |                                    int                           uint32_t {aka long unsigned int}
+      |                                   %ld
+../Core/Src/main.c:929:42: warning: format '%d' expects argument of type 'int', but argument 6 has type 'long unsigned int' [-Wformat=]
+  929 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
+      |                                         ~^
+      |                                          |
+      |                                          int
+      |                                         %ld
+  930 |    handle->longitude_or[0], handle->latitude, handle->latitude_or[0],
+      |                             ~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   long unsigned int
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:941:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  941 | read_temp_innen(rfm95_handle_t *handle) {
+      | ^~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_temp_innen':
+../Core/Src/main.c:953:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
+  953 |  float checksum_rh = value[5];
+      |        ^~~~~~~~~~~
+../Core/Src/main.c:951:8: warning: unused variable 'checksum_t' [-Wunused-variable]
+  951 |  float checksum_t = value[2];
+      |        ^~~~~~~~~~
+../Core/Src/main.c:943:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  943 |  HAL_StatusTypeDef status;
+      |                    ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:966:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  966 | read_temp_aussen(rfm95_handle_t *handle) {
+      | ^~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_temp_aussen':
+../Core/Src/main.c:978:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
+  978 |  float checksum_rh = value[5];
+      |        ^~~~~~~~~~~
+../Core/Src/main.c:976:8: warning: unused variable 'checksum_t' [-Wunused-variable]
+  976 |  float checksum_t = value[2];
+      |        ^~~~~~~~~~
+../Core/Src/main.c:968:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  968 |  HAL_StatusTypeDef status;
+      |                    ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:991:6: warning: conflicting types for 'check_gain'
+  991 | void check_gain(rfm95_handle_t *handle) {
+      |      ^~~~~~~~~~
+../Core/Src/main.c:309:4: note: previous implicit declaration of 'check_gain' was here
+  309 |    check_gain(&rfm95_handle);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:1057:6: warning: conflicting types for 'check_stats'
+ 1057 | void check_stats() {
+      |      ^~~~~~~~~~~
+../Core/Src/main.c:315:4: note: previous implicit declaration of 'check_stats' was here
+  315 |    check_stats();
+      |    ^~~~~~~~~~~
+../Core/Src/main.c: In function 'check_stats':
+../Core/Src/main.c:1059:12: warning: passing argument 1 of 'check_imu' from incompatible pointer type [-Wincompatible-pointer-types]
+ 1059 |  check_imu(&rfm95_handle);
+      |            ^~~~~~~~~~~~~
+      |            |
+      |            rfm95_handle_t *
+../Core/Src/main.c:1041:27: note: expected 'LSM303AGR *' but argument is of type 'rfm95_handle_t *'
+ 1041 | void check_imu(LSM303AGR *dev) {
+      |                ~~~~~~~~~~~^~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:1063:6: warning: conflicting types for 'fail_handler'
+ 1063 | void fail_handler() {
+      |      ^~~~~~~~~~~~
+../Core/Src/main.c:316:4: note: previous implicit declaration of 'fail_handler' was here
+  316 |    fail_handler();
+      |    ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_akkuspannung':
+../Core/Src/main.c:1077:11: warning: unused variable 'raw' [-Wunused-variable]
+ 1077 |  uint16_t raw;
+      |           ^~~
+../Core/Src/main.c: In function 'read_temp_innen':
+../Core/Src/main.c:964:1: warning: control reaches end of non-void function [-Wreturn-type]
+  964 | }
+      | ^
+../Core/Src/main.c: In function 'read_temp_aussen':
+../Core/Src/main.c:989:1: warning: control reaches end of non-void function [-Wreturn-type]
+  989 | }
+      | ^
+arm-none-eabi-g++ -o "Spektrumsanalyse.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\STM32L471RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Spektrumsanalyse.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: Spektrumsanalyse.elf
+ 
 arm-none-eabi-size   Spektrumsanalyse.elf 
+arm-none-eabi-objdump -h -S  Spektrumsanalyse.elf  > "Spektrumsanalyse.list"
    text	   data	    bss	    dec	    hex	filename
-  63392	   1024	   2480	  66896	  10550	Spektrumsanalyse.elf
+  69936	   1032	   2560	  73528	  11f38	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  
-15:38:06 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+Finished building: Spektrumsanalyse.list
+ 
+22:08:31 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L471xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:83:3: warning: braces around scalar initializer
+   83 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0, .gain = 6 };
+      |   ^
+../Core/Src/main.c:83:3: note: (near initialization for 'rfm95_handle.latitude_or[0]')
+../Core/Src/main.c:71:31: warning: missing braces around initializer [-Wmissing-braces]
+   71 | rfm95_handle_t rfm95_handle = { .spi_handle = &hspi2, .nss_port =
+      |                               ^
+......
+   83 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0, .gain = 6 };
+      |                            }                             {}
+../Core/Src/main.c: In function 'myprintf':
+../Core/Src/main.c:110:6: warning: unused variable 'len' [-Wunused-variable]
+  110 |  int len = strlen(buffer);
+      |      ^~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:151:2: warning: implicit declaration of function 'Setup' [-Wimplicit-function-declaration]
+  151 |  Setup();
+      |  ^~~~~
+../Core/Src/main.c:226:15: warning: passing argument 1 of 'printf' makes pointer from integer without a cast [-Wint-conversion]
+  226 |     printf(bfr[i]);
+      |            ~~~^~~
+      |               |
+      |               char
+In file included from ../Core/Src/../../Drivers/PCA9847_Driver/PCA9847.h:14,
+                 from ../Core/Src/main.c:27:
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\include\stdio.h:200:13: note: expected 'const char * restrict' but argument is of type 'char'
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+../Core/Src/main.c:308:4: warning: implicit declaration of function 'Read_Spectralsensor' [-Wimplicit-function-declaration]
+  308 |    Read_Spectralsensor(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:309:4: warning: implicit declaration of function 'check_gain' [-Wimplicit-function-declaration]
+  309 |    check_gain(&rfm95_handle);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:310:4: warning: implicit declaration of function 'SHT41_read' [-Wimplicit-function-declaration]
+  310 |    SHT41_read(&temp_innen);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:312:4: warning: implicit declaration of function 'read_temp_aussen' [-Wimplicit-function-declaration]
+  312 |    read_temp_aussen(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:313:4: warning: implicit declaration of function 'read_temp_innen' [-Wimplicit-function-declaration]
+  313 |    read_temp_innen(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~
+../Core/Src/main.c:314:4: warning: implicit declaration of function 'Write_SD_Card_Spectral' [-Wimplicit-function-declaration]
+  314 |    Write_SD_Card_Spectral(&rfm95_handle, &lsm303agr);
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:315:4: warning: implicit declaration of function 'check_stats' [-Wimplicit-function-declaration]
+  315 |    check_stats();
+      |    ^~~~~~~~~~~
+../Core/Src/main.c:316:4: warning: implicit declaration of function 'fail_handler' [-Wimplicit-function-declaration]
+  316 |    fail_handler();
+      |    ^~~~~~~~~~~~
+../Core/Src/main.c:214:21: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  214 |   HAL_StatusTypeDef status;
+      |                     ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:696:6: warning: conflicting types for 'Setup'
+  696 | void Setup(void) {
+      |      ^~~~~
+../Core/Src/main.c:151:2: note: previous implicit declaration of 'Setup' was here
+  151 |  Setup();
+      |  ^~~~~
+../Core/Src/main.c: In function 'Setup':
+../Core/Src/main.c:699:2: warning: implicit declaration of function 'Setup_Spectralsensor' [-Wimplicit-function-declaration]
+  699 |  Setup_Spectralsensor();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:702:2: warning: implicit declaration of function 'Write_SD_Card_Header' [-Wimplicit-function-declaration]
+  702 |  Write_SD_Card_Header();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:704:6: warning: conflicting types for 'Setup_Spectralsensor'
+  704 | void Setup_Spectralsensor(void) {
+      |      ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:699:2: note: previous implicit declaration of 'Setup_Spectralsensor' was here
+  699 |  Setup_Spectralsensor();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:724:6: warning: conflicting types for 'Read_Spectralsensor'
+  724 | void Read_Spectralsensor(rfm95_handle_t *handle) {
+      |      ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:308:4: note: previous implicit declaration of 'Read_Spectralsensor' was here
+  308 |    Read_Spectralsensor(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Read_Spectralsensor':
+../Core/Src/main.c:726:17: warning: unused variable 'data2' [-Wunused-variable]
+  726 |  sModeTwoData_t data2;
+      |                 ^~~~~
+../Core/Src/main.c:725:17: warning: unused variable 'data1' [-Wunused-variable]
+  725 |  sModeOneData_t data1;
+      |                 ^~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:736:6: warning: conflicting types for 'Write_SD_Card_Header'
+  736 | void Write_SD_Card_Header() {
+      |      ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:702:2: note: previous implicit declaration of 'Write_SD_Card_Header' was here
+  702 |  Write_SD_Card_Header();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:762:6: warning: conflicting types for 'Write_SD_Card_Spectral'
+  762 | void Write_SD_Card_Spectral(rfm95_handle_t *handle, LSM303AGR *dev) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:314:4: note: previous implicit declaration of 'Write_SD_Card_Spectral' was here
+  314 |    Write_SD_Card_Spectral(&rfm95_handle, &lsm303agr);
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Write_SD_Card_Spectral':
+../Core/Src/main.c:787:6: warning: variable 'sl' set but not used [-Wunused-but-set-variable]
+  787 |  int sl[4];
+      |      ^~
+../Core/Src/main.c:786:15: warning: variable 'cx2' set but not used [-Wunused-but-set-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |               ^~~
+../Core/Src/main.c:786:10: warning: unused variable 'cx1' [-Wunused-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |          ^~~
+../Core/Src/main.c:786:6: warning: unused variable 'cx' [-Wunused-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |      ^~
+../Core/Src/main.c: In function 'Write_SD_Card':
+../Core/Src/main.c:929:36: warning: format '%d' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  929 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
+      |                                   ~^                       ~~~~~~~~~~~~~~~~~
+      |                                    |                             |
+      |                                    int                           uint32_t {aka long unsigned int}
+      |                                   %ld
+../Core/Src/main.c:929:42: warning: format '%d' expects argument of type 'int', but argument 6 has type 'long unsigned int' [-Wformat=]
+  929 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
+      |                                         ~^
+      |                                          |
+      |                                          int
+      |                                         %ld
+  930 |    handle->longitude_or[0], handle->latitude, handle->latitude_or[0],
+      |                             ~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   long unsigned int
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:941:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  941 | read_temp_innen(rfm95_handle_t *handle) {
+      | ^~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_temp_innen':
+../Core/Src/main.c:953:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
+  953 |  float checksum_rh = value[5];
+      |        ^~~~~~~~~~~
+../Core/Src/main.c:951:8: warning: unused variable 'checksum_t' [-Wunused-variable]
+  951 |  float checksum_t = value[2];
+      |        ^~~~~~~~~~
+../Core/Src/main.c:943:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  943 |  HAL_StatusTypeDef status;
+      |                    ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:966:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  966 | read_temp_aussen(rfm95_handle_t *handle) {
+      | ^~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_temp_aussen':
+../Core/Src/main.c:978:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
+  978 |  float checksum_rh = value[5];
+      |        ^~~~~~~~~~~
+../Core/Src/main.c:976:8: warning: unused variable 'checksum_t' [-Wunused-variable]
+  976 |  float checksum_t = value[2];
+      |        ^~~~~~~~~~
+../Core/Src/main.c:968:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  968 |  HAL_StatusTypeDef status;
+      |                    ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:991:6: warning: conflicting types for 'check_gain'
+  991 | void check_gain(rfm95_handle_t *handle) {
+      |      ^~~~~~~~~~
+../Core/Src/main.c:309:4: note: previous implicit declaration of 'check_gain' was here
+  309 |    check_gain(&rfm95_handle);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:1057:6: warning: conflicting types for 'check_stats'
+ 1057 | void check_stats() {
+      |      ^~~~~~~~~~~
+../Core/Src/main.c:315:4: note: previous implicit declaration of 'check_stats' was here
+  315 |    check_stats();
+      |    ^~~~~~~~~~~
+../Core/Src/main.c: In function 'check_stats':
+../Core/Src/main.c:1059:12: warning: passing argument 1 of 'check_imu' from incompatible pointer type [-Wincompatible-pointer-types]
+ 1059 |  check_imu(&rfm95_handle);
+      |            ^~~~~~~~~~~~~
+      |            |
+      |            rfm95_handle_t *
+../Core/Src/main.c:1041:27: note: expected 'LSM303AGR *' but argument is of type 'rfm95_handle_t *'
+ 1041 | void check_imu(LSM303AGR *dev) {
+      |                ~~~~~~~~~~~^~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:1063:6: warning: conflicting types for 'fail_handler'
+ 1063 | void fail_handler() {
+      |      ^~~~~~~~~~~~
+../Core/Src/main.c:316:4: note: previous implicit declaration of 'fail_handler' was here
+  316 |    fail_handler();
+      |    ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_akkuspannung':
+../Core/Src/main.c:1078:11: warning: unused variable 'raw' [-Wunused-variable]
+ 1078 |  uint16_t raw;
+      |           ^~~
+../Core/Src/main.c: In function 'read_temp_innen':
+../Core/Src/main.c:964:1: warning: control reaches end of non-void function [-Wreturn-type]
+  964 | }
+      | ^
+../Core/Src/main.c: In function 'read_temp_aussen':
+../Core/Src/main.c:989:1: warning: control reaches end of non-void function [-Wreturn-type]
+  989 | }
+      | ^
+arm-none-eabi-g++ -o "Spektrumsanalyse.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\STM32L471RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Spektrumsanalyse.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: Spektrumsanalyse.elf
+ 
 arm-none-eabi-size   Spektrumsanalyse.elf 
+arm-none-eabi-objdump -h -S  Spektrumsanalyse.elf  > "Spektrumsanalyse.list"
    text	   data	    bss	    dec	    hex	filename
-  63392	   1024	   2480	  66896	  10550	Spektrumsanalyse.elf
+  69944	   1032	   2560	  73536	  11f40	Spektrumsanalyse.elf
 Finished building: default.size.stdout
  
-15:38:18 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+Finished building: Spektrumsanalyse.list
+ 
+22:09:16 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L471xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:83:3: warning: braces around scalar initializer
+   83 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0, .gain = 6 };
+      |   ^
+../Core/Src/main.c:83:3: note: (near initialization for 'rfm95_handle.latitude_or[0]')
+../Core/Src/main.c:71:31: warning: missing braces around initializer [-Wmissing-braces]
+   71 | rfm95_handle_t rfm95_handle = { .spi_handle = &hspi2, .nss_port =
+      |                               ^
+......
+   83 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0, .gain = 6 };
+      |                            }                             {}
+../Core/Src/main.c: In function 'myprintf':
+../Core/Src/main.c:110:6: warning: unused variable 'len' [-Wunused-variable]
+  110 |  int len = strlen(buffer);
+      |      ^~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:151:2: warning: implicit declaration of function 'Setup' [-Wimplicit-function-declaration]
+  151 |  Setup();
+      |  ^~~~~
+../Core/Src/main.c:226:15: warning: passing argument 1 of 'printf' makes pointer from integer without a cast [-Wint-conversion]
+  226 |     printf(bfr[i]);
+      |            ~~~^~~
+      |               |
+      |               char
+In file included from ../Core/Src/../../Drivers/PCA9847_Driver/PCA9847.h:14,
+                 from ../Core/Src/main.c:27:
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\include\stdio.h:200:13: note: expected 'const char * restrict' but argument is of type 'char'
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+../Core/Src/main.c:308:4: warning: implicit declaration of function 'Read_Spectralsensor' [-Wimplicit-function-declaration]
+  308 |    Read_Spectralsensor(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:309:4: warning: implicit declaration of function 'check_gain' [-Wimplicit-function-declaration]
+  309 |    check_gain(&rfm95_handle);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:310:4: warning: implicit declaration of function 'SHT41_read' [-Wimplicit-function-declaration]
+  310 |    SHT41_read(&temp_innen);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:312:4: warning: implicit declaration of function 'read_temp_aussen' [-Wimplicit-function-declaration]
+  312 |    read_temp_aussen(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:313:4: warning: implicit declaration of function 'read_temp_innen' [-Wimplicit-function-declaration]
+  313 |    read_temp_innen(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~
+../Core/Src/main.c:314:4: warning: implicit declaration of function 'Write_SD_Card_Spectral' [-Wimplicit-function-declaration]
+  314 |    Write_SD_Card_Spectral(&rfm95_handle, &lsm303agr);
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:315:4: warning: implicit declaration of function 'check_stats' [-Wimplicit-function-declaration]
+  315 |    check_stats();
+      |    ^~~~~~~~~~~
+../Core/Src/main.c:316:4: warning: implicit declaration of function 'fail_handler' [-Wimplicit-function-declaration]
+  316 |    fail_handler();
+      |    ^~~~~~~~~~~~
+../Core/Src/main.c:214:21: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  214 |   HAL_StatusTypeDef status;
+      |                     ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:696:6: warning: conflicting types for 'Setup'
+  696 | void Setup(void) {
+      |      ^~~~~
+../Core/Src/main.c:151:2: note: previous implicit declaration of 'Setup' was here
+  151 |  Setup();
+      |  ^~~~~
+../Core/Src/main.c: In function 'Setup':
+../Core/Src/main.c:699:2: warning: implicit declaration of function 'Setup_Spectralsensor' [-Wimplicit-function-declaration]
+  699 |  Setup_Spectralsensor();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:702:2: warning: implicit declaration of function 'Write_SD_Card_Header' [-Wimplicit-function-declaration]
+  702 |  Write_SD_Card_Header();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:704:6: warning: conflicting types for 'Setup_Spectralsensor'
+  704 | void Setup_Spectralsensor(void) {
+      |      ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:699:2: note: previous implicit declaration of 'Setup_Spectralsensor' was here
+  699 |  Setup_Spectralsensor();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:724:6: warning: conflicting types for 'Read_Spectralsensor'
+  724 | void Read_Spectralsensor(rfm95_handle_t *handle) {
+      |      ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:308:4: note: previous implicit declaration of 'Read_Spectralsensor' was here
+  308 |    Read_Spectralsensor(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Read_Spectralsensor':
+../Core/Src/main.c:726:17: warning: unused variable 'data2' [-Wunused-variable]
+  726 |  sModeTwoData_t data2;
+      |                 ^~~~~
+../Core/Src/main.c:725:17: warning: unused variable 'data1' [-Wunused-variable]
+  725 |  sModeOneData_t data1;
+      |                 ^~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:736:6: warning: conflicting types for 'Write_SD_Card_Header'
+  736 | void Write_SD_Card_Header() {
+      |      ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:702:2: note: previous implicit declaration of 'Write_SD_Card_Header' was here
+  702 |  Write_SD_Card_Header();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:762:6: warning: conflicting types for 'Write_SD_Card_Spectral'
+  762 | void Write_SD_Card_Spectral(rfm95_handle_t *handle, LSM303AGR *dev) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:314:4: note: previous implicit declaration of 'Write_SD_Card_Spectral' was here
+  314 |    Write_SD_Card_Spectral(&rfm95_handle, &lsm303agr);
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Write_SD_Card_Spectral':
+../Core/Src/main.c:787:6: warning: variable 'sl' set but not used [-Wunused-but-set-variable]
+  787 |  int sl[4];
+      |      ^~
+../Core/Src/main.c:786:15: warning: variable 'cx2' set but not used [-Wunused-but-set-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |               ^~~
+../Core/Src/main.c:786:10: warning: unused variable 'cx1' [-Wunused-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |          ^~~
+../Core/Src/main.c:786:6: warning: unused variable 'cx' [-Wunused-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |      ^~
+../Core/Src/main.c: In function 'Write_SD_Card':
+../Core/Src/main.c:929:36: warning: format '%d' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  929 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
+      |                                   ~^                       ~~~~~~~~~~~~~~~~~
+      |                                    |                             |
+      |                                    int                           uint32_t {aka long unsigned int}
+      |                                   %ld
+../Core/Src/main.c:929:42: warning: format '%d' expects argument of type 'int', but argument 6 has type 'long unsigned int' [-Wformat=]
+  929 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
+      |                                         ~^
+      |                                          |
+      |                                          int
+      |                                         %ld
+  930 |    handle->longitude_or[0], handle->latitude, handle->latitude_or[0],
+      |                             ~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   long unsigned int
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:941:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  941 | read_temp_innen(rfm95_handle_t *handle) {
+      | ^~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_temp_innen':
+../Core/Src/main.c:953:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
+  953 |  float checksum_rh = value[5];
+      |        ^~~~~~~~~~~
+../Core/Src/main.c:951:8: warning: unused variable 'checksum_t' [-Wunused-variable]
+  951 |  float checksum_t = value[2];
+      |        ^~~~~~~~~~
+../Core/Src/main.c:943:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  943 |  HAL_StatusTypeDef status;
+      |                    ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:966:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  966 | read_temp_aussen(rfm95_handle_t *handle) {
+      | ^~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_temp_aussen':
+../Core/Src/main.c:978:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
+  978 |  float checksum_rh = value[5];
+      |        ^~~~~~~~~~~
+../Core/Src/main.c:976:8: warning: unused variable 'checksum_t' [-Wunused-variable]
+  976 |  float checksum_t = value[2];
+      |        ^~~~~~~~~~
+../Core/Src/main.c:968:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  968 |  HAL_StatusTypeDef status;
+      |                    ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:991:6: warning: conflicting types for 'check_gain'
+  991 | void check_gain(rfm95_handle_t *handle) {
+      |      ^~~~~~~~~~
+../Core/Src/main.c:309:4: note: previous implicit declaration of 'check_gain' was here
+  309 |    check_gain(&rfm95_handle);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:1057:6: warning: conflicting types for 'check_stats'
+ 1057 | void check_stats() {
+      |      ^~~~~~~~~~~
+../Core/Src/main.c:315:4: note: previous implicit declaration of 'check_stats' was here
+  315 |    check_stats();
+      |    ^~~~~~~~~~~
+../Core/Src/main.c: In function 'check_stats':
+../Core/Src/main.c:1059:12: warning: passing argument 1 of 'check_imu' from incompatible pointer type [-Wincompatible-pointer-types]
+ 1059 |  check_imu(&rfm95_handle);
+      |            ^~~~~~~~~~~~~
+      |            |
+      |            rfm95_handle_t *
+../Core/Src/main.c:1041:27: note: expected 'LSM303AGR *' but argument is of type 'rfm95_handle_t *'
+ 1041 | void check_imu(LSM303AGR *dev) {
+      |                ~~~~~~~~~~~^~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:1063:6: warning: conflicting types for 'fail_handler'
+ 1063 | void fail_handler() {
+      |      ^~~~~~~~~~~~
+../Core/Src/main.c:316:4: note: previous implicit declaration of 'fail_handler' was here
+  316 |    fail_handler();
+      |    ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_akkuspannung':
+../Core/Src/main.c:1078:11: warning: unused variable 'raw' [-Wunused-variable]
+ 1078 |  uint16_t raw;
+      |           ^~~
+../Core/Src/main.c: In function 'read_temp_innen':
+../Core/Src/main.c:964:1: warning: control reaches end of non-void function [-Wreturn-type]
+  964 | }
+      | ^
+../Core/Src/main.c: In function 'read_temp_aussen':
+../Core/Src/main.c:989:1: warning: control reaches end of non-void function [-Wreturn-type]
+  989 | }
+      | ^
+arm-none-eabi-g++ -o "Spektrumsanalyse.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\STM32L471RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Spektrumsanalyse.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: Spektrumsanalyse.elf
+ 
 arm-none-eabi-size   Spektrumsanalyse.elf 
+arm-none-eabi-objdump -h -S  Spektrumsanalyse.elf  > "Spektrumsanalyse.list"
    text	   data	    bss	    dec	    hex	filename
-  63392	   1024	   2480	  66896	  10550	Spektrumsanalyse.elf
+  69944	   1032	   2560	  73536	  11f40	Spektrumsanalyse.elf
 Finished building: default.size.stdout
+ 
+Finished building: Spektrumsanalyse.list
+ 
+22:11:12 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L471xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:83:3: warning: braces around scalar initializer
+   83 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0, .gain = 6 };
+      |   ^
+../Core/Src/main.c:83:3: note: (near initialization for 'rfm95_handle.latitude_or[0]')
+../Core/Src/main.c:71:31: warning: missing braces around initializer [-Wmissing-braces]
+   71 | rfm95_handle_t rfm95_handle = { .spi_handle = &hspi2, .nss_port =
+      |                               ^
+......
+   83 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0, .gain = 6 };
+      |                            }                             {}
+../Core/Src/main.c: In function 'myprintf':
+../Core/Src/main.c:110:6: warning: unused variable 'len' [-Wunused-variable]
+  110 |  int len = strlen(buffer);
+      |      ^~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:151:2: warning: implicit declaration of function 'Setup' [-Wimplicit-function-declaration]
+  151 |  Setup();
+      |  ^~~~~
+../Core/Src/main.c:226:15: warning: passing argument 1 of 'printf' makes pointer from integer without a cast [-Wint-conversion]
+  226 |     printf(bfr[i]);
+      |            ~~~^~~
+      |               |
+      |               char
+In file included from ../Core/Src/../../Drivers/PCA9847_Driver/PCA9847.h:14,
+                 from ../Core/Src/main.c:27:
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\include\stdio.h:200:13: note: expected 'const char * restrict' but argument is of type 'char'
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+../Core/Src/main.c:308:4: warning: implicit declaration of function 'Read_Spectralsensor' [-Wimplicit-function-declaration]
+  308 |    Read_Spectralsensor(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:309:4: warning: implicit declaration of function 'check_gain' [-Wimplicit-function-declaration]
+  309 |    check_gain(&rfm95_handle);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:310:4: warning: implicit declaration of function 'SHT41_read' [-Wimplicit-function-declaration]
+  310 |    SHT41_read(&temp_innen);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:312:4: warning: implicit declaration of function 'read_temp_aussen' [-Wimplicit-function-declaration]
+  312 |    read_temp_aussen(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:313:4: warning: implicit declaration of function 'read_temp_innen' [-Wimplicit-function-declaration]
+  313 |    read_temp_innen(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~
+../Core/Src/main.c:314:4: warning: implicit declaration of function 'Write_SD_Card_Spectral' [-Wimplicit-function-declaration]
+  314 |    Write_SD_Card_Spectral(&rfm95_handle, &lsm303agr);
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:315:4: warning: implicit declaration of function 'check_stats' [-Wimplicit-function-declaration]
+  315 |    check_stats();
+      |    ^~~~~~~~~~~
+../Core/Src/main.c:316:4: warning: implicit declaration of function 'fail_handler' [-Wimplicit-function-declaration]
+  316 |    fail_handler();
+      |    ^~~~~~~~~~~~
+../Core/Src/main.c:214:21: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  214 |   HAL_StatusTypeDef status;
+      |                     ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:696:6: warning: conflicting types for 'Setup'
+  696 | void Setup(void) {
+      |      ^~~~~
+../Core/Src/main.c:151:2: note: previous implicit declaration of 'Setup' was here
+  151 |  Setup();
+      |  ^~~~~
+../Core/Src/main.c: In function 'Setup':
+../Core/Src/main.c:699:2: warning: implicit declaration of function 'Setup_Spectralsensor' [-Wimplicit-function-declaration]
+  699 |  Setup_Spectralsensor();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:702:2: warning: implicit declaration of function 'Write_SD_Card_Header' [-Wimplicit-function-declaration]
+  702 |  Write_SD_Card_Header();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:704:6: warning: conflicting types for 'Setup_Spectralsensor'
+  704 | void Setup_Spectralsensor(void) {
+      |      ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:699:2: note: previous implicit declaration of 'Setup_Spectralsensor' was here
+  699 |  Setup_Spectralsensor();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:724:6: warning: conflicting types for 'Read_Spectralsensor'
+  724 | void Read_Spectralsensor(rfm95_handle_t *handle) {
+      |      ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:308:4: note: previous implicit declaration of 'Read_Spectralsensor' was here
+  308 |    Read_Spectralsensor(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Read_Spectralsensor':
+../Core/Src/main.c:726:17: warning: unused variable 'data2' [-Wunused-variable]
+  726 |  sModeTwoData_t data2;
+      |                 ^~~~~
+../Core/Src/main.c:725:17: warning: unused variable 'data1' [-Wunused-variable]
+  725 |  sModeOneData_t data1;
+      |                 ^~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:736:6: warning: conflicting types for 'Write_SD_Card_Header'
+  736 | void Write_SD_Card_Header() {
+      |      ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:702:2: note: previous implicit declaration of 'Write_SD_Card_Header' was here
+  702 |  Write_SD_Card_Header();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:762:6: warning: conflicting types for 'Write_SD_Card_Spectral'
+  762 | void Write_SD_Card_Spectral(rfm95_handle_t *handle, LSM303AGR *dev) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:314:4: note: previous implicit declaration of 'Write_SD_Card_Spectral' was here
+  314 |    Write_SD_Card_Spectral(&rfm95_handle, &lsm303agr);
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Write_SD_Card_Spectral':
+../Core/Src/main.c:787:6: warning: variable 'sl' set but not used [-Wunused-but-set-variable]
+  787 |  int sl[4];
+      |      ^~
+../Core/Src/main.c:786:15: warning: variable 'cx2' set but not used [-Wunused-but-set-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |               ^~~
+../Core/Src/main.c:786:10: warning: unused variable 'cx1' [-Wunused-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |          ^~~
+../Core/Src/main.c:786:6: warning: unused variable 'cx' [-Wunused-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |      ^~
+../Core/Src/main.c: In function 'Write_SD_Card':
+../Core/Src/main.c:929:36: warning: format '%d' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  929 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
+      |                                   ~^                       ~~~~~~~~~~~~~~~~~
+      |                                    |                             |
+      |                                    int                           uint32_t {aka long unsigned int}
+      |                                   %ld
+../Core/Src/main.c:929:42: warning: format '%d' expects argument of type 'int', but argument 6 has type 'long unsigned int' [-Wformat=]
+  929 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
+      |                                         ~^
+      |                                          |
+      |                                          int
+      |                                         %ld
+  930 |    handle->longitude_or[0], handle->latitude, handle->latitude_or[0],
+      |                             ~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   long unsigned int
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:941:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  941 | read_temp_innen(rfm95_handle_t *handle) {
+      | ^~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_temp_innen':
+../Core/Src/main.c:953:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
+  953 |  float checksum_rh = value[5];
+      |        ^~~~~~~~~~~
+../Core/Src/main.c:951:8: warning: unused variable 'checksum_t' [-Wunused-variable]
+  951 |  float checksum_t = value[2];
+      |        ^~~~~~~~~~
+../Core/Src/main.c:943:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  943 |  HAL_StatusTypeDef status;
+      |                    ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:966:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  966 | read_temp_aussen(rfm95_handle_t *handle) {
+      | ^~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_temp_aussen':
+../Core/Src/main.c:978:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
+  978 |  float checksum_rh = value[5];
+      |        ^~~~~~~~~~~
+../Core/Src/main.c:976:8: warning: unused variable 'checksum_t' [-Wunused-variable]
+  976 |  float checksum_t = value[2];
+      |        ^~~~~~~~~~
+../Core/Src/main.c:968:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  968 |  HAL_StatusTypeDef status;
+      |                    ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:991:6: warning: conflicting types for 'check_gain'
+  991 | void check_gain(rfm95_handle_t *handle) {
+      |      ^~~~~~~~~~
+../Core/Src/main.c:309:4: note: previous implicit declaration of 'check_gain' was here
+  309 |    check_gain(&rfm95_handle);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:1057:6: warning: conflicting types for 'check_stats'
+ 1057 | void check_stats() {
+      |      ^~~~~~~~~~~
+../Core/Src/main.c:315:4: note: previous implicit declaration of 'check_stats' was here
+  315 |    check_stats();
+      |    ^~~~~~~~~~~
+../Core/Src/main.c: In function 'check_stats':
+../Core/Src/main.c:1059:12: warning: passing argument 1 of 'check_imu' from incompatible pointer type [-Wincompatible-pointer-types]
+ 1059 |  check_imu(&rfm95_handle);
+      |            ^~~~~~~~~~~~~
+      |            |
+      |            rfm95_handle_t *
+../Core/Src/main.c:1041:27: note: expected 'LSM303AGR *' but argument is of type 'rfm95_handle_t *'
+ 1041 | void check_imu(LSM303AGR *dev) {
+      |                ~~~~~~~~~~~^~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:1063:6: warning: conflicting types for 'fail_handler'
+ 1063 | void fail_handler() {
+      |      ^~~~~~~~~~~~
+../Core/Src/main.c:316:4: note: previous implicit declaration of 'fail_handler' was here
+  316 |    fail_handler();
+      |    ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_akkuspannung':
+../Core/Src/main.c:1078:11: warning: unused variable 'raw' [-Wunused-variable]
+ 1078 |  uint16_t raw;
+      |           ^~~
+../Core/Src/main.c: In function 'read_temp_innen':
+../Core/Src/main.c:964:1: warning: control reaches end of non-void function [-Wreturn-type]
+  964 | }
+      | ^
+../Core/Src/main.c: In function 'read_temp_aussen':
+../Core/Src/main.c:989:1: warning: control reaches end of non-void function [-Wreturn-type]
+  989 | }
+      | ^
+arm-none-eabi-g++ -o "Spektrumsanalyse.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\STM32L471RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Spektrumsanalyse.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: Spektrumsanalyse.elf
+ 
+arm-none-eabi-size   Spektrumsanalyse.elf 
+arm-none-eabi-objdump -h -S  Spektrumsanalyse.elf  > "Spektrumsanalyse.list"
+   text	   data	    bss	    dec	    hex	filename
+  69944	   1032	   2560	  73536	  11f40	Spektrumsanalyse.elf
+Finished building: default.size.stdout
+ 
+Finished building: Spektrumsanalyse.list
+ 
+22:15:27 **** Incremental Build of configuration Debug for project Spektrumsanalyse ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L471xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:83:3: warning: braces around scalar initializer
+   83 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0, .gain = 6 };
+      |   ^
+../Core/Src/main.c:83:3: note: (near initialization for 'rfm95_handle.latitude_or[0]')
+../Core/Src/main.c:71:31: warning: missing braces around initializer [-Wmissing-braces]
+   71 | rfm95_handle_t rfm95_handle = { .spi_handle = &hspi2, .nss_port =
+      |                               ^
+......
+   83 |   .latitude_or[0] = { 'N' }, .altitude = 2461, .indent = 0, .gain = 6 };
+      |                            }                             {}
+../Core/Src/main.c: In function 'myprintf':
+../Core/Src/main.c:110:6: warning: unused variable 'len' [-Wunused-variable]
+  110 |  int len = strlen(buffer);
+      |      ^~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:151:2: warning: implicit declaration of function 'Setup' [-Wimplicit-function-declaration]
+  151 |  Setup();
+      |  ^~~~~
+../Core/Src/main.c:226:15: warning: passing argument 1 of 'printf' makes pointer from integer without a cast [-Wint-conversion]
+  226 |     printf(bfr[i]);
+      |            ~~~^~~
+      |               |
+      |               char
+In file included from ../Core/Src/../../Drivers/PCA9847_Driver/PCA9847.h:14,
+                 from ../Core/Src/main.c:27:
+c:\st\stm32cubeide_1.9.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\include\stdio.h:200:13: note: expected 'const char * restrict' but argument is of type 'char'
+  200 | int printf (const char *__restrict, ...)
+      |             ^
+../Core/Src/main.c:308:4: warning: implicit declaration of function 'Read_Spectralsensor' [-Wimplicit-function-declaration]
+  308 |    Read_Spectralsensor(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:309:4: warning: implicit declaration of function 'check_gain' [-Wimplicit-function-declaration]
+  309 |    check_gain(&rfm95_handle);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:310:4: warning: implicit declaration of function 'SHT41_read' [-Wimplicit-function-declaration]
+  310 |    SHT41_read(&temp_innen);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:312:4: warning: implicit declaration of function 'read_temp_aussen' [-Wimplicit-function-declaration]
+  312 |    read_temp_aussen(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:313:4: warning: implicit declaration of function 'read_temp_innen' [-Wimplicit-function-declaration]
+  313 |    read_temp_innen(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~
+../Core/Src/main.c:314:4: warning: implicit declaration of function 'Write_SD_Card_Spectral' [-Wimplicit-function-declaration]
+  314 |    Write_SD_Card_Spectral(&rfm95_handle, &lsm303agr);
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:315:4: warning: implicit declaration of function 'check_stats' [-Wimplicit-function-declaration]
+  315 |    check_stats();
+      |    ^~~~~~~~~~~
+../Core/Src/main.c:316:4: warning: implicit declaration of function 'fail_handler' [-Wimplicit-function-declaration]
+  316 |    fail_handler();
+      |    ^~~~~~~~~~~~
+../Core/Src/main.c:214:21: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  214 |   HAL_StatusTypeDef status;
+      |                     ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:696:6: warning: conflicting types for 'Setup'
+  696 | void Setup(void) {
+      |      ^~~~~
+../Core/Src/main.c:151:2: note: previous implicit declaration of 'Setup' was here
+  151 |  Setup();
+      |  ^~~~~
+../Core/Src/main.c: In function 'Setup':
+../Core/Src/main.c:699:2: warning: implicit declaration of function 'Setup_Spectralsensor' [-Wimplicit-function-declaration]
+  699 |  Setup_Spectralsensor();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:702:2: warning: implicit declaration of function 'Write_SD_Card_Header' [-Wimplicit-function-declaration]
+  702 |  Write_SD_Card_Header();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:704:6: warning: conflicting types for 'Setup_Spectralsensor'
+  704 | void Setup_Spectralsensor(void) {
+      |      ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:699:2: note: previous implicit declaration of 'Setup_Spectralsensor' was here
+  699 |  Setup_Spectralsensor();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:724:6: warning: conflicting types for 'Read_Spectralsensor'
+  724 | void Read_Spectralsensor(rfm95_handle_t *handle) {
+      |      ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:308:4: note: previous implicit declaration of 'Read_Spectralsensor' was here
+  308 |    Read_Spectralsensor(&rfm95_handle);
+      |    ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Read_Spectralsensor':
+../Core/Src/main.c:726:17: warning: unused variable 'data2' [-Wunused-variable]
+  726 |  sModeTwoData_t data2;
+      |                 ^~~~~
+../Core/Src/main.c:725:17: warning: unused variable 'data1' [-Wunused-variable]
+  725 |  sModeOneData_t data1;
+      |                 ^~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:736:6: warning: conflicting types for 'Write_SD_Card_Header'
+  736 | void Write_SD_Card_Header() {
+      |      ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:702:2: note: previous implicit declaration of 'Write_SD_Card_Header' was here
+  702 |  Write_SD_Card_Header();
+      |  ^~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:762:6: warning: conflicting types for 'Write_SD_Card_Spectral'
+  762 | void Write_SD_Card_Spectral(rfm95_handle_t *handle, LSM303AGR *dev) {
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:314:4: note: previous implicit declaration of 'Write_SD_Card_Spectral' was here
+  314 |    Write_SD_Card_Spectral(&rfm95_handle, &lsm303agr);
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'Write_SD_Card_Spectral':
+../Core/Src/main.c:787:6: warning: variable 'sl' set but not used [-Wunused-but-set-variable]
+  787 |  int sl[4];
+      |      ^~
+../Core/Src/main.c:786:15: warning: variable 'cx2' set but not used [-Wunused-but-set-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |               ^~~
+../Core/Src/main.c:786:10: warning: unused variable 'cx1' [-Wunused-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |          ^~~
+../Core/Src/main.c:786:6: warning: unused variable 'cx' [-Wunused-variable]
+  786 |  int cx, cx1, cx2, cx3;
+      |      ^~
+../Core/Src/main.c: In function 'Write_SD_Card':
+../Core/Src/main.c:929:36: warning: format '%d' expects argument of type 'int', but argument 4 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+  929 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
+      |                                   ~^                       ~~~~~~~~~~~~~~~~~
+      |                                    |                             |
+      |                                    int                           uint32_t {aka long unsigned int}
+      |                                   %ld
+../Core/Src/main.c:929:42: warning: format '%d' expects argument of type 'int', but argument 6 has type 'long unsigned int' [-Wformat=]
+  929 |  cx = snprintf(data_packet, 51, "{%d,%c,%d,%c,%d,%d}\r\n", handle->longitude,
+      |                                         ~^
+      |                                          |
+      |                                          int
+      |                                         %ld
+  930 |    handle->longitude_or[0], handle->latitude, handle->latitude_or[0],
+      |                             ~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   long unsigned int
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:941:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  941 | read_temp_innen(rfm95_handle_t *handle) {
+      | ^~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_temp_innen':
+../Core/Src/main.c:953:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
+  953 |  float checksum_rh = value[5];
+      |        ^~~~~~~~~~~
+../Core/Src/main.c:951:8: warning: unused variable 'checksum_t' [-Wunused-variable]
+  951 |  float checksum_t = value[2];
+      |        ^~~~~~~~~~
+../Core/Src/main.c:943:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  943 |  HAL_StatusTypeDef status;
+      |                    ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:966:1: warning: return type defaults to 'int' [-Wimplicit-int]
+  966 | read_temp_aussen(rfm95_handle_t *handle) {
+      | ^~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_temp_aussen':
+../Core/Src/main.c:978:8: warning: unused variable 'checksum_rh' [-Wunused-variable]
+  978 |  float checksum_rh = value[5];
+      |        ^~~~~~~~~~~
+../Core/Src/main.c:976:8: warning: unused variable 'checksum_t' [-Wunused-variable]
+  976 |  float checksum_t = value[2];
+      |        ^~~~~~~~~~
+../Core/Src/main.c:968:20: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  968 |  HAL_StatusTypeDef status;
+      |                    ^~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:991:6: warning: conflicting types for 'check_gain'
+  991 | void check_gain(rfm95_handle_t *handle) {
+      |      ^~~~~~~~~~
+../Core/Src/main.c:309:4: note: previous implicit declaration of 'check_gain' was here
+  309 |    check_gain(&rfm95_handle);
+      |    ^~~~~~~~~~
+../Core/Src/main.c:1057:6: warning: conflicting types for 'check_stats'
+ 1057 | void check_stats() {
+      |      ^~~~~~~~~~~
+../Core/Src/main.c:315:4: note: previous implicit declaration of 'check_stats' was here
+  315 |    check_stats();
+      |    ^~~~~~~~~~~
+../Core/Src/main.c: In function 'check_stats':
+../Core/Src/main.c:1059:12: warning: passing argument 1 of 'check_imu' from incompatible pointer type [-Wincompatible-pointer-types]
+ 1059 |  check_imu(&rfm95_handle);
+      |            ^~~~~~~~~~~~~
+      |            |
+      |            rfm95_handle_t *
+../Core/Src/main.c:1041:27: note: expected 'LSM303AGR *' but argument is of type 'rfm95_handle_t *'
+ 1041 | void check_imu(LSM303AGR *dev) {
+      |                ~~~~~~~~~~~^~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:1063:6: warning: conflicting types for 'fail_handler'
+ 1063 | void fail_handler() {
+      |      ^~~~~~~~~~~~
+../Core/Src/main.c:316:4: note: previous implicit declaration of 'fail_handler' was here
+  316 |    fail_handler();
+      |    ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'read_akkuspannung':
+../Core/Src/main.c:1079:11: warning: unused variable 'raw' [-Wunused-variable]
+ 1079 |  uint16_t raw;
+      |           ^~~
+../Core/Src/main.c: In function 'read_temp_innen':
+../Core/Src/main.c:964:1: warning: control reaches end of non-void function [-Wreturn-type]
+  964 | }
+      | ^
+../Core/Src/main.c: In function 'read_temp_aussen':
+../Core/Src/main.c:989:1: warning: control reaches end of non-void function [-Wreturn-type]
+  989 | }
+      | ^
+arm-none-eabi-g++ -o "Spektrumsanalyse.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\fabia\Google Drive\FHNW\pro4\git\pro4e_3_fs22\Spektrumsanalyse\STM32L471RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Spektrumsanalyse.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: Spektrumsanalyse.elf
+ 
+arm-none-eabi-size   Spektrumsanalyse.elf 
+arm-none-eabi-objdump -h -S  Spektrumsanalyse.elf  > "Spektrumsanalyse.list"
+   text	   data	    bss	    dec	    hex	filename
+  69944	   1032	   2560	  73536	  11f40	Spektrumsanalyse.elf
+Finished building: default.size.stdout
+ 
+Finished building: Spektrumsanalyse.list
  

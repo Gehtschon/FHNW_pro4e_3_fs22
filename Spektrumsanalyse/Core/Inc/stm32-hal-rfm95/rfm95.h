@@ -171,6 +171,11 @@ typedef struct {
 	unsigned int altitude;
 
 	/**
+	 * The current time
+	 */
+	char time[9];
+
+	/**
 	 * The identifier including orientation of the GPS.
 	 */
 	uint8_t indent[1];
@@ -211,6 +216,11 @@ typedef struct {
 	 * battery voltage
 	 */
 	uint16_t battery_voltage;
+
+	/**
+	 * spectral gain
+	 */
+	uint16_t gain;
 
 } rfm95_handle_t;
 

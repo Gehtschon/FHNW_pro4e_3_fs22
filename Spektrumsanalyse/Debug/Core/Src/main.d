@@ -42,6 +42,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Src/../../Drivers/PCA9847_Driver/PCA9847.h \
  ../Core/Src/../../Drivers/MS5607_Driver_C/MS5607.h \
  ../Core/Src/../../Drivers/AS7341_Driver/Waveshare_AS7341.h \
+ ../Core/Src/../../Drivers/LSM3030/LSM303AGR.h \
  ../Core/Src/../../Drivers/SHT41/SHT41.h \
  ../Core/Src/../../Drivers/SHT41/../../Drivers/PCA9847_Driver/PCA9847.h
 ../Core/Inc/main.h:
@@ -92,5 +93,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Src/../../Drivers/PCA9847_Driver/PCA9847.h:
 ../Core/Src/../../Drivers/MS5607_Driver_C/MS5607.h:
 ../Core/Src/../../Drivers/AS7341_Driver/Waveshare_AS7341.h:
+../Core/Src/../../Drivers/LSM3030/LSM303AGR.h:
 ../Core/Src/../../Drivers/SHT41/SHT41.h:
 ../Core/Src/../../Drivers/SHT41/../../Drivers/PCA9847_Driver/PCA9847.h:
